@@ -1,0 +1,22 @@
+page-startseite {
+  .tile {
+    height: 100px;
+    background-color: color($colors, secondary);
+    color: color($colors, light);
+    box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.3);
+    &.b-primary {
+      background-color: color($colors, primary);
+    }
+    ion-icon {
+      position: relative;
+      font-size: 48px;
+      text-align: center;
+      display: block;
+      width: 100%;
+      padding-top:10px;
+    }
+    .title {
+      text-align: center;
+    }
+  }
+}

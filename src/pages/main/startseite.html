@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Startseite</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <img no-padding src="assets/img/green-bike.jpg">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-100>
+          <h3>
+          Herzlich Willkommen
+        </h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50>
+          <div class="tile"(click)="goToMap()">
+            <ion-icon name="navigate"></ion-icon>
+            <div class="title">Navigation</div>
+          </div>
+        </ion-col>
+        <ion-col width-50>
+          <div class="tile"(click)="presentSearchModal()">
+            <ion-icon name="search"></ion-icon>
+            <div class="title">Suche</div>
+          </div>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+        <ion-col width-50>
+          <div class="tile b-primary"(click)="goToTouren()">
+            <ion-icon name="navigate"></ion-icon>
+            <div class="title">Erlebnisradwege</div>
+          </div>
+        </ion-col>
+        <ion-col width-50>
+          <div class="tile">
+            <ion-icon name="map"></ion-icon>
+            <div class="title">Routenplaner</div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50>
+          <div class="tile"(click)="goToPannentipps()">
+            <ion-icon name="leaf"></ion-icon>
+            <div class="title">Pannentipps</div>
+          </div>
+        </ion-col>
+        <ion-col width-50>
+          <div class="tile"(click)="goToSettings()">
+            <ion-icon name="settings"></ion-icon>
+            <div class="title">Einstellungen</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

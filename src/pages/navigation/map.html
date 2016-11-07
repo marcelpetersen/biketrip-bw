@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Karte</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-spinner #spinner class="mapsLoader" icon="spiral"></ion-spinner> -->
+  <!-- #map zur Identifikation in Ionic und id="map" für das CSS. -->
+  <div #map id="map"></div>
+</ion-content>
