@@ -4,10 +4,10 @@ import {  ViewController, NavParams, Keyboard } from 'ionic-angular';
 //Modal
 
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html'
+  selector: 'page-touren-suche',
+  templateUrl: 'touren-suche.html'
 })
-export class Search {
+export class TourenSuche {
 
   constructor(public viewCtrl: ViewController, params: NavParams, public keyboardCtrl: Keyboard) {
     console.log('Parameter: ', params.get('userId'));

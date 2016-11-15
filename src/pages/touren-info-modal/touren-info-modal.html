@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Suche nach Touren
+      Details
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -10,10 +10,16 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-searchbar></ion-searchbar>
 </ion-header>
 
 
 <ion-content padding>
-  Lorem Ipsum
+  <ion-item>
+    <!-- Fragezeichen wird benoetigt, da nicht gesichert ist, dass der Wert vorhanden ist. -->
+    <h2>{{tour?.name}}</h2>
+    <img src="{{tour?.image}}">
+    <p>{{tour?.description}}</p>
+    <p>{{tour?.laenge}}</p>
+    <p>{{tour?.schwierigkeitsgrad}}</p>
+  </ion-item>
 </ion-content>

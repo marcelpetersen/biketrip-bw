@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 import { NavController, ModalController } from 'ionic-angular';
-import { Touren } from '../touren/touren';
+import { Erlebnisradwege } from '../erlebnisradwege/erlebnisradwege';
 import { Navigation } from '../navigation/map';
 import { Pannentipps } from '../pannentipps/pannentipps';
-import { Settings } from '../settings/settings';
-import { Search } from '../search/search';
+import { Einstellungen } from '../einstellungen/einstellungen';
+import { TourenSuche } from '../touren-suche/touren-suche';
 
 //Startseite
 
@@ -20,16 +20,16 @@ export class Main {
 
   }
   presentSearchModal() {
-    let searchModal = this.modalCtrl.create(Search, { userId: 8675309 });
+    let searchModal = this.modalCtrl.create(TourenSuche, { userId: 8675309 });
     searchModal.present();
   }
 
   goToTouren() {
     //setRoot (kein Zurück Button) oder push (mit Zurück Button)
-    this.navCtrl.push(Touren);
+    this.navCtrl.push(Erlebnisradwege);
   }
   goToSettings() {
-    this.navCtrl.push(Settings);
+    this.navCtrl.push(Einstellungen);
   }
   goToMap() {
     this.navCtrl.push(Navigation);

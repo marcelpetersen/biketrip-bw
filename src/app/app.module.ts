@@ -4,27 +4,29 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { ConnectivityService } from '../providers/connectivity-service';
 
 
-//Komponenten importieren
+//Komponenten importieren (muss bei neuen Pages ergaenzt werden.)
 import { MyApp } from './app.component';
-import { Main } from '../pages/main/startseite';
-import { Search } from '../pages/search/search';
-import { Touren } from '../pages/touren/touren';
+import { Main } from '../pages/startseite/startseite';
+import { TourenSuche } from '../pages/touren-suche/touren-suche';
+import { TourenInfoModal } from '../pages/touren-info-modal/touren-info-modal';
+import { Erlebnisradwege } from '../pages/erlebnisradwege/erlebnisradwege';
 import { Navigation } from '../pages/navigation/map';
 import { Routenplaner } from '../pages/routenplaner/routenplaner';
 import { Pannentipps } from '../pages/pannentipps/pannentipps';
-import { Settings } from '../pages/settings/settings';
+import { Einstellungen } from '../pages/einstellungen/einstellungen';
 
 //Module laden
 @NgModule({
   declarations: [
     MyApp,
     Main,
-    Search,
-    Touren,
+    TourenSuche,
+    TourenInfoModal,
+    Erlebnisradwege,
     Navigation,
     Routenplaner,
     Pannentipps,
-    Settings
+    Einstellungen
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -35,12 +37,13 @@ import { Settings } from '../pages/settings/settings';
   entryComponents: [
     MyApp,
     Main,
-    Search,
-    Touren,
+    TourenSuche,
+    TourenInfoModal,
+    Erlebnisradwege,
     Navigation,
     Routenplaner,
     Pannentipps,
-    Settings
+    Einstellungen
   ],
   providers: [ConnectivityService]
 })

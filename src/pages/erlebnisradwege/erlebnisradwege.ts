@@ -5,12 +5,12 @@ import { BiketripTourService } from '../../providers/biketrip-tour-service';
 
 
 @Component({
-  selector: 'page-touren',
-  templateUrl: 'touren.html',
+  selector: 'page-erlebnisradwege',
+  templateUrl: 'erlebnisradwege.html',
   providers: [BiketripTourService]
 
 })
-export class Touren {
+export class Erlebnisradwege {
 
   public touren: any;
 

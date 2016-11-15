@@ -3,12 +3,12 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen, BackgroundGeolocation } from 'ionic-native';
 
 //Seiten importieren, um für die Navigation zu verwenden
-import { Main } from '../pages/main/startseite';
-import { Touren } from '../pages/touren/touren';
+import { Main } from '../pages/startseite/startseite';
+import { Erlebnisradwege } from '../pages/erlebnisradwege/erlebnisradwege';
 import { Navigation } from '../pages/navigation/map';
 import { Routenplaner } from '../pages/routenplaner/routenplaner';
 import { Pannentipps } from '../pages/pannentipps/pannentipps';
-import { Settings } from '../pages/settings/settings';
+import { Einstellungen } from '../pages/einstellungen/einstellungen';
 
 
 @Component({
@@ -27,11 +27,11 @@ export class MyApp {
     // Seiten zum Menü hinzuzufügen
     this.pages = [
       { title: 'Startseite', component: Main },
-      { title: 'Erlebnisradwege', component: Touren },
+      { title: 'Erlebnisradwege', component: Erlebnisradwege },
       { title: 'Navigation', component: Navigation },
       { title: 'Routenplaner', component: Routenplaner },
       { title: 'Pannentipps', component: Pannentipps },
-      { title: 'Einstellungen', component: Settings }
+      { title: 'Einstellungen', component: Einstellungen }
     ];
 
   }
