@@ -1,28 +1,28 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LocalNotifications } from 'ionic-native';
-import { BiketripTourService } from '../../providers/biketrip-tour-service';
+import { BiketripsService } from '../../providers/biketrips-service';
 
 
 @Component({
   selector: 'page-erlebnisradwege',
   templateUrl: 'erlebnisradwege.html',
-  providers: [BiketripTourService]
+  providers: [BiketripsService]
 
 })
 export class Erlebnisradwege {
 
   public touren: any;
 
-  constructor(private navCtrl: NavController, public tourService: BiketripTourService, ) {
+  constructor(private navCtrl: NavController, public tourenService: BiketripsService, ) {
     this.loadTour();
 
   }
 
   loadTour() {
-    this.tourService.load()
-      .then(data => {
-        this.touren = data;
+    this.tourenService.load()
+      .then(touren => {
+        this.touren = touren;
       });
   }
 

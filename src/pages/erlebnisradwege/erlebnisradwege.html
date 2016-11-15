@@ -11,12 +11,12 @@
   <!-- <button ion-button secondary (click)="schedule()">Toggle Notification</button> -->
   <ion-list>
     <!-- Schleife: Liste mit den Touren ausgeben. -->
-    <ion-item *ngFor="let person of touren">
+    <ion-item *ngFor="let t of touren">
       <ion-avatar item-left>
-        <img src="{{person.picture.thumbnail}}">
+        <img src="{{t.image}}">
       </ion-avatar>
-      <h2>{{person.name.first}} {{person.name.last}}</h2>
-      <p>{{person.email}}</p>
+      <h2>{{t.name}}</h2>
+      <p>{{t.description}}</p>
     </ion-item>
   </ion-list>
 </ion-content>
