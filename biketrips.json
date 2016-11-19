@@ -1,0 +1,186 @@
+{
+    "results": [
+      {
+        "id": 1,
+        "title": "Karl Drais Route",
+        "subtitle": "Auf den Spuren von Karl Drais durch Mannheim.",
+        "startpunkt": {
+            "lat": 49.4829556,
+            "lng": 8.4604577
+        },
+        "laenge": "19.4km",
+        "schwierigkeitsgrad": "mittel",
+        "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "tourbild": "https://images.unsplash.com/23/parked-bike.JPG",
+        "checkpoints": [{
+            "checkpointId": 1001,
+            "lat": 49.4829556,
+            "lng": 8.4604577,
+            "name": "Barockschloss Mannheim",
+            "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+            "content": {
+                "type": "3d",
+                "src": "https://sketchfab.com/models/8db598fd7e2c40678c5144a2756f9f63/embed",
+                "beschreibung": "Lorem Ipsum 3D"
+            }
+        }, {
+            "checkpointId": 1002,
+            "lat": 49.48525,
+            "lng": 8.462546,
+            "name": "Wohnhaus M1, 8",
+            "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+            "content": {
+                "type": "video",
+                "src": "https://youtu.be/3HJ0mTLGCAg",
+                "placeholder": "https://images.unsplash.com/23/parked-bike.JPG"
+            }
+        }, {
+            "checkpointId": 1003,
+            "lat": 49.482215,
+            "lng": 8.4640637,
+            "name": "Schlossgarten",
+            "content": {
+                "type": "gallery",
+                "images": [{
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #1"
+                }, {
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #2"
+                }, {
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #3"
+                }, {
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #4"
+                }, {
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #5"
+                }]
+            }
+        }, {
+            "checkpointId": 1004,
+            "lat": 49.4713253,
+            "lng": 8.4819766,
+            "name": "Neckarauer Übergang",
+            "content": {
+                "type": "audio",
+                "src": "https://youtu.be/3HJ0mTLGCAg",
+                "placeholder": "https://images.unsplash.com/23/parked-bike.JPG"
+            }
+        }, {
+            "checkpointId": 1005,
+            "lat": 49.4447154,
+            "lng": 8.5102447,
+            "name": "Casterfeldstrasse"
+        }, {
+            "checkpointId": 1006,
+            "lat": 49.439063,
+            "lng": 8.5229175,
+            "name": "Karl Drais Denkmal"
+        }, {
+            "checkpointId": 1007,
+            "lat": 49.463337,
+            "lng": 8.516767,
+            "name": "SAP Arena"
+        }, {
+            "checkpointId": 1008,
+            "lat": 49.476813,
+            "lng": 8.494371,
+            "name": "Technoseum"
+        }, {
+            "checkpointId": 1009,
+            "lat": 49.4840577,
+            "lng": 8.4733625,
+            "name": "Wasserturm"
+        }, {
+            "checkpointId": 1010,
+            "lat": 49.482981,
+            "lng": 8.4777895,
+            "name": "Karl Benz Denkmal"
+        }]
+
+    }, {
+        "id": 2,
+        "title": "Karlsruhe erleben",
+        "subtitle": "die Geschichte Badens kennenlernen.",
+        "startpunkt": {
+            "lat": 49.0134942,
+            "lng": 8.4021663
+        },
+        "laenge": "9.0km",
+        "schwierigkeitsgrad": "leicht",
+        "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "tourbild": "https://images.unsplash.com/photo-1446770145316-10a05382c470",
+        "checkpoints": [{
+            "checkpointId": 2001,
+            "lat": 49.0134942,
+            "lng": 8.4036456,
+            "name": "Barockschloss Mannheim",
+            "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+            "content": {
+                "type": "3d",
+                "src": "https://sketchfab.com/models/8db598fd7e2c40678c5144a2756f9f63/embed",
+                "beschreibung": "Lorem Ipsum 3D"
+            }
+        }, {
+            "checkpointId": 2002,
+            "lat": 49.0134942,
+            "lng": 8.406563,
+            "name": "Wohnhaus M1, 8",
+            "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+            "content": {
+                "type": "video",
+                "src": "https://youtu.be/3HJ0mTLGCAg",
+                "placeholder": "https://images.unsplash.com/23/parked-bike.JPG"
+            }
+        }, {
+            "checkpointId": 2003,
+            "lat": 49.0134942,
+            "lng": 8.408546,
+            "name": "Schlossgarten",
+            "content": {
+                "type": "gallery",
+                "images": [{
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #1"
+                }, {
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #2"
+                }, {
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #3"
+                }, {
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #4"
+                }, {
+                    "src": "https://images.unsplash.com/23/parked-bike.JPG",
+                    "beschreibung": "Lorem Ipsum #5"
+                }]
+            }
+        }, {
+            "checkpointId": 2004,
+            "lat": 49.0134942,
+            "lng": 8.4092457,
+            "name": "Neckarauer Übergang",
+            "content": {
+                "type": "audio",
+                "src": "https://youtu.be/3HJ0mTLGCAg",
+                "placeholder": "https://images.unsplash.com/23/parked-bike.JPG"
+            }
+        }]
+    }, {
+        "id": 3,
+        "title": "Weinschmeckertour",
+        "subtitle": "Tour durch die Weinberge der Ortenau",
+        "startpunkt": {
+            "lat": 48.49256,
+            "lng": 8.0213413
+        },
+        "laenge": "28.2km",
+        "schwierigkeitsgrad": "schwer",
+        "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "tourbild": "https://images.unsplash.com/8/berries.jpg"
+    }
+  ]
+}
