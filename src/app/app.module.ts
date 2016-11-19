@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { Main } from '../pages/startseite/startseite';
 import { TourenSuche } from '../pages/touren-suche/touren-suche';
 import { TourenInfoModal } from '../pages/touren-info-modal/touren-info-modal';
+import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-info-modal';
 import { Erlebnisradwege } from '../pages/erlebnisradwege/erlebnisradwege';
 import { Navigation } from '../pages/navigation/map';
 import { Routenplaner } from '../pages/routenplaner/routenplaner';
@@ -22,6 +23,7 @@ import { Einstellungen } from '../pages/einstellungen/einstellungen';
     Main,
     TourenSuche,
     TourenInfoModal,
+    CheckpointInfoModal,
     Erlebnisradwege,
     Navigation,
     Routenplaner,
@@ -39,6 +41,7 @@ import { Einstellungen } from '../pages/einstellungen/einstellungen';
     Main,
     TourenSuche,
     TourenInfoModal,
+    CheckpointInfoModal,
     Erlebnisradwege,
     Navigation,
     Routenplaner,

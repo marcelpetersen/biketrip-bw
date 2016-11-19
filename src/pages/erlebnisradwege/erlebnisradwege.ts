@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { LocalNotifications } from 'ionic-native';
 import { BiketripsService } from '../../providers/biketrips-service';
+import { TourenInfoModal } from '../touren-info-modal/touren-info-modal';
 
 
 @Component({
@@ -14,24 +15,18 @@ export class Erlebnisradwege {
 
   public touren: any;
 
-  constructor(private navCtrl: NavController, public tourenService: BiketripsService, ) {
+  constructor(private navCtrl: NavController, public tourenService: BiketripsService, public modalCtrl: ModalController ) {
     this.loadTour();
 
   }
 
   loadTour() {
-    this.tourenService.load()
-      .then(touren => {
-        this.touren = touren;
-      });
+    this.tourenService.load().then(data => {this.touren = data;});
   }
 
-  public schedule() {
-    LocalNotifications.schedule({
-      title: "Test Title",
-      text: "Delayed Notification",
-      at: new Date(new Date().getTime() + 5 * 1000),
-      sound: null
-    });
+  //Oeffnet die Uebersichtsseite (Model) einer Tour.
+  showTourInfoModal(t) {
+    let infoModal = this.modalCtrl.create(TourenInfoModal, { tour: t });
+    infoModal.present();
   }
 }

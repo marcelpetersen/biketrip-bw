@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {  ViewController, NavController, NavParams } from 'ionic-angular';
+import {  App, ViewController, NavController, NavParams } from 'ionic-angular';
+import { Navigation } from '../navigation/map';
 import { BiketripsService } from '../../providers/biketrips-service';
 
 
@@ -23,6 +24,7 @@ export class TourenInfoModal {
 
 
   constructor(
+    public appCtrl: App,
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public params: NavParams,
@@ -36,13 +38,21 @@ export class TourenInfoModal {
   //Marker mit Überischt der einzlenen Touren laden (Daten werden von biketrips-service Provider bereitgestellt)
   loadBiketrips() {
     this.tourenService.load()
-      .then(touren => {
-        this.biketrips = touren;
+      .then(data => {
+        this.biketrips = data;
         // Tour finden, die zur jeweiligen ID passt.
         this.tour = this.biketrips.find(x => x.id === this.tourID);
         // console.log(this.tour);
 
       });
+  }
+
+  tourStarten() {
+    //Dismiss, damit die Karte nicht über die Seite gelegt wird, sondern wirklich neu geöffnet wird.
+    this.viewCtrl.dismiss();
+    this.appCtrl.getRootNav().setRoot(Navigation, {
+      tourID: this.tourID
+    });
   }
 
   dismiss() {

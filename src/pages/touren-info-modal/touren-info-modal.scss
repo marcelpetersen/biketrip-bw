@@ -1,3 +1,31 @@
 page-touren-info-modal {
+  ion-card {
+    &.card-ios,
+    &.card-md,
+    &.card-wp {
+      margin: 10px 0px 10px 0px;
+      width: 100%;
+    }
+  }
+  .bt-specs {
+    background: color($colors, secondary);
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    text-align: center;
+    &.leicht {
+      background: color($colors, p-light);
 
+    }
+    &.mittel {
+      background: color($colors, primary);
+
+    }
+    &.schwer {
+      background: color($colors, p-dark);
+
+    }
+
+  }
 }

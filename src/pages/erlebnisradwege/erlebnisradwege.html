@@ -7,16 +7,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <!-- <button ion-button secondary (click)="schedule()">Toggle Notification</button> -->
-  <ion-list>
-    <!-- Schleife: Liste mit den Touren ausgeben. -->
-    <ion-item *ngFor="let t of touren">
-      <ion-avatar item-left>
-        <img src="{{t.image}}">
-      </ion-avatar>
-      <h2>{{t.name}}</h2>
-      <p>{{t.description}}</p>
-    </ion-item>
-  </ion-list>
+<ion-content>
+  <ion-card *ngFor="let t of touren" (click)="showTourInfoModal(t.id)">
+    <!-- <img src="{{t.tourbild}}"/> -->
+    <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
+      <div class="card-title">{{t.title}}</div>
+      <div class="card-subtitle">{{t.subtitle}}</div>
+    </div>
+  </ion-card>
 </ion-content>

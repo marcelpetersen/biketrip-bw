@@ -14,12 +14,41 @@
 
 
 <ion-content padding>
-  <ion-item>
+
+  <ion-card>
     <!-- Fragezeichen wird benoetigt, da nicht gesichert ist, dass der Wert vorhanden ist. -->
-    <h2>{{tour?.name}}</h2>
-    <img src="{{tour?.image}}">
-    <p>{{tour?.description}}</p>
-    <p>{{tour?.laenge}}</p>
-    <p>{{tour?.schwierigkeitsgrad}}</p>
-  </ion-item>
+    <img src="{{tour?.tourbild}}">
+    <ion-card-content>
+      <ion-card-title>
+        {{tour?.title}}
+      </ion-card-title>
+
+      <ion-row>
+        <ion-col>
+          <div class="bt-specs schwierigkeitsgrad {{tour?.schwierigkeitsgrad}}">
+            <ion-icon name="leaf"></ion-icon>
+            <span>{{tour?.schwierigkeitsgrad}}</span>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="bt-specs laenge">
+            <ion-icon name="clock"></ion-icon>
+            <span>{{tour?.laenge}}</span>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <p>{{tour?.beschreibung}}</p>
+
+    </ion-card-content>
+  </ion-card>
+
+  <button ion-button outline block (click)="tourStarten()">Tour starten</button>
+  <button ion-button icon-left color="dark" clear block>
+    <ion-icon name="download"></ion-icon>
+    Tour offline speichern
+  </button>
+
+
+
 </ion-content>
