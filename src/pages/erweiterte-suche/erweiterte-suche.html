@@ -1,0 +1,29 @@
+<ion-list>
+  <ion-list-header (click)="close()">
+    Streckenlänge
+  </ion-list-header>
+  <ion-item>
+    <ion-range dualKnobs="true" pin="true" [(ngModel)]="structure" color="dark">
+      <ion-icon range-left small name="brush"></ion-icon>
+      <ion-icon range-right name="brush"></ion-icon>
+    </ion-range>
+  </ion-item>
+</ion-list>
+
+<ion-list radio-group [(ngModel)]="schwierigkeitsgrad">
+  <ion-list-header>
+    Schwierigksitsgrad
+  </ion-list-header>
+  <ion-item>
+    <ion-label>Einfach</ion-label>
+    <ion-radio value="einfach" checked></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Mittel</ion-label>
+    <ion-radio value="mittel"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Anspruchsvoll</ion-label>
+    <ion-radio value="schwer"></ion-radio>
+  </ion-item>
+</ion-list>

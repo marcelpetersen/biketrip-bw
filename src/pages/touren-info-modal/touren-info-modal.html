@@ -6,7 +6,7 @@
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span showWhen="ios">Schließen</span>
-        <ion-icon name="md-close" showWhen="android"></ion-icon>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -33,7 +33,7 @@
         <ion-col>
           <div class="bt-specs laenge">
             <ion-icon name="clock"></ion-icon>
-            <span>{{tour?.laenge}}</span>
+            <span>{{tour?.laenge}} km</span>
           </div>
         </ion-col>
       </ion-row>

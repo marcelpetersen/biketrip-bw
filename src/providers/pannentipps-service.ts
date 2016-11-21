@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class BiketripsService {
+export class PannentippsService {
 
   data: any;
 
@@ -36,16 +36,6 @@ export class BiketripsService {
         });
     });
   }
-}
-
-
-//Filterung bei Suche: Es wird mit Titel und Stadt verglichen. --> Suche nach beiden Parametern möglich!
-filterItems(searchTerm){
-    console.log(searchTerm);
-    return this.data.filter((item) => {
-        return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || item.startpunkt.stadt.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-    });
-
 }
 
 }

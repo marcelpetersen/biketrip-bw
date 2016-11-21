@@ -3,7 +3,10 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Startseite</ion-title>
+    <ion-title>
+      <!-- <ion-icon name="biketrip-bw"></ion-icon> -->
+      biketrip.bw
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,55 +14,67 @@
   <div class="image-wrapper" hideWhen="tablet">
     <img no-padding src="assets/img/green-bike.jpg">
   </div>
-    <ion-grid>
-      <ion-row>
+  <ion-grid>
+    <!-- <ion-row>
         <ion-col width-100>
           <h3>
           Herzlich Willkommen
         </h3>
         </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col width-50>
-          <div class="tile"(click)="goToMap()">
+      </ion-row> -->
+    <ion-row>
+      <ion-col width-50>
+        <div class="tile" (click)="goToMap()">
+          <div class="tile-inner">
             <ion-icon name="navigate"></ion-icon>
             <div class="title">Navigation</div>
           </div>
-        </ion-col>
-        <ion-col width-50>
-          <div class="tile"(click)="presentSearchModal()">
+        </div>
+      </ion-col>
+      <ion-col width-50>
+        <div class="tile" (click)="presentSearchModal()">
+          <div class="tile-inner">
             <ion-icon name="search"></ion-icon>
             <div class="title">Suche</div>
           </div>
-        </ion-col>
-        </ion-row>
-        <ion-row>
-        <ion-col width-50>
-          <div class="tile b-primary"(click)="goToTouren()">
-            <ion-icon name="navigate"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50>
+        <div class="tile b-primary" (click)="goToTouren()">
+          <div class="tile-inner">
+            <i class="custom-icon icon-biketrip-bw"></i>
             <div class="title">Erlebnisradwege</div>
           </div>
-        </ion-col>
-        <ion-col width-50>
-          <div class="tile">
-            <ion-icon name="map"></ion-icon>
-            <div class="title">Routenplaner</div>
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col width-50>
-          <div class="tile"(click)="goToPannentipps()">
+        </div>
+      </ion-col>
+      <ion-col width-50>
+        <div class="tile" (click)="goToPannentipps()">
+          <div class="tile-inner">
             <ion-icon name="leaf"></ion-icon>
             <div class="title">Pannentipps</div>
           </div>
-        </ion-col>
-        <ion-col width-50>
-          <div class="tile"(click)="goToSettings()">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50>
+        <div class="tile">
+          <div class="tile-inner">
+            <ion-icon name="star"></ion-icon>
+            <div class="title">Gespeicherte Touren</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col width-50>
+        <div class="tile" (click)="goToSettings()">
+          <div class="tile-inner">
             <ion-icon name="settings"></ion-icon>
             <div class="title">Einstellungen</div>
           </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

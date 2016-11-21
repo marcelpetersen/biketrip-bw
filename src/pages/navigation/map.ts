@@ -21,6 +21,7 @@ export class Navigation {
 
   //#map aus map.html ermitteln
   @ViewChild('map') mapElement: ElementRef;
+  @ViewChild('panel') panelElement: ElementRef;
   map: any;
   mapInitialised: boolean = false;
   apiKey: any = "AIzaSyBckgn5lj8eGN1YHSTLiza4vapodPb3KQo";
@@ -28,6 +29,10 @@ export class Navigation {
   subscription: any;
   biketrips: any;
   gestarteteTour: any = "none";
+  latLng: any;
+  directionsService: any;
+  markerArray: any[] = [];
+
 
   constructor(
     public navCtrl: NavController,
@@ -66,8 +71,6 @@ export class Navigation {
   loadBiketrips() {
     console.log(this.gestarteteTour);
     if (this.gestarteteTour == 'none' || this.gestarteteTour == undefined) {
-      console.log("load - none");
-
       this.tourenService.load()
         .then(data => {
           this.biketrips = data;
@@ -75,12 +78,9 @@ export class Navigation {
 
     }
     else {
-      console.log("load - ID");
       this.tourenService.load()
         .then(data => {
           this.biketrips = data.find(x => x.id === this.gestarteteTour).checkpoints;
-          // this.biketrips = this.biketrips.checkpoints;
-          console.log(this.biketrips);
         });
 
     }
@@ -136,11 +136,15 @@ export class Navigation {
   initMap() {
 
     this.mapInitialised = true;
+    this.directionsService = new google.maps.DirectionsService();
+    // this.directionsDisplay = new google.maps.DirectionsRenderer();
     console.log("init map - start");
+
+
 
     Geolocation.getCurrentPosition().then((position) => {
       //Position festlegen
-      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       //POI und Bahnhoefe ausblenden
       let myStyles = [
         {
@@ -159,7 +163,7 @@ export class Navigation {
         }
       ];
       let mapOptions = {
-        center: latLng,
+        center: this.latLng,
         zoom: 15,
         mapTypeId: "terrain",
         disableDefaultUI: true,
@@ -173,8 +177,26 @@ export class Navigation {
       console.log("init map - end");
       this.loading.dismiss();
       // this.updatePosition();
+
       if (this.gestarteteTour !== 'none' && this.gestarteteTour !== undefined) {
         this.addCheckpoints();
+        //Start: Entweder die eigene Position, oder der aktuelle Checkpoint.
+        let start = { lat: this.biketrips[0].lat, lng: this.biketrips[0].lng };
+        //End: Der nächste Checkpoint
+        let end = { lat: this.biketrips[1].lat, lng: this.biketrips[1].lng };
+        //Waypoints:Da Google immer die optimale Route berechnet müssen zusätzliche Waypoints hinzugefügt werden,
+        //damit die Route mit der echten Route übereinstimmt. Die Waypoints der aktuellen Route sind immer im Ziel-Checkpoint
+        //gespeichert.
+        let waypts: any[] = [];
+        if(this.biketrips[1].waypoints) {
+          for (let i of this.biketrips[1].waypoints) {
+            waypts.push({
+              location: {lat: i.lat, lng: i.lng},
+              stopover: false
+            });
+          }
+        }
+        this.navigation(start, end, waypts, this.map, this.markerArray);
       }
 
     });
@@ -193,6 +215,33 @@ export class Navigation {
       //Karte aktualisieren.
       this.map.setOptions(mapOptions);
     });
+  }
+
+  navigation(current, next, waypts, map, marker) {
+    let directionsDisplay = new google.maps.DirectionsRenderer();
+    //Karte hinzufügen: Hier wird die Route dargestellt.
+    directionsDisplay.setMap(map);
+    //Panel hinzufügen: Hier werden die Navigations-Instruktionen angezeigt
+    directionsDisplay.setPanel(this.panelElement.nativeElement);
+
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(this.panelElement.nativeElement);
+
+    // Display the route between the initial start and end selections.
+    let request = {
+      origin: current,
+      destination: next,
+      waypoints: waypts,
+      travelMode: google.maps.TravelMode.BICYCLING
+    };
+    this.directionsService.route(request, function(response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        //Route anzeigen
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+
   }
 
   disableMap() {
@@ -277,7 +326,7 @@ export class Navigation {
     });
   }
 
-  //Oeffnet die Uebersichtsseite (Model) einer Tour.
+  //Oeffnet die Uebersichtsseite (Modal) einer Tour.
   showTourInfoModal(t) {
     let infoModal = this.modalCtrl.create(TourenInfoModal, { tour: t });
     infoModal.present();

@@ -1,20 +1,61 @@
 page-startseite {
+  .image-wrapper {
+    height: 33.333%;
+    overflow: hidden;
+    margin-bottom: 1px;
+  }
+
+  ion-grid {
+    height: 66.667%;
+    padding: 0;
+
+    ion-row {
+      flex: 1;
+    }
+  }
+
   .tile {
-    height: 100px;
+    height: 100%;
+    position: relative;
     background-color: color($colors, secondary);
     color: color($colors, light);
     box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.3);
+
     &.b-primary {
       background-color: color($colors, primary);
     }
+
+    .tile-inner {
+      position: relative;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+
     ion-icon {
       position: relative;
       font-size: 48px;
       text-align: center;
       display: block;
       width: 100%;
-      padding-top:10px;
+      // padding-top:10px;
     }
+
+    .custom-icon {
+      position: relative;
+      height: 67px;
+      text-align: center;
+      display: block;
+      width: 100%;
+      // padding-top:10px;
+      &:before {
+        display: inline-block;
+        width: 64px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
     .title {
       text-align: center;
     }

@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "biketrip.bw",
+  "author": "rbxrt",
+  "homepage": "http://www.hs-offenburg.de",
   "private": true,
   "scripts": {
     "build": "ionic-app-scripts build",
@@ -49,5 +49,5 @@
       "locator": "ios"
     }
   ],
-  "description": "biketrip-v2: An Ionic project"
+  "description": "biketrip.bw: A HSO project. - Made with Ionic 2"
 }
