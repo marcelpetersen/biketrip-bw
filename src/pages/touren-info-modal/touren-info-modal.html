@@ -25,10 +25,19 @@
 
       <ion-row>
         <ion-col>
-          <div class="bt-specs schwierigkeitsgrad {{tour?.schwierigkeitsgrad}}">
+          <div class="bt-specs schwierigkeitsgrad" [ngSwitch]="tour?.schwierigkeitsgrad">
+            <ion-icon name="leaf"></ion-icon>
+
+            <span *ngSwitchCase="1">einfach</span>
+            <span *ngSwitchCase="2">mittel</span>
+            <span *ngSwitchCase="3">anspruchsvoll</span>
+            <span *ngSwitchDefault>---</span>
+          </div>
+
+          <!-- <div class="bt-specs schwierigkeitsgrad {{tour?.schwierigkeitsgrad}}">
             <ion-icon name="leaf"></ion-icon>
             <span>{{tour?.schwierigkeitsgrad}}</span>
-          </div>
+          </div> -->
         </ion-col>
         <ion-col>
           <div class="bt-specs laenge">

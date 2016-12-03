@@ -1,30 +1,80 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <!-- <ion-title>
-      Suche nach Touren
-    </ion-title> -->
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span showWhen="ios">Schließen</span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-searchbar placeholder="Name oder Stadt eingeben..." (ionInput)="getItems($event)">
-    </ion-searchbar>
-  </ion-toolbar>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Suche</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content>
 
+  <!-- <div>
+    <h2>Schnellsuche</h2> -->
+    <ion-searchbar [(ngModel)]="suchwort" placeholder="Name oder Stadt eingeben..."></ion-searchbar>
+  <!-- </div> -->
+
+  <ion-list-header>
+    Erweiterte Suche
+    <button ion-button clear icon-only item-right (click)="toggleErweitert()">
+      <ion-icon name="settings"></ion-icon>
+    </button>
+  </ion-list-header>
+
+  <div class="advancedSearch" *ngIf="advancedSearch == true">
+    <ion-card>
+      <ion-item>
+        <ion-icon name="leaf" item-left></ion-icon>
+        <h2>Schwierigkeitsgrad</h2>
+        <p>Gewünschte Schwieriegkeiten wählen.</p>
+      </ion-item>
+      <ion-card-content>
+        <ion-item *ngFor="let s of schwierigkeitsgrad">
+            <ion-label>{{s.name}}</ion-label>
+            <ion-checkbox name="schwierigkeitsgrad" [(ngModel)]="s.checked"></ion-checkbox>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-icon name="bicycle" item-left></ion-icon>
+        <h2>Streckenlänge</h2>
+        <p *ngIf="laengeRange.upper != null">Zwischen {{laengeRange.lower}} und {{laengeRange.upper}} km.</p>
+        <p *ngIf="laengeRange.upper == null">Schieberegler betätigen.</p>
+      </ion-item>
+      <ion-card-content>
+        <ion-range dualKnobs="true" pin="true" min="0" max="200" [(ngModel)]="laengeRange" color="dark">
+          <ion-icon range-left small name="bicycle"></ion-icon>
+          <ion-icon range-right name="bicycle"></ion-icon>
+        </ion-range>
+      </ion-card-content>
+    </ion-card>
+</div>
 
 
-  <ion-list>
+  <div padding>
+    <button ion-button block outline color="primary" icon-right (click)="suchen()">
+      Suchen
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </div>
+
+
+
+
+
+
+
+  <!-- <ion-list>
     <ion-list-header>
-      Suchergebnisse
+      Einfache Suche
       <button ion-button clear icon-only item-right (click)="toggleErweitert()">
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-list-header>
+
+
     <ion-item-sliding *ngFor="let t of biketrips">
     <ion-item>
       <h2>{{ t.title }}</h2>
@@ -37,6 +87,6 @@
       </button>
     </ion-item-options>
   </ion-item-sliding>
-</ion-list>
+</ion-list> -->
 
 </ion-content>

@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen, BackgroundGeolocation } from 'ionic-native';
 
 //Seiten importieren, um für die Navigation zu verwenden
 import { Main } from '../pages/startseite/startseite';
+import { TourenSuche } from '../pages/touren-suche/touren-suche';
 import { Erlebnisradwege } from '../pages/erlebnisradwege/erlebnisradwege';
 import { Navigation } from '../pages/navigation/map';
 import { Routenplaner } from '../pages/routenplaner/routenplaner';
@@ -27,6 +28,7 @@ export class MyApp {
     // Seiten zum Menü hinzuzufügen
     this.pages = [
       { title: 'Startseite', component: Main },
+      { title: 'Suche nach Touren', component: TourenSuche },
       { title: 'Erlebnisradwege', component: Erlebnisradwege },
       { title: 'Navigation', component: Navigation },
       { title: 'Routenplaner', component: Routenplaner },

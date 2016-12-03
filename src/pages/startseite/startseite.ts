@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Erlebnisradwege } from '../erlebnisradwege/erlebnisradwege';
 import { Navigation } from '../navigation/map';
 import { Pannentipps } from '../pannentipps/pannentipps';
@@ -16,12 +16,11 @@ import { TourenSuche } from '../touren-suche/touren-suche';
 export class Main {
 
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController) {
 
   }
-  presentSearchModal() {
-    let searchModal = this.modalCtrl.create(TourenSuche, { userId: 8675309 });
-    searchModal.present();
+  goToSuche() {
+    this.navCtrl.push(TourenSuche);
   }
 
   goToTouren() {

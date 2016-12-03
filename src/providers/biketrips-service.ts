@@ -11,6 +11,7 @@ import 'rxjs/add/operator/map';
 export class BiketripsService {
 
   data: any;
+  filteredData: any;
 
   constructor(public http: Http) {
     // this.load()
@@ -39,13 +40,62 @@ export class BiketripsService {
 }
 
 
-//Filterung bei Suche: Es wird mit Titel und Stadt verglichen. --> Suche nach beiden Parametern möglich!
-filterItems(searchTerm){
-    console.log(searchTerm);
-    return this.data.filter((item) => {
-        return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || item.startpunkt.stadt.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-    });
+//Filterung bei Suche:
+//Suchwort ist pflicht. Hier kann der Name oder der Startpunkt eingegeben werden.
+//Mindest- und Maximallänge können optional mitgegeben werden.
+//Der Schwierigkeitsgrad kann optional mitgegeben werden.
+filterItems(suchwort: string, minLaenge?: number, maxLaenge?: number, schwierigkeitsgrad?: any){
 
+  if(!suchwort) {
+    suchwort = "";
+  }
+  if(!schwierigkeitsgrad || schwierigkeitsgrad.length === 0) {
+    schwierigkeitsgrad = [1,2,3];
+  }
+  if(!minLaenge && !maxLaenge) {
+    minLaenge = 0;
+    maxLaenge = 9999;
+
+  }
+
+  console.log(suchwort);
+  console.log(schwierigkeitsgrad);
+  console.log(maxLaenge);
+  console.log(minLaenge);
+
+  if (this.filteredData) {
+    console.log('JSON vorhanden');
+    return this.filteredData.filter((item) => {
+      return (item.title.toLowerCase().indexOf(suchwort.toLowerCase()) > -1 ||
+      item.startpunkt.stadt.toLowerCase().indexOf(suchwort.toLowerCase()) > -1) &&
+      (item.laenge >= minLaenge && item.laenge <= maxLaenge) &&
+      (schwierigkeitsgrad.indexOf(item.schwierigkeitsgrad) !== -1);
+    });
+  } else {
+    console.log('JSON laden');
+    return new Promise(resolve => {
+      this.http.get('https://api.myjson.com/bins/2785q')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.filteredData = data.results.filter((item) => {
+            return (item.title.toLowerCase().indexOf(suchwort.toLowerCase()) > -1 ||
+            item.startpunkt.stadt.toLowerCase().indexOf(suchwort.toLowerCase()) > -1) &&
+            (item.laenge >= minLaenge && item.laenge <= maxLaenge) &&
+            (schwierigkeitsgrad.indexOf(item.schwierigkeitsgrad) !== -1);
+          });
+          resolve(this.filteredData);
+        });
+    });
+  }
 }
+
+// filterItems(suchwort: string, minLaenge: number, maxLaenge: number, schwierigkeitsgrad: number){
+//     return this.data.filter((item) => {
+//       return (item.title.toLowerCase().indexOf(suchwort.toLowerCase()) > -1 ||
+//       item.startpunkt.stadt.toLowerCase().indexOf(suchwort.toLowerCase()) > -1) &&
+//       item.schwieriegkeit == schwierigkeitsgrad &&
+//       (item.laenge >= minLaenge && item.laenge <= maxLaenge);
+//     });
+// }
 
 }

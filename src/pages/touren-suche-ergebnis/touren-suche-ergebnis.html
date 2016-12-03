@@ -1,0 +1,38 @@
+<!--
+  Generated template for the TourenSucheErgebnis page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Suchergebnisse</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>
+      Suchergebnisse
+    </ion-list-header>
+
+
+    <ion-item-sliding *ngFor="let t of suchergebnis">
+    <ion-item>
+      <h2>{{ t.title }}</h2>
+      <p>{{ t.startpunkt.stadt }}, {{t.schwierigkeitsgrad}}, {{ t.laenge }} km</p>
+    </ion-item>
+    <ion-item-options>
+      <button ion-button color="primary" icon-left (click)="showTourInfoModal(t.id)">
+        <ion-icon name="arrow-forward"></ion-icon>
+        Details
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+</ion-content>
