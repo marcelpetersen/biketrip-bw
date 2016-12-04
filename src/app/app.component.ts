@@ -3,22 +3,22 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen, BackgroundGeolocation } from 'ionic-native';
 
 //Seiten importieren, um für die Navigation zu verwenden
-import { Main } from '../pages/startseite/startseite';
+import { Startseite } from '../pages/startseite/startseite';
 import { TourenSuche } from '../pages/touren-suche/touren-suche';
 import { Erlebnisradwege } from '../pages/erlebnisradwege/erlebnisradwege';
 import { Navigation } from '../pages/navigation/map';
 import { Routenplaner } from '../pages/routenplaner/routenplaner';
 import { Pannentipps } from '../pages/pannentipps/pannentipps';
-import { Einstellungen } from '../pages/einstellungen/einstellungen';
+import { Impressum } from '../pages/impressum/about';
 
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class BiketripBW {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Main;
+  rootPage: any = Startseite;
 
   pages: Array<{title: string, component: any}>;
 
@@ -27,13 +27,13 @@ export class MyApp {
 
     // Seiten zum Menü hinzuzufügen
     this.pages = [
-      { title: 'Startseite', component: Main },
+      { title: 'Startseite', component: Startseite },
       { title: 'Suche nach Touren', component: TourenSuche },
       { title: 'Erlebnisradwege', component: Erlebnisradwege },
       { title: 'Navigation', component: Navigation },
       { title: 'Routenplaner', component: Routenplaner },
       { title: 'Pannentipps', component: Pannentipps },
-      { title: 'Einstellungen', component: Einstellungen }
+      { title: 'Impressum', component: Impressum }
     ];
 
   }

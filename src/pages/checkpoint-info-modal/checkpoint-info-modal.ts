@@ -1,22 +1,28 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ViewController, NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the CheckpointInfoModal page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-checkpoint-info-modal',
-  templateUrl: 'checkpoint-info-modal.html'
+  templateUrl: 'checkpoint-info-modal.html',
 })
 export class CheckpointInfoModal {
 
-  constructor(public navCtrl: NavController) {}
+  checkpointData: Object;
+
+  constructor(
+    public navCtrl: NavController,
+    private params: NavParams,
+    private viewCtrl: ViewController
+  ) {
+    this.checkpointData = params.get("c");
+  }
 
   ionViewDidLoad() {
-    console.log('Hello CheckpointInfoModal Page');
+
   }
+
+  dismiss() {
+   this.viewCtrl.dismiss();
+ }
 
 }

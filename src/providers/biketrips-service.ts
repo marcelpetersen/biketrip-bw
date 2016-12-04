@@ -58,10 +58,10 @@ filterItems(suchwort: string, minLaenge?: number, maxLaenge?: number, schwierigk
 
   }
 
-  console.log(suchwort);
-  console.log(schwierigkeitsgrad);
-  console.log(maxLaenge);
-  console.log(minLaenge);
+  // console.log(suchwort);
+  // console.log(schwierigkeitsgrad);
+  // console.log(maxLaenge);
+  // console.log(minLaenge);
 
   if (this.filteredData) {
     console.log('JSON vorhanden');
@@ -88,14 +88,5 @@ filterItems(suchwort: string, minLaenge?: number, maxLaenge?: number, schwierigk
     });
   }
 }
-
-// filterItems(suchwort: string, minLaenge: number, maxLaenge: number, schwierigkeitsgrad: number){
-//     return this.data.filter((item) => {
-//       return (item.title.toLowerCase().indexOf(suchwort.toLowerCase()) > -1 ||
-//       item.startpunkt.stadt.toLowerCase().indexOf(suchwort.toLowerCase()) > -1) &&
-//       item.schwieriegkeit == schwierigkeitsgrad &&
-//       (item.laenge >= minLaenge && item.laenge <= maxLaenge);
-//     });
-// }
 
 }

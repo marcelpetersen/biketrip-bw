@@ -1,19 +1,21 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, Platform, LoadingController, ModalController } from 'ionic-angular';
+import { Geolocation, Geoposition, PositionError } from 'ionic-native';
 
 import { ConnectivityService } from '../../providers/connectivity-service';
 import { BiketripsService } from '../../providers/biketrips-service';
+import { NavigationService } from '../../providers/navigation-service';
 
 import { TourenInfoModal } from '../touren-info-modal/touren-info-modal';
+import { CheckpointInfoModal } from '../checkpoint-info-modal/checkpoint-info-modal';
 
-import { Geolocation, Geoposition, PositionError } from 'ionic-native';
 
 declare var google;
 
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html',
-  providers: [BiketripsService]
+  providers: [BiketripsService, NavigationService]
 
 })
 
@@ -24,7 +26,7 @@ export class Navigation {
   @ViewChild('panel') panelElement: ElementRef;
   map: any;
   mapInitialised: boolean = false;
-  apiKey: any = "AIzaSyBckgn5lj8eGN1YHSTLiza4vapodPb3KQo";
+  private apiKey: any = "AIzaSyBckgn5lj8eGN1YHSTLiza4vapodPb3KQo";
   loading: any;
   subscription: any;
   biketrips: any;
@@ -38,9 +40,10 @@ export class Navigation {
     public navCtrl: NavController,
     public params: NavParams,
     public modalCtrl: ModalController,
-    public connectivityService: ConnectivityService,
+    private connectivityService: ConnectivityService,
     public loadingCtrl: LoadingController,
-    public tourenService: BiketripsService
+    private tourenService: BiketripsService,
+    private navigationService: NavigationService
   ) {
 
     this.gestarteteTour = params.get('tourID');
@@ -176,7 +179,9 @@ export class Navigation {
       //Spinner ausblenden, wenn Karte geladen.
       console.log("init map - end");
       this.loading.dismiss();
-      // this.updatePosition();
+
+      //Position aktualisieren
+      this.updatePosition();
 
       if (this.gestarteteTour !== 'none' && this.gestarteteTour !== undefined) {
         this.addCheckpoints();
@@ -282,38 +287,23 @@ export class Navigation {
 
   }
 
-  //Erueugt die Marker der Touren
+  //Erueugt die Checkpoints der Touren
   addCheckpoints() {
     console.log("add Markers - start");
     for (let entry of this.biketrips) {
+      console.log(entry);
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
         position: { lat: entry.lat, lng: entry.lng }
       });
-      let content = "<h4>Information!</h4>";
-      this.addInfoWindow(marker, content);
+      let id = entry.checkpointId;
+      this.addInfoWindow(marker, entry);
     }
   }
 
-  //Marker ins Zentrum der Karte hinzufügen (Demo-Funktion)
-  addMarker() {
-
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
-    });
-
-    let content = "<h4>Information!</h4>";
-
-    this.addInfoWindow(marker, content);
-
-  }
-
-
   //Fuegt Marker zur Karte hinzu.
-  addInfoWindow(marker, content) {
+  addInfoWindow(marker, checkpoint) {
 
     // let infoWindow = new google.maps.InfoWindow({
     //   content: content
@@ -322,13 +312,19 @@ export class Navigation {
     google.maps.event.addListener(marker, 'click', (event) => {
       // infoWindow.open(this.map, marker);
       // console.log(event);
-      // this.showTourInfoModal(content);
+      this.showCheckpointInfoModal(checkpoint);
     });
   }
 
   //Oeffnet die Uebersichtsseite (Modal) einer Tour.
   showTourInfoModal(t) {
     let infoModal = this.modalCtrl.create(TourenInfoModal, { tour: t });
+    infoModal.present();
+  }
+
+  //Oeffnet die Uebersichtsseite (Modal) einer Tour.
+  showCheckpointInfoModal(cData: Object) {
+    let infoModal = this.modalCtrl.create(CheckpointInfoModal, { c: cData });
     infoModal.present();
   }
 }

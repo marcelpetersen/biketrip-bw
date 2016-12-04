@@ -10,7 +10,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="no-scroll">
   <div class="image-wrapper" hideWhen="tablet">
     <img no-padding src="assets/img/green-bike.jpg">
   </div>
@@ -23,57 +23,45 @@
         </ion-col>
       </ion-row> -->
     <ion-row>
-      <ion-col width-50>
-        <div class="tile" (click)="goToMap()">
+      <ion-col width-50 class="tile" (click)="goToMap()">
           <div class="tile-inner">
-            <ion-icon name="navigate"></ion-icon>
+            <i class="custom-icon icon-navigation"></i>
             <div class="title">Navigation</div>
           </div>
-        </div>
       </ion-col>
-      <ion-col width-50>
-        <div class="tile" (click)="goToSuche()">
+      <ion-col width-50 class="tile" (click)="goToSuche()">
           <div class="tile-inner">
-            <ion-icon name="search"></ion-icon>
+            <i class="custom-icon icon-suche"></i>
             <div class="title">Suche</div>
           </div>
-        </div>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col width-50>
-        <div class="tile b-primary" (click)="goToTouren()">
+      <ion-col width-50 class="tile b-primary" (click)="goToTouren()">
           <div class="tile-inner">
-            <i class="custom-icon icon-biketrip-bw"></i>
+            <i class="custom-icon icon-erlebnisradwege"></i>
             <div class="title">Erlebnisradwege</div>
           </div>
-        </div>
       </ion-col>
-      <ion-col width-50>
-        <div class="tile" (click)="goToPannentipps()">
+      <ion-col width-50 class="tile" (click)="goToPannentipps()">
           <div class="tile-inner">
-            <ion-icon name="leaf"></ion-icon>
+            <i class="custom-icon icon-pannentipps"></i>
             <div class="title">Pannentipps</div>
           </div>
-        </div>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col width-50>
-        <div class="tile">
+      <ion-col width-50 class="tile">
           <div class="tile-inner">
-            <ion-icon name="star"></ion-icon>
+            <i class="custom-icon icon-favoriten"></i>
             <div class="title">Gespeicherte Touren</div>
           </div>
-        </div>
       </ion-col>
-      <ion-col width-50>
-        <div class="tile" (click)="goToSettings()">
+      <ion-col width-50 class="tile" (click)="goToAbout()">
           <div class="tile-inner">
-            <ion-icon name="settings"></ion-icon>
-            <div class="title">Einstellungen</div>
+            <i class="custom-icon icon-routenplaner"></i>
+            <div class="title">Impressum</div>
           </div>
-        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

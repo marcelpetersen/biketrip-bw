@@ -12,7 +12,12 @@
 
 $text-color:        #242424;
 $background-color:  #f8f8f8;
+$list-background-color: #eee;
 $toolbar-background: #145648;
+$menu-ios-background: #eee;
+$menu-md-background: #eee;
+$menu-wp-background: #eee;
+// $menu-width: 250px;
 
 
 // Named Color Variables
@@ -26,6 +31,7 @@ $toolbar-background: #145648;
 $colors: (
   primary:    #145648,
   secondary:  #52696F,
+  white:      #f8f8f8,
   p-lighter:  #1A3458,
   p-light:    #296E5F,
   p-dark:     #043C2F,

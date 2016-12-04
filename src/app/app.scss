@@ -22,9 +22,46 @@ ion-col {
   padding: 1px;
 }
 
+[padding] {
+  padding: 12px;
+}
+
+.menu-inner {
+  ion-content {
+    background-color: transparent;
+  }
+  .footer-menu {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 16px;
+    color: color($colors, primary);
+    text-align: center;
+  }
+}
+
+// .toolbar-ios ion-title{
+//   padding: 0 0 1px;
+// }
+
 
 // Custom Icons
 // --------------------------------------------------
-.icon-biketrip-bw::before {
-  content: url(../assets/img/biketrip-bw.svg);
+.icon-erlebnisradwege::before {
+  content: url(../assets/img/bt_erlebnisradwege.svg);
+}
+.icon-navigation::before {
+  content: url(../assets/img/bt_navigation.svg);
+}
+.icon-suche::before {
+  content: url(../assets/img/bt_suche.svg);
+}
+.icon-favoriten::before {
+  content: url(../assets/img/bt_favoriten.svg);
+}
+.icon-pannentipps::before {
+  content: url(../assets/img/bt_pannentipps.svg);
+}
+.icon-routenplaner::before {
+  content: url(../assets/img/bt_routenplaner.svg);
 }

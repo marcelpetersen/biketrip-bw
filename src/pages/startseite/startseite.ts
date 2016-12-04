@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Erlebnisradwege } from '../erlebnisradwege/erlebnisradwege';
 import { Navigation } from '../navigation/map';
 import { Pannentipps } from '../pannentipps/pannentipps';
-import { Einstellungen } from '../einstellungen/einstellungen';
+import { Impressum } from '../impressum/about';
 import { TourenSuche } from '../touren-suche/touren-suche';
 
 //Startseite
@@ -13,7 +13,7 @@ import { TourenSuche } from '../touren-suche/touren-suche';
   selector: 'page-startseite',
   templateUrl: 'startseite.html'
 })
-export class Main {
+export class Startseite {
 
 
   constructor(public navCtrl: NavController) {
@@ -27,8 +27,8 @@ export class Main {
     //setRoot (kein Zurück Button) oder push (mit Zurück Button)
     this.navCtrl.push(Erlebnisradwege);
   }
-  goToSettings() {
-    this.navCtrl.push(Einstellungen);
+  goToAbout() {
+    this.navCtrl.push(Impressum);
   }
   goToMap() {
     this.navCtrl.push(Navigation);
