@@ -10,9 +10,7 @@ import { TourenInfoModal } from '../touren-info-modal/touren-info-modal';
 import { CheckpointInfoModal } from '../checkpoint-info-modal/checkpoint-info-modal';
 
 import * as L from 'leaflet';
-
-declare var google;
-
+import * as Routing from 'leaflet-routing-machine';
 
 @Component({
   selector: 'page-map',
@@ -24,10 +22,8 @@ export class Navigation {
 
   //#map aus map.html ermitteln
   @ViewChild('map') mapElement: ElementRef;
-  @ViewChild('panel') panelElement: ElementRef;
   map: any;
   mapInitialised: boolean = false;
-  private apiKey: any = "AIzaSyBckgn5lj8eGN1YHSTLiza4vapodPb3KQo";
   loading: any;
   subscription: any;
   biketrips: any;
@@ -64,7 +60,7 @@ export class Navigation {
     });
     this.loading.present();
     //Aufruf der Karte
-    this.loadGoogleMaps();
+    this.loadMaps();
 
   }
 
@@ -88,92 +84,20 @@ export class Navigation {
   }
 
   //Google Maps laden.
-  loadGoogleMaps() {
-
-    this.addConnectivityListeners();
-
-    if (typeof google == "undefined" || typeof google.maps == "undefined") {
-
-      console.log("Google maps JavaScript needs to be loaded.");
-      this.disableMap();
-
-      if (this.connectivityService.isOnline()) {
-        console.log("online, loading map");
-
-        //Load the SDK
-        window['mapInit'] = () => {
-          this.initMap();
-          this.enableMap();
-        }
-
-        let script = document.createElement("script");
-        script.id = "googleMaps";
-
-        if (this.apiKey) {
-          script.src = 'http://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
-        } else {
-          script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';
-        }
-        document.body.appendChild(script);
-      }
-    }
-    else {
-
-      if (this.connectivityService.isOnline()) {
-        console.log("showing map");
-        this.initMap();
-        this.enableMap();
-      }
-      else {
-        console.log("disabling map");
-        this.disableMap();
-        //Spinner ausblenden, wenn keine Internetverbindung vorhanden ist.
-        this.loading.dismiss();
-      }
-    }
+  loadMaps() {
+    console.log("showing map");
+    this.initMap();
+    this.enableMap();
   }
 
   //Map Initialisieren
   initMap() {
 
     this.mapInitialised = true;
-    this.directionsService = new google.maps.DirectionsService();
-    // this.directionsDisplay = new google.maps.DirectionsRenderer();
-    console.log("init map - start");
-
 
     Geolocation.getCurrentPosition().then((position) => {
       //Position festlegen
-      // this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       this.latLng = L.latLng(position.coords.latitude, position.coords.longitude);
-      //POI und Bahnhoefe ausblenden
-      let myStyles = [
-        {
-          featureType: "poi",
-          elementType: "labels",
-          stylers: [
-            { visibility: "off" }
-          ]
-        },
-        {
-          featureType: "transit",
-          elementType: "labels",
-          stylers: [
-            { visibility: "off" }
-          ]
-        }
-      ];
-      let mapOptions = {
-        center: this.latLng,
-        zoom: 15,
-        mapTypeId: "terrain",
-        disableDefaultUI: true,
-        styles: myStyles,
-        zoomControl: true
-      }
-      //Karte erzeugen.
-      // this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
 
       this.map = L.map('map').setView(this.latLng, 13);
       L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?{apikey}', {
@@ -182,13 +106,16 @@ export class Navigation {
         maxZoom: 18
       }).addTo(this.map);
 
-      // L.tileLayer('https://api.mapbox.com/styles/v1/biketrip-bw/ciu8drfz1002l2inxsnyde0xj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmlrZXRyaXAtYnciLCJhIjoiY2l1OGRvY2dyMDAwZDJ0bWt2c3V1NTg3ZCJ9.wS5IN1Ke_I3_jmOfuX7u8A', {
-      //   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      //   maxZoom: 18
+      //Navigation !!!
+      
+      // Routing.control({
+      //     waypoints: [
+      //         L.latLng(this.latLng),
+      //         L.latLng(48.6792, 9.949)
+      //     ]
       // }).addTo(this.map);
 
       //Spinner ausblenden, wenn Karte geladen.
-      console.log("init map - end");
       this.loading.dismiss();
 
       //Position aktualisieren
@@ -235,29 +162,6 @@ export class Navigation {
   }
 
   navigation(current, next, waypts, map, marker) {
-    let directionsDisplay = new google.maps.DirectionsRenderer();
-    //Karte hinzufügen: Hier wird die Route dargestellt.
-    directionsDisplay.setMap(map);
-    //Panel hinzufügen: Hier werden die Navigations-Instruktionen angezeigt
-    directionsDisplay.setPanel(this.panelElement.nativeElement);
-
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(this.panelElement.nativeElement);
-
-    // Display the route between the initial start and end selections.
-    let request = {
-      origin: current,
-      destination: next,
-      waypoints: waypts,
-      travelMode: google.maps.TravelMode.BICYCLING
-    };
-    this.directionsService.route(request, function(response, status) {
-      if (status === google.maps.DirectionsStatus.OK) {
-        //Route anzeigen
-        directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Directions request failed due to ' + status);
-      }
-    });
 
   }
 
@@ -269,46 +173,13 @@ export class Navigation {
     console.log("enable map");
   }
 
-  addConnectivityListeners() {
-
-    let onOnline = () => {
-
-      setTimeout(() => {
-        if (typeof google == "undefined" || typeof google.maps == "undefined") {
-
-          console.log("conn-listener: load google map");
-          this.loadGoogleMaps();
-
-        } else {
-
-          if (!this.mapInitialised) {
-            this.initMap();
-          }
-          this.enableMap();
-        }
-      }, 2000);
-
-    };
-
-    let onOffline = () => {
-      this.disableMap();
-    };
-
-    document.addEventListener('online', onOnline, false);
-    document.addEventListener('offline', onOffline, false);
-
-  }
-
   //Erueugt die Checkpoints der Touren
   addCheckpoints() {
     console.log("add Markers - start");
     for (let entry of this.biketrips) {
       console.log(entry);
-      let marker = new google.maps.Marker({
-        map: this.map,
-        animation: google.maps.Animation.DROP,
-        position: { lat: entry.lat, lng: entry.lng }
-      });
+      let marker = L.marker({ lat: entry.lat, lng: entry.lng });
+      marker.addTo(this.map);
       let id = entry.checkpointId;
       this.addInfoWindow(marker, entry);
     }
@@ -316,14 +187,7 @@ export class Navigation {
 
   //Fuegt Marker zur Karte hinzu.
   addInfoWindow(marker, checkpoint) {
-
-    // let infoWindow = new google.maps.InfoWindow({
-    //   content: content
-    // });
-
-    google.maps.event.addListener(marker, 'click', (event) => {
-      // infoWindow.open(this.map, marker);
-      // console.log(event);
+    marker.on('click', (event) => {
       this.showCheckpointInfoModal(checkpoint);
     });
   }

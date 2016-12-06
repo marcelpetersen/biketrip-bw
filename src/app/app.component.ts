@@ -11,6 +11,9 @@ import { Routenplaner } from '../pages/routenplaner/routenplaner';
 import { Pannentipps } from '../pages/pannentipps/pannentipps';
 import { Impressum } from '../pages/impressum/about';
 
+import { Routing } from 'leaflet-routing-machine';
+import * as L from 'leaflet';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -45,6 +48,8 @@ export class BiketripBW {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+
+      L.Icon.Default.imagePath = "../assets/img/map/";
 
       let config = {
         desiredAccuracy: 10,

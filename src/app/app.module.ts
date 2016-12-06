@@ -18,6 +18,8 @@ import { Impressum } from '../pages/impressum/about';
 import { TourenInfoModal } from '../pages/touren-info-modal/touren-info-modal';
 import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-info-modal';
 
+import { Routing } from 'leaflet-routing-machine';
+import * as L from 'leaflet';
 
 //Module laden
 @NgModule({

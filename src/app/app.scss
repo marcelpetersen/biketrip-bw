@@ -16,6 +16,7 @@
 
 //Import Custom Libraries (CSS)
 @import "leaflet";
+@import "leaflet-routing-machine";
 
 .b-primary {
   background: color($colors, primary);
@@ -43,6 +44,14 @@ ion-col {
   }
 }
 
+
+//Leaflet Routing Machine Icons
+.leaflet-routing-icon {
+    background-image: url(../assets/img/map/leaflet.routing.icons.png);
+}
+.leaflet-routing-container-hide .leaflet-routing-collapse-btn {
+    background-image: url(../assets/img/map/routing-icon.png);
+}
 
 // Custom Icons
 // --------------------------------------------------
