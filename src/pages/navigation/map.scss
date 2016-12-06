@@ -4,6 +4,24 @@ page-map {
     height: 100%;
   }
 
+  .navigation {
+    display: flex;
+    .navigation-icon {
+      margin: auto .2rem;
+      flex-grow: 1;
+    }
+    .navigation-text {
+      margin: auto 0;
+      flex-grow: 4;
+      text-align: center;
+      p {
+        margin: 0;
+        font-size: 1.7rem;
+        font-weight: 600;
+      }
+    }
+  }
+
   #panel {
     background: white;
     max-height: 33.333%;

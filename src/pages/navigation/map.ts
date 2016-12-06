@@ -9,14 +9,15 @@ import { NavigationService } from '../../providers/navigation-service';
 import { TourenInfoModal } from '../touren-info-modal/touren-info-modal';
 import { CheckpointInfoModal } from '../checkpoint-info-modal/checkpoint-info-modal';
 
+import * as L from 'leaflet';
 
 declare var google;
+
 
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html',
   providers: [BiketripsService, NavigationService]
-
 })
 
 export class Navigation {
@@ -35,7 +36,6 @@ export class Navigation {
   directionsService: any;
   markerArray: any[] = [];
 
-
   constructor(
     public navCtrl: NavController,
     public params: NavParams,
@@ -45,9 +45,7 @@ export class Navigation {
     private tourenService: BiketripsService,
     private navigationService: NavigationService
   ) {
-
     this.gestarteteTour = params.get('tourID');
-
     this.showLoadingSpinner();
     this.loadBiketrips();
   }
@@ -144,10 +142,10 @@ export class Navigation {
     console.log("init map - start");
 
 
-
     Geolocation.getCurrentPosition().then((position) => {
       //Position festlegen
-      this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      // this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      this.latLng = L.latLng(position.coords.latitude, position.coords.longitude);
       //POI und Bahnhoefe ausblenden
       let myStyles = [
         {
@@ -174,7 +172,20 @@ export class Navigation {
         zoomControl: true
       }
       //Karte erzeugen.
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      // this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+
+      this.map = L.map('map').setView(this.latLng, 13);
+      L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?{apikey}', {
+        apikey: 'bb5cfe7826394f618732d66f50ca567e',
+        attribution: 'Maps by <a href="https://thunderforest.com/">Thunderforest</a>',
+        maxZoom: 18
+      }).addTo(this.map);
+
+      // L.tileLayer('https://api.mapbox.com/styles/v1/biketrip-bw/ciu8drfz1002l2inxsnyde0xj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmlrZXRyaXAtYnciLCJhIjoiY2l1OGRvY2dyMDAwZDJ0bWt2c3V1NTg3ZCJ9.wS5IN1Ke_I3_jmOfuX7u8A', {
+      //   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      //   maxZoom: 18
+      // }).addTo(this.map);
 
       //Spinner ausblenden, wenn Karte geladen.
       console.log("init map - end");
@@ -212,13 +223,14 @@ export class Navigation {
   updatePosition() {
     this.subscription = Geolocation.watchPosition().subscribe((position: Geoposition) => {
       //  console.log(position.coords.longitude + ' ' + position.coords.latitude);
-      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      // let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      let latLng = L.latLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
         center: latLng,
         zoom: 15
       }
       //Karte aktualisieren.
-      this.map.setOptions(mapOptions);
+      this.map.setView(mapOptions);
     });
   }
 
@@ -323,7 +335,7 @@ export class Navigation {
   }
 
   //Oeffnet die Uebersichtsseite (Modal) einer Tour.
-  showCheckpointInfoModal(cData: Object) {
+  showCheckpointInfoModal(cData: any) {
     let infoModal = this.modalCtrl.create(CheckpointInfoModal, { c: cData });
     infoModal.present();
   }

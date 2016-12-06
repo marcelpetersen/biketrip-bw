@@ -3,7 +3,6 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 //Um zu verhindern, dass die Google Maps crashen, wenn kein Internet verfügbar ist.
 import { ConnectivityService } from '../providers/connectivity-service';
 
-
 //Komponenten importieren (muss bei neuen Pages ergaenzt werden.)
 import { BiketripBW } from './app.component';
 import { Startseite } from '../pages/startseite/startseite';
@@ -18,6 +17,7 @@ import { Impressum } from '../pages/impressum/about';
 //Modals
 import { TourenInfoModal } from '../pages/touren-info-modal/touren-info-modal';
 import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-info-modal';
+
 
 //Module laden
 @NgModule({

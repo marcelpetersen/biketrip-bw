@@ -14,6 +14,9 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+//Import Custom Libraries (CSS)
+@import "leaflet";
+
 .b-primary {
   background: color($colors, primary);
 }
@@ -39,10 +42,6 @@ ion-col {
     text-align: center;
   }
 }
-
-// .toolbar-ios ion-title{
-//   padding: 0 0 1px;
-// }
 
 
 // Custom Icons

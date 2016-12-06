@@ -7,7 +7,7 @@ import { ViewController, NavController, NavParams } from 'ionic-angular';
 })
 export class CheckpointInfoModal {
 
-  checkpointData: Object;
+  checkpointData: any;
 
   constructor(
     public navCtrl: NavController,

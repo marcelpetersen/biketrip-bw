@@ -23,6 +23,7 @@ export class BiketripBW {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform) {
+
     this.initializeApp();
 
     // Seiten zum Menü hinzuzufügen
