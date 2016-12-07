@@ -4,16 +4,73 @@ page-map {
     height: 100%;
   }
 
+  //Zoom Controller von Routing ausblenden
+  .leaflet-top {
+    width: 100%;
+    .leaflet-control-zoom {
+      display: none;
+    }
+  }
+  //Routing Instruktionen formatieren
+  .leaflet-routing-container {
+    width: 100%;
+    h2, h3, .leaflet-routing-collapse-btn {
+      display: none;
+    }
+    table {
+      display: block;
+      tbody {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        //Alle Instruktionen ausblenden, außer die ersten beiden.
+        tr:not(:nth-child(-n+2)) {
+          display: none;
+        }
+        //Im ersten Element: Die Meter Anzeige einblenden, andere Elemente auslbenden.
+        tr:nth-child(1) {
+          order: 2;
+          td:not(:nth-child(3)) {
+            display: none;
+          }
+          td:nth-child(3) {
+            margin: auto 0.2rem;
+            flex-grow: 1;
+            font-size: 20px;
+          }
+        }
+        //Im zweiten Element: Instruktion, Icon einblenden, Meter Anzeige ausblenden.
+        tr:nth-child(2) {
+          order: 1;
+          td:nth-child(2) {
+            margin: auto 0.2rem;
+            flex-grow: 4;
+          }
+          td:nth-child(1) {
+            margin: auto 0.2rem;
+            flex-grow: 1;
+          }
+          td:nth-child(3) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
   .navigation {
     display: flex;
+
     .navigation-icon {
-      margin: auto .2rem;
+      margin: auto 0.2rem;
       flex-grow: 1;
     }
+
     .navigation-text {
       margin: auto 0;
       flex-grow: 4;
       text-align: center;
+
       p {
         margin: 0;
         font-size: 1.7rem;
@@ -22,64 +79,22 @@ page-map {
     }
   }
 
-  #panel {
-    background: white;
-    max-height: 33.333%;
-    width: 100%;
-    overflow-y: scroll;
-    padding: 10px 15px;
-    box-shadow: 0px 0px 15px color($colors, secondary);
-
-    .adp-placemark {
-      display: none;
-    }
-
-    .adp-warnbox {
-      display: none;
-    }
-
-    .adp-summary {
-      display: none;
-    }
-
-    .adp-directions {
-      padding: 10px 0;
-      width: 100%;
-
-      tr {
-        height: 35px;
-        padding: 10px;
-        td {
-        }
-      }
-    }
-
-    .adp-table {
-      color: color($colors, secondary);
-      margin: 10px 0;
-    }
-
-    .adp-legal {
-      display: none;
-    }
-  }
-}
-
-.mapsLoader {
-  position: absolute;
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  z-index: 100;
-
-  svg {
+  .mapsLoader {
+    position: absolute;
+    display: inline-block;
     width: 28px;
     height: 28px;
-    stroke: #444;
-    fill: #444;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+    svg {
+      width: 28px;
+      height: 28px;
+      stroke: #444;
+      fill: #444;
+    }
   }
 }
