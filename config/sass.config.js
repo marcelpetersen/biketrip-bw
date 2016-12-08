@@ -7,7 +7,7 @@ module.exports = {
    * from the sass build. The directory which it is saved in
    * is set within the "buildDir" config options.
    */
-  outputFilename: 'style.css',
+  outputFilename: 'main.css',
 
   /**
    * sourceMap: If source map should be built or not.

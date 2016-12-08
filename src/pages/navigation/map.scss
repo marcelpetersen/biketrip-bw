@@ -7,6 +7,7 @@ page-map {
   //Zoom Controller von Routing ausblenden
   .leaflet-top {
     width: 100%;
+
     .leaflet-control-zoom {
       display: none;
     }
@@ -14,6 +15,9 @@ page-map {
   //Routing Instruktionen formatieren
   .leaflet-routing-container {
     width: 100%;
+    border-radius: 0;
+    margin: 0 !important;
+
     h2, h3, .leaflet-routing-collapse-btn {
       display: none;
     }
@@ -23,6 +27,7 @@ page-map {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-flow: row nowrap;
 
         //Alle Instruktionen ausblenden, außer die ersten beiden.
         tr:not(:nth-child(-n+2)) {
@@ -31,50 +36,55 @@ page-map {
         //Im ersten Element: Die Meter Anzeige einblenden, andere Elemente auslbenden.
         tr:nth-child(1) {
           order: 2;
+          flex-basis: fit-content;
           td:not(:nth-child(3)) {
             display: none;
           }
+          //Meter Anzeige
           td:nth-child(3) {
             margin: auto 0.2rem;
-            flex-grow: 1;
             font-size: 20px;
+            text-align: center;
+            min-width: 100%;
+            display: block;
+            position: relative;
+            white-space: nowrap;
           }
         }
         //Im zweiten Element: Instruktion, Icon einblenden, Meter Anzeige ausblenden.
         tr:nth-child(2) {
           order: 1;
+          //Text
           td:nth-child(2) {
             margin: auto 0.2rem;
-            flex-grow: 4;
+            font-size: 16px;
+            text-align: left;
           }
+          //Icon
           td:nth-child(1) {
             margin: auto 0.2rem;
-            flex-grow: 1;
+            .leaflet-routing-icon {
+              background-size: 480px 40px;
+              width: 40px;
+              height: 40px;
+              &.leaflet-routing-icon-continue         { background-position: 0 0; }
+              &.leaflet-routing-icon-sharp-right      { background-position: -40px 0; }
+              &.leaflet-routing-icon-turn-right       { background-position: -80px 0; }
+              &.leaflet-routing-icon-bear-right       { background-position: -120px 0; }
+              &.leaflet-routing-icon-u-turn           { background-position: -160px 0; }
+              &.leaflet-routing-icon-sharp-left       { background-position: -200px 0; }
+              &.leaflet-routing-icon-turn-left        { background-position: -240px 0; }
+              &.leaflet-routing-icon-bear-left        { background-position: -280px 0; }
+              &.leaflet-routing-icon-depart           { background-position: -320px 0; }
+              &.leaflet-routing-icon-enter-roundabout { background-position: -360px 0; }
+              &.leaflet-routing-icon-arrive           { background-position: -400px 0; }
+              &.leaflet-routing-icon-via              { background-position: -440px 0; }
+            }
           }
           td:nth-child(3) {
             display: none;
           }
         }
-      }
-    }
-  }
-  .navigation {
-    display: flex;
-
-    .navigation-icon {
-      margin: auto 0.2rem;
-      flex-grow: 1;
-    }
-
-    .navigation-text {
-      margin: auto 0;
-      flex-grow: 4;
-      text-align: center;
-
-      p {
-        margin: 0;
-        font-size: 1.7rem;
-        font-weight: 600;
       }
     }
   }

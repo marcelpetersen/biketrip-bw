@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
-//Um zu verhindern, dass die Google Maps crashen, wenn kein Internet verfügbar ist.
+import { NgModule, ErrorHandler } from '@angular/core';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { ConnectivityService } from '../providers/connectivity-service';
 
+
 //Komponenten importieren (muss bei neuen Pages ergaenzt werden.)
-import { BiketripBW } from './app.component';
+import { Main } from './app.component';
 import { Startseite } from '../pages/startseite/startseite';
 //Seiten
 import { TourenSuche } from '../pages/touren-suche/touren-suche';
@@ -21,10 +21,10 @@ import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-i
 import { Routing } from 'leaflet-routing-machine';
 import * as L from 'leaflet';
 
-//Module laden
+
 @NgModule({
   declarations: [
-    BiketripBW,
+    Main,
     Startseite,
     TourenSuche,
     TourenSucheErgebnis,
@@ -37,13 +37,13 @@ import * as L from 'leaflet';
     Impressum
   ],
   imports: [
-    IonicModule.forRoot(BiketripBW, {
+    IonicModule.forRoot(Main, {
       backButtonText: 'Zurück',
     }, {}
   )],
   bootstrap: [IonicApp],
   entryComponents: [
-    BiketripBW,
+    Main,
     Startseite,
     TourenSuche,
     TourenSucheErgebnis,
@@ -55,6 +55,6 @@ import * as L from 'leaflet';
     Pannentipps,
     Impressum
   ],
-  providers: [ConnectivityService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ConnectivityService]
 })
 export class AppModule {}
