@@ -1,5 +1,22 @@
 {
     "results": [
-      {}, {}, {}
+      {
+        "id": 1,
+        "titel": "Pannentipp #1",
+        "tourbild": "https://images.unsplash.com/23/parked-bike.JPG",
+        "text": "Lorem Ipsum"
+      },
+      {
+        "id": 2,
+        "titel": "Pannentipp #2",
+        "tourbild": "https://images.unsplash.com/23/parked-bike.JPG",
+        "text": "Lorem Ipsum"
+      },
+      {
+        "id": 3,
+        "titel": "Pannentipp #3",
+        "tourbild": "https://images.unsplash.com/23/parked-bike.JPG",
+        "text": "Lorem Ipsum"
+      }
   ]
 }

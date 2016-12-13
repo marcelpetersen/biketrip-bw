@@ -17,6 +17,16 @@
 <ion-content padding>
 
   <button ion-button secondary (click)="presentToast()">Toggle Toast</button>
+
+  <ion-card *ngFor="let p of pannentipps">
+    <!-- <img src="{{t.tourbild}}"/> -->
+    <div class="card-background" [ngStyle]="{'background-image': 'url(' + p.tourbild + ')'}">
+      <div class="card-title">{{p.titel}}</div>
+      <div class="card-subtitle">{{p.text}}</div>
+    </div>
+  </ion-card>
+
+
     <ion-list>
         <div class="card">
             <ion-item>

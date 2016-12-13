@@ -31,7 +31,7 @@ export class Navigation {
   private subscription: any;
   private route: any;
 
-  private navigationGestartet: string = "none";
+  public navigationGestartet: string = "none";
 
 
   //Routing (Mapbox)
