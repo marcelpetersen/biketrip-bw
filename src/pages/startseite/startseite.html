@@ -10,8 +10,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="no-scroll">
-  <div class="image-wrapper" hideWhen="tablet">
+<!-- Hier beginnt der Phone Content -->
+
+<ion-content class="phone no-scroll" hideWhen="tablet">
+  <div class="image-wrapper" >
     <img no-padding src="assets/img/green-bike.jpg">
   </div>
   <ion-grid>
@@ -61,6 +63,55 @@
           <div class="tile-inner">
             <i class="custom-icon icon-routenplaner"></i>
             <div class="title">Impressum</div>
+          </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- Hier beginnt der Tablet Content -->
+
+<ion-content class="tablet no-scroll" hideWhen="phone">
+  <div class="image-wrapper" >
+    <img no-padding src="assets/img/green-bike.jpg">
+  </div>
+  <ion-grid>
+    <!-- <ion-row>
+        <ion-col width-100>
+          <h3>
+          Herzlich Willkommen
+        </h3>
+        </ion-col>
+      </ion-row> -->
+    <ion-row>
+      <ion-col width-20 class="tile" (click)="goToAbout()">
+          <div class="tile-inner">
+            <i class="custom-icon icon-routenplaner"></i>
+            <div class="title">Routenplaner</div>
+          </div>
+      </ion-col>
+      <ion-col width-20 class="tile" (click)="goToSuche()">
+          <div class="tile-inner">
+            <i class="custom-icon icon-suche"></i>
+            <div class="title">Suche</div>
+          </div>
+      </ion-col>
+      <ion-col width-20 class="tile b-primary" (click)="goToTouren()">
+          <div class="tile-inner">
+            <i class="custom-icon icon-erlebnisradwege"></i>
+            <div class="title">Erlebnisradwege</div>
+          </div>
+      </ion-col>
+      <ion-col width-20 class="tile" (click)="goToPannentipps()">
+          <div class="tile-inner">
+            <i class="custom-icon icon-pannentipps"></i>
+            <div class="title">Pannentipps</div>
+          </div>
+      </ion-col>
+      <ion-col width-20 class="tile">
+          <div class="tile-inner">
+            <i class="custom-icon icon-favoriten"></i>
+            <div class="title">Gespeicherte Touren</div>
           </div>
       </ion-col>
     </ion-row>

@@ -1,5 +1,7 @@
 page-startseite {
 
+  .phone{
+
   .no-scroll .scroll-content{
      overflow: hidden;
   }
@@ -63,4 +65,79 @@ page-startseite {
       text-align: center;
     }
   }
+
+}
+
+
+
+
+.tablet{
+
+.no-scroll .scroll-content{
+   overflow: hidden;
+}
+.image-wrapper {
+  height: 60%;
+  overflow: hidden;
+  // margin-bottom: 1px;
+}
+
+ion-grid {
+  height: 30%;
+  padding: 1px;
+
+  ion-row {
+    flex: 1;
+  }
+}
+
+.tile {
+  background-color: color($colors, secondary);
+  color: color($colors, light);
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.b-primary {
+    background-color: color($colors, primary);
+  }
+
+  .tile-inner {
+    position: relative;
+  }
+
+  ion-icon {
+    position: relative;
+    font-size: 48px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    // padding-top:10px;
+  }
+
+  .custom-icon {
+    position: relative;
+    height: 67px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    // padding-top:10px;
+    &:before {
+      display: inline-block;
+      width: 64px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .title {
+    text-align: center;
+  }
+}
+
+}
+
+
 }

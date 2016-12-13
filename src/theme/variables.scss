@@ -1,6 +1,7 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
 @import "ionic.globals";
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
 
 
 // Shared Variables
@@ -17,6 +18,9 @@ $toolbar-background: #145648;
 $menu-ios-background: #eee;
 $menu-md-background: #eee;
 $menu-wp-background: #eee;
+$font-family-base: 'Work Sans', sans-serif;
+$font-family-md-base: $font-family-base;
+$font-family-md-base: $font-family-base;
 // $menu-width: 250px;
 
 
