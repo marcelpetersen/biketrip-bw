@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import {  App, ViewController, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { App, Nav, ViewController, NavController, NavParams } from 'ionic-angular';
 import { Navigation } from '../navigation/map';
 import { BiketripsService } from '../../providers/biketrips-service';
+import { Storage } from '@ionic/storage';
 
 
 /*
@@ -12,9 +13,7 @@ import { BiketripsService } from '../../providers/biketrips-service';
 */
 @Component({
   selector: 'page-touren-info-modal',
-  templateUrl: 'touren-info-modal.html',
-  providers: [BiketripsService]
-
+  templateUrl: 'touren-info-modal.html'
 })
 export class TourenInfoModal {
 
@@ -24,11 +23,12 @@ export class TourenInfoModal {
 
 
   constructor(
-    public appCtrl: App,
-    public navCtrl: NavController,
-    public viewCtrl: ViewController,
-    public params: NavParams,
-    public tourenService: BiketripsService
+    private storage: Storage,
+    private appCtrl: App,
+    private navCtrl: NavController,
+    private viewCtrl: ViewController,
+    private params: NavParams,
+    private tourenService: BiketripsService
   ) {
     this.tourID = params.get('tour');
     this.loadBiketrips();
@@ -53,6 +53,10 @@ export class TourenInfoModal {
     this.appCtrl.getRootNav().setRoot(Navigation, {
       tourID: this.tourID
     });
+  }
+
+  tourSpeichern(id){
+    this.storage.set('gespeichert', id);
   }
 
   dismiss() {

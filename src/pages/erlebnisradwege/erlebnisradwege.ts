@@ -7,9 +7,7 @@ import { TourenInfoModal } from '../touren-info-modal/touren-info-modal';
 
 @Component({
   selector: 'page-erlebnisradwege',
-  templateUrl: 'erlebnisradwege.html',
-  providers: [BiketripsService]
-
+  templateUrl: 'erlebnisradwege.html'
 })
 export class Erlebnisradwege {
 
@@ -17,7 +15,6 @@ export class Erlebnisradwege {
 
   constructor(private navCtrl: NavController, public tourenService: BiketripsService, public modalCtrl: ModalController ) {
     this.loadTour();
-
   }
 
   loadTour() {

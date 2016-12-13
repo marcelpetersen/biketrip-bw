@@ -1,7 +1,11 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { ConnectivityService } from '../providers/connectivity-service';
 
+//Providers
+import { ConnectivityService } from '../providers/connectivity-service';
+import { NavigationService } from '../providers/navigation-service';
+import { BiketripsService } from '../providers/biketrips-service';
+import { Storage } from '@ionic/storage';
 
 //Komponenten importieren (muss bei neuen Pages ergaenzt werden.)
 import { Main } from './app.component';
@@ -18,6 +22,7 @@ import { Impressum } from '../pages/impressum/about';
 import { TourenInfoModal } from '../pages/touren-info-modal/touren-info-modal';
 import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-info-modal';
 
+//Custom Libraries
 import { Routing } from 'leaflet-routing-machine';
 import * as L from 'leaflet';
 
@@ -41,7 +46,9 @@ import * as L from 'leaflet';
       backButtonText: 'Zurück',
     }, {}
   )],
-  bootstrap: [IonicApp],
+  bootstrap: [
+    IonicApp
+  ],
   entryComponents: [
     Main,
     Startseite,
@@ -55,6 +62,12 @@ import * as L from 'leaflet';
     Pannentipps,
     Impressum
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ConnectivityService]
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ConnectivityService,
+    Storage,
+    NavigationService,
+    BiketripsService
+  ]
 })
 export class AppModule {}

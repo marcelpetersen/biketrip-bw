@@ -12,26 +12,38 @@
 
 </ion-header>
 
-
 <ion-content>
 
-  <ion-list>
     <ion-list-header>
       Suchergebnisse
     </ion-list-header>
 
-    <ion-item-sliding *ngFor="let t of suchergebnis">
-    <ion-item>
-      <h2>{{ t.title }}</h2>
-      <p>{{ t.startpunkt.stadt }}, {{t.schwierigkeitsgrad}}, {{ t.laenge }} km</p>
-    </ion-item>
-    <ion-item-options>
-      <button ion-button color="primary" icon-left (click)="showTourInfoModal(t.id)">
-        <ion-icon name="arrow-forward"></ion-icon>
-        Details
-      </button>
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
+    <ion-card *ngFor="let t of suchergebnis" (click)="showTourInfoModal(t.id)">
+      <ion-card-header>
+        {{ t.title }}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <div class="bt-specs start">
+              <span>{{ t.startpunkt.stadt }}</span>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="bt-specs schwierigkeitsgrad" [ngSwitch]="t.schwierigkeitsgrad">
+              <span *ngSwitchCase="1">einfach</span>
+              <span *ngSwitchCase="2">mittel</span>
+              <span *ngSwitchCase="3">anspruchsvoll</span>
+              <span *ngSwitchDefault>---</span>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="bt-specs laenge">
+              <span>{{t.laenge}} km</span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
 
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { App, Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 //Seiten importieren, um für die Navigation zu verwenden
@@ -11,11 +11,17 @@ import { Routenplaner } from '../pages/routenplaner/routenplaner';
 import { Pannentipps } from '../pages/pannentipps/pannentipps';
 import { Impressum } from '../pages/impressum/about';
 
+//Custom Libraries
 import { Routing } from 'leaflet-routing-machine';
 import * as L from 'leaflet';
 
+//Service providers
+import { BiketripsService } from '../providers/biketrips-service';
+import { NavigationService } from '../providers/navigation-service';
+
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+
 })
 export class Main {
   @ViewChild(Nav) nav: Nav;
@@ -24,7 +30,11 @@ export class Main {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform) {
+  constructor(
+    public platform: Platform,
+    public appCtrl: App,
+    public navigationService: NavigationService,
+    public tourenService: BiketripsService) {
 
     this.initializeApp();
 
@@ -48,13 +58,16 @@ export class Main {
       StatusBar.styleDefault();
       Splashscreen.hide();
       L.Icon.Default.imagePath = "../assets/img/map/";
-
+      this.navigationService.initialize();
+      this.tourenService.initialize();
     });
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    // Um zu verhindern, dass Views zweimal aufgerufen werden, kann nicht auf das bereits aktive Menü Element geklickt werden.
+    // console.log("Active: " + this.appCtrl.getRootNav().getActive().name + ", Klick auf: "+ page.component.name);
+    if(page.component.name !== this.appCtrl.getRootNav().getActive().name) {
+      this.nav.setRoot(page.component);
+    }
   }
 }
