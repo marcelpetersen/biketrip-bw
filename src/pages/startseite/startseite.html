@@ -71,7 +71,7 @@
 
 <!-- Hier beginnt der Tablet Content -->
 
-<ion-content class="tablet no-scroll" hideWhen="phone">
+<ion-content class="tablet-landscape no-scroll" showWhen="tablet">
   <div class="image-wrapper" >
     <img no-padding src="assets/img/green-bike.jpg">
   </div>
@@ -96,7 +96,7 @@
             <div class="title">Suche</div>
           </div>
       </ion-col>
-      <ion-col width-20 class="tile b-primary" (click)="goToTouren()">
+      <ion-col width-20 class="tile" (click)="goToTouren()">
           <div class="tile-inner">
             <i class="custom-icon icon-erlebnisradwege"></i>
             <div class="title">Erlebnisradwege</div>

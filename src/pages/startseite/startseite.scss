@@ -1,10 +1,11 @@
 page-startseite {
 
-  .phone{
-
-  .no-scroll .scroll-content{
+    .no-scroll .scroll-content{
      overflow: hidden;
   }
+
+.phone{
+
   .image-wrapper {
     height: 33.333%;
     overflow: hidden;
@@ -12,7 +13,7 @@ page-startseite {
   }
 
   ion-grid {
-    height: 66.667%;
+    height: 66.666%;
     padding: 1px;
 
     ion-row {
@@ -71,11 +72,8 @@ page-startseite {
 
 
 
-.tablet{
+.tablet-landscape{
 
-.no-scroll .scroll-content{
-   overflow: hidden;
-}
 .image-wrapper {
   height: 60%;
   overflow: hidden;
@@ -84,7 +82,7 @@ page-startseite {
 
 ion-grid {
   height: 30%;
-  padding: 1px;
+  padding: 5px;
 
   ion-row {
     flex: 1;
@@ -118,16 +116,17 @@ ion-grid {
 
   .custom-icon {
     position: relative;
-    height: 67px;
+    height: 60px;
     text-align: center;
     display: block;
     width: 100%;
     // padding-top:10px;
     &:before {
       display: inline-block;
-      width: 64px;
+      width: 60px;
+      height: 60px;
       position: relative;
-      top: 50%;
+      top: 30%;
       transform: translateY(-50%);
     }
   }
@@ -136,6 +135,71 @@ ion-grid {
     text-align: center;
   }
 }
+}
+
+.tablet-portrait{
+  .image-wrapper {
+    height: 33.333%;
+    overflow: hidden;
+    // margin-bottom: 1px;
+  }
+
+  ion-grid {
+    height: 66.666%;
+    padding: 1px;
+
+    ion-row {
+      flex: 1;
+    }
+  }
+
+  .tile {
+    background-color: color($colors, secondary);
+    color: color($colors, light);
+    border: 5px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i:hover {
+      background-color: color($colors, primary);
+    }
+
+    .tile-inner {
+      position: relative;
+    }
+
+    ion-icon {
+      position: relative;
+      font-size: 48px;
+      text-align: center;
+      display: block;
+      width: 100%;
+      // padding-top:10px;
+    }
+
+    .custom-icon {
+      position: relative;
+      height: 60px;
+      text-align: center;
+      display: block;
+      width: 100%;
+      // padding-top:10px;
+      &:before {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: 30%;
+        transform: translateY(-50%);
+      }
+    }
+
+    .title {
+      text-align: center;
+    }
+  }
+
 
 }
 
