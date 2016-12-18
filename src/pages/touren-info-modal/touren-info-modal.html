@@ -26,17 +26,17 @@
       <ion-row>
         <ion-col>
           <div class="bt-specs schwierigkeitsgrad" [ngSwitch]="tour?.schwierigkeitsgrad">
-            <ion-icon name="leaf"></ion-icon>
+            <ion-icon name="analytics"></ion-icon>
 
             <span *ngSwitchCase="1">einfach</span>
             <span *ngSwitchCase="2">mittel</span>
-            <span *ngSwitchCase="3">anspruchsvoll</span>
+            <span *ngSwitchCase="3">schwer</span>
             <span *ngSwitchDefault>---</span>
           </div>
         </ion-col>
         <ion-col>
           <div class="bt-specs laenge">
-            <ion-icon name="clock"></ion-icon>
+            <ion-icon name="bicycle"></ion-icon>
             <span>{{tour?.laenge}} km</span>
           </div>
         </ion-col>
@@ -47,10 +47,14 @@
     </ion-card-content>
   </ion-card>
 
-  <button ion-button outline block (click)="tourStarten()">Tour starten</button>
-  <button ion-button icon-left color="dark" clear block>
-    <ion-icon name="download"></ion-icon>
-    Tour offline speichern
+  <button ion-button outline block icon-right color="primary" (click)="tourStarten()">
+    <ion-icon name="arrow-right"></ion-icon>
+    Tour starten
+  </button>
+
+  <button ion-button outline block icon-right color="primary">
+    <ion-icon name="download-outline"></ion-icon>
+      Tour offline speichern
   </button>
 
 

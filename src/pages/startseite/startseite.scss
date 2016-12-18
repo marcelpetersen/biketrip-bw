@@ -161,7 +161,7 @@ ion-grid {
     justify-content: center;
     align-items: center;
 
-    i:hover {
+     &:hover {
       background-color: color($colors, primary);
     }
 

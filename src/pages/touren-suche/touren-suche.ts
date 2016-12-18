@@ -17,7 +17,7 @@ export class TourenSuche {
   schwierigkeitsgrad: any = [
     {name:'Einfach', value:1, checked:false},
     {name:'Mittel', value:2, checked:false},
-    {name:'Anspruchsvoll', value:3, checked:false}
+    {name:'Schwer', value:3, checked:false}
   ];
   advancedSearch: boolean = false;
 
