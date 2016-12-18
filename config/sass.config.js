@@ -44,7 +44,10 @@ module.exports = {
     'node_modules/ionicons/dist/scss',
     'node_modules/ionic-angular/fonts',
     'node_modules/leaflet/dist',
-    'node_modules/leaflet-routing-machine/dist'
+    'node_modules/leaflet-routing-machine/dist',
+    'node_modules/mapbox-gl/dist',
+    'node_modules/mapbox-gl-directions/src'
+
   ],
 
   /**

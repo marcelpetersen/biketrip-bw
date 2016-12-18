@@ -9,9 +9,8 @@ import { NavigationService } from '../../providers/navigation-service';
 import { TourenInfoModal } from '../touren-info-modal/touren-info-modal';
 import { CheckpointInfoModal } from '../checkpoint-info-modal/checkpoint-info-modal';
 
-import * as L from 'leaflet';
-import * as Routing from 'leaflet-routing-machine';
-import 'leaflet-rotatedmarker';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+import MapboxDirections from 'mapbox-gl-directions';
 
 @Component({
   selector: 'page-map',
@@ -20,9 +19,9 @@ import 'leaflet-rotatedmarker';
 
 export class Navigation {
   //#map aus map.html ermitteln
-  @ViewChild('map') mapElement: HTMLElement;
+  // @ViewChild('map') mapElement: HTMLElement;
   private map: any;
-  private latLng: any;
+  private lngLat: any;
   private layer: any;
   private waypts: any[] = [];
   private locate: any;
@@ -34,11 +33,14 @@ export class Navigation {
 
   public navigationGestartet: string = "none";
 
+
   //Routing (Mapbox)
   private accessToken = 'pk.eyJ1IjoiYmlrZXRyaXAtYnciLCJhIjoiY2l1OGRvY2dyMDAwZDJ0bWt2c3V1NTg3ZCJ9.wS5IN1Ke_I3_jmOfuX7u8A';
   private options = {
+    accessToken: this.accessToken,
     serviceUrl: 'https://api.mapbox.com/directions/v5',
     profile: 'mapbox/cycling',
+    unit: 'metric',
     useHints: false
   };
 
@@ -56,13 +58,15 @@ export class Navigation {
   }
 
   ionViewDidLoad() {
-    this.map = L.map('map');
-    this.layer = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?{apikey}', {
-      apikey: 'bb5cfe7826394f618732d66f50ca567e',
-      attribution: 'Maps by <a href="https://thunderforest.com/">Thunderforest</a>',
-      minZoom: 5,
-      maxZoom: 17
-    });
+    mapboxgl.accessToken = this.accessToken;
+
+    // this.map = L.map('map');
+    // this.layer = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?{apikey}', {
+    //   apikey: 'bb5cfe7826394f618732d66f50ca567e',
+    //   attribution: 'Maps by <a href="https://thunderforest.com/">Thunderforest</a>',
+    //   minZoom: 5,
+    //   maxZoom: 17
+    // });
     this.loadBiketrips();
     this.loadMaps();
   }
@@ -71,7 +75,7 @@ export class Navigation {
   ionViewWillLeave() {
     console.log("unload");
     this.map.off();
-    this.map.remove();
+    // this.map.remove();
     //Aktivieren, damit die Navigation gestoppt wird, wenn der Nutzer die Map verlässt.
     this.subscription.unsubscribe();
   }
@@ -111,8 +115,8 @@ export class Navigation {
   loadMaps() {
     console.log("showing map");
     if(this.navigationService.initialized){
-      this.navigationService.getPosition().then(latLng => {
-        this.latLng = latLng;
+      this.navigationService.getPosition().then(lngLat => {
+        this.lngLat = lngLat;
         this.initMap();
         this.initCheckpoints();
         this.loading.dismiss();
@@ -124,35 +128,43 @@ export class Navigation {
 
   initMap() {
 
-    this.map.setView(this.latLng, 13);
+    this.map = new mapboxgl.Map({
+        container: 'map',
+        center: this.lngLat,
+        zoom: 13,
+        style: 'mapbox://styles/biketrip-bw/ciu8drfz1002l2inxsnyde0xj'
+    });
+    // this.map.setLayoutProperty('country-label-lg', 'text-field', '{name_de}');
 
-    L.control.zoom({
-     position:'bottomright'
-    }).addTo(this.map);
+    // this.map.setView(this.lngLat, 13);
+    //
+    // L.control.zoom({
+    //  position:'bottomright'
+    // }).addTo(this.map);
 
 
-    this.locate = L.marker([this.latLng.lat, this.latLng.lng], {rotationAngle: 90, rotationOrigin: 'center center'}, {icon: this.navigationService.userLocationIcon});
-    // this.locate = L.marker({lat:this.latLng.lat, lng: this.latLng.lng}, {icon: this.navigationService.userLocationIcon});
+    this.locate = new mapboxgl.Marker().setLngLat([this.lngLat.lng, this.lngLat.lat]);
+    // this.locate = L.marker({lat:this.lngLat.lat, lng: this.lngLat.lng}, {icon: this.navigationService.userLocationIcon});
 
     this.locate.addTo(this.map);
 
-    if (!this.map.hasLayer(this.layer)) {
-      console.log('add layer');
-      this.layer.addTo(this.map);
-    }
+    // if (!this.map.hasLayer(this.layer)) {
+    //   console.log('add layer');
+    //   this.layer.addTo(this.map);
+    // }
   }
 
   locateUser() {
     Geolocation.getCurrentPosition().then((position) => {
-      this.latLng = L.latLng(position.coords.latitude, position.coords.longitude);
-      this.map.setView(this.latLng, 15);
+      this.lngLat = new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude);
+      this.map.setCenter(this.lngLat);
 
       if(this.locate !== null){
         console.log("update marker");
-        this.locate.setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude });
+        this.locate.setLngLat([ position.coords.longitude, position.coords.latitude ]);
       }
       else {
-        this.locate = L.marker({ lat: position.coords.latitude, lng: position.coords.longitude });
+        this.locate = new mapboxgl.Marker().setLngLat([ position.coords.longitude, position.coords.latitude ]);
         this.locate.addTo(this.map);
         console.log("marker hinzufügen");
       }
@@ -161,14 +173,15 @@ export class Navigation {
 
   startNavigation() {
     console.log('start');
+
     this.navigationGestartet = "stoppen";
     //Wenn der Nutzer auf Start klickt, dann wird die Position aktualisiert.
     this.subscription = Geolocation.watchPosition().subscribe((position: Geoposition) => {
-      this.latLng = L.latLng(position.coords.latitude, position.coords.longitude);
-      this.waypts[0] = L.latLng(position.coords.latitude, position.coords.longitude);
-      this.locate.setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude });
-      this.route.setWaypoints(this.waypts);
-      this.map.setView(L.latLng(position.coords.latitude, position.coords.longitude), 18);
+      this.lngLat = new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude);
+      this.waypts[0] = new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude);
+      this.locate.setLngLat([ position.coords.longitude, position.coords.latitude ]);
+      // this.route.setWaypoints(this.waypts);
+      this.map.setCenter(this.lngLat);
     });
   }
 
@@ -180,17 +193,17 @@ export class Navigation {
   initCheckpoints() {
     if (this.gestarteteTour !== 'none' && this.gestarteteTour !== undefined) {
       this.addCheckpoints();
-      this.waypts.push(this.latLng);
+      this.waypts.push(this.lngLat);
 
       if (this.biketrips[1].waypoints) {
         for (let i of this.biketrips[1].waypoints) {
           this.waypts.push(
-            L.latLng(i.lat, i.lng)
+            new mapboxgl.LngLat(i.lng, i.lat)
           );
         }
       }
       this.waypts.push(
-        L.latLng(this.biketrips[1].lat, this.biketrips[1].lng)
+        new mapboxgl.LngLat(this.biketrips[1].lng, this.biketrips[1].lat)
       );
 
       this.navigation();
@@ -201,16 +214,16 @@ export class Navigation {
   }
 
   navigation() {
-    this.route = Routing.control({
-      waypoints: this.waypts,
-      language: 'de',
-      router: Routing.mapbox(this.accessToken, this.options),
-      draggableWaypoints: false,
-      createMarker: function() { return null; },
-      zoomControl: false,
-      position: 'topleft',
-    });
-    this.route.addTo(this.map);
+    // this.route = new MapboxDirections({
+    //   waypoints: this.waypts,
+    //   language: 'de',
+    //   router: Routing.mapbox(this.accessToken, this.options),
+    //   draggableWaypoints: false,
+    //   createMarker: function() { return null; },
+    //   zoomControl: false,
+    //   position: 'topleft',
+    // });
+    // this.route.addTo(this.map);
   }
 
   //Erueugt die Checkpoints der Touren
@@ -219,23 +232,23 @@ export class Navigation {
     for (let entry of this.biketrips) {
       let marker;
       if (this.gestarteteTour !== 'none' && this.gestarteteTour !== undefined) {
-        marker = L.marker({ lat: entry.lat, lng: entry.lng });
+        marker = new mapboxgl.Marker().setLngLat([ entry.lng, entry.lat ]);
       } else {
-        marker = L.marker({ lat: entry.startpunkt.lat, lng: entry.startpunkt.lng });
+        marker = new mapboxgl.Marker().setLngLat([ entry.startpunkt.lng, entry.startpunkt.lat ]);
       }
       marker.addTo(this.map);
       this.addInfoWindow(marker, entry);
     }
   }
   //Fuegt Marker zur Karte hinzu.
-  addInfoWindow(marker, checkpoint) {
-    marker.on('click', (event) => {
-      if (this.gestarteteTour !== 'none' && this.gestarteteTour !== undefined) {
-        this.showCheckpointInfoModal(checkpoint);
-      } else {
-        this.showTourInfoModal(checkpoint);
-      }
-    });
+  addInfoWindow(m, checkpoint) {
+    // m.on('click', (event) => {
+    //   if (this.gestarteteTour !== 'none' && this.gestarteteTour !== undefined) {
+    //     this.showCheckpointInfoModal(checkpoint);
+    //   } else {
+    //     this.showTourInfoModal(checkpoint);
+    //   }
+    // });
   }
   //Oeffnet die Uebersichtsseite (Modal) einer Tour.
   showCheckpointInfoModal(cData) {

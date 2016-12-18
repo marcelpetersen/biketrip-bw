@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Karte</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- #map zur Identifikation in Ionic und id="map" für das CSS. -->
+  <div #map id="map"></div>
+  <!-- <div #panel id="panel"></div> -->
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-buttons start [ngSwitch]="navigationGestartet">
+      <button *ngSwitchCase="'starten'" ion-button outline color="primary" (click)="startNavigation()">
+        Tour starten
+      </button>
+      <button *ngSwitchCase="'stoppen'" ion-button outline color="primary" (click)="cancelNavigation()">
+        Tour beenden
+      </button>
+      <span [hidden] *ngSwitchDefault></span>
+
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only outline color="primary" (click)="locateUser()">
+        <ion-icon name="locate"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

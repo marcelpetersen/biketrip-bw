@@ -6,18 +6,19 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { Startseite } from '../pages/startseite/startseite';
 import { TourenSuche } from '../pages/touren-suche/touren-suche';
 import { Erlebnisradwege } from '../pages/erlebnisradwege/erlebnisradwege';
+import { GespeicherteTouren } from '../pages/gespeicherte-touren/gespeicherte-touren';
 import { Navigation } from '../pages/navigation/map';
 import { Routenplaner } from '../pages/routenplaner/routenplaner';
 import { Pannentipps } from '../pages/pannentipps/pannentipps';
 import { Impressum } from '../pages/impressum/about';
 
 //Custom Libraries
-import { Routing } from 'leaflet-routing-machine';
 import * as L from 'leaflet';
 
 //Service providers
 import { BiketripsService } from '../providers/biketrips-service';
 import { NavigationService } from '../providers/navigation-service';
+import { PannentippsService } from '../providers/pannentipps-service';
 
 @Component({
   templateUrl: 'app.html',
@@ -44,6 +45,7 @@ export class Main {
       { title: 'Suche nach Touren', component: TourenSuche },
       { title: 'Erlebnisradwege', component: Erlebnisradwege },
       { title: 'Navigation', component: Navigation },
+      { title: 'Gespeicherte Touren', component: GespeicherteTouren },
       { title: 'Routenplaner', component: Routenplaner },
       { title: 'Pannentipps', component: Pannentipps },
       { title: 'Impressum', component: Impressum }
@@ -64,10 +66,13 @@ export class Main {
   }
 
   openPage(page) {
+    //BUG: Funktioniert auf Devices nicht!
+
+
     // Um zu verhindern, dass Views zweimal aufgerufen werden, kann nicht auf das bereits aktive Menü Element geklickt werden.
     // console.log("Active: " + this.appCtrl.getRootNav().getActive().name + ", Klick auf: "+ page.component.name);
-    if(page.component.name !== this.appCtrl.getRootNav().getActive().name) {
+    // if(page.component.name !== this.appCtrl.getRootNav().getActive().name) {
       this.nav.setRoot(page.component);
-    }
+    // }
   }
 }

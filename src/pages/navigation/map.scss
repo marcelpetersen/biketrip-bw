@@ -4,6 +4,14 @@ page-map {
     height: 100%;
   }
 
+  //Leaflet Routing Machine Icons
+  .leaflet-routing-icon {
+      background-image: url(../assets/img/map/leaflet.routing.icons.png);
+  }
+  .leaflet-routing-container-hide .leaflet-routing-collapse-btn {
+      background-image: url(../assets/img/map/routing-icon.png);
+  }
+
   //Zoom Controller von Routing ausblenden
   .leaflet-top {
     width: 100%;
