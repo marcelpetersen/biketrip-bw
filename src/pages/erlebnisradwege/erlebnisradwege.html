@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="phone" hideWhen="tablet">
   <ion-card *ngFor="let t of touren" (click)="showTourInfoModal(t.id)">
     <!-- <img src="{{t.tourbild}}"/> -->
     <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
@@ -15,4 +15,20 @@
       <div class="card-subtitle">{{t.subtitle}}</div>
     </div>
   </ion-card>
+</ion-content>
+
+<!-- Hier beginnt der Tablet Content -->
+
+<ion-content class="tablet" showWhen="tablet">
+  <ion-grid>
+    <ion-row>
+  <ion-card *ngFor="let t of touren" (click)="showTourInfoModal(t.id)">
+    <!-- <img src="{{t.tourbild}}"/> -->
+    <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
+      <div class="card-title">{{t.title}}</div>
+      <div class="card-subtitle">{{t.subtitle}}</div>
+    </div>
+  </ion-card>
+</ion-row>
+</ion-grid>
 </ion-content>

@@ -37,10 +37,10 @@
             <div class="title">Erlebnisradwege</div>
           </div>
       </ion-col>
-      <ion-col width-50 class="tile" (click)="goToPannentipps()">
+      <ion-col width-50 class="tile" (click)="goToAbout()">
           <div class="tile-inner">
-            <i class="custom-icon icon-pannentipps"></i>
-            <div class="title">Pannentipps</div>
+            <i class="custom-icon icon-routenplaner"></i>
+            <div class="title">Impressum</div>
           </div>
       </ion-col>
     </ion-row>
@@ -51,10 +51,10 @@
             <div class="title">Gespeicherte Touren</div>
           </div>
       </ion-col>
-      <ion-col width-50 class="tile" (click)="goToAbout()">
+      <ion-col width-50 class="tile" (click)="goToPannentipps()">
           <div class="tile-inner">
-            <i class="custom-icon icon-routenplaner"></i>
-            <div class="title">Impressum</div>
+            <i class="custom-icon icon-pannentipps"></i>
+            <div class="title">Pannentipps</div>
           </div>
       </ion-col>
     </ion-row>
@@ -69,31 +69,25 @@
   </div>
   <ion-grid>
     <ion-row>
-      <ion-col width-20 class="tile" (click)="goToAbout()">
-          <div class="tile-inner">
-            <i class="custom-icon icon-routenplaner"></i>
-            <div class="title">Routenplaner</div>
-          </div>
-      </ion-col>
-      <ion-col width-20 class="tile" (click)="goToSuche()">
+      <ion-col width-25 height-100 class="tile" (click)="goToSuche()">
           <div class="tile-inner">
             <i class="custom-icon icon-suche"></i>
             <div class="title">Suche</div>
           </div>
       </ion-col>
-      <ion-col width-20 class="tile" (click)="goToTouren()">
+      <ion-col width-25 class="tile" (click)="goToAbout()">
+          <div class="tile-inner">
+            <i class="custom-icon icon-routenplaner"></i>
+            <div class="title">Routenplaner</div>
+          </div>
+      </ion-col>
+      <ion-col width-25 class="tile" (click)="goToTouren()">
           <div class="tile-inner">
             <i class="custom-icon icon-erlebnisradwege"></i>
             <div class="title">Erlebnisradwege</div>
           </div>
       </ion-col>
-      <ion-col width-20 class="tile" (click)="goToPannentipps()">
-          <div class="tile-inner">
-            <i class="custom-icon icon-pannentipps"></i>
-            <div class="title">Pannentipps</div>
-          </div>
-      </ion-col>
-      <ion-col width-20 class="tile">
+      <ion-col width-25 class="tile">
           <div class="tile-inner">
             <i class="custom-icon icon-favoriten"></i>
             <div class="title">Gespeicherte Touren</div>
