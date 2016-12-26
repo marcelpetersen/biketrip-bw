@@ -32,12 +32,13 @@ page-startseite {
       }
 
       .tile-inner {
+        font-weight: 300;
         position: relative;
       }
 
       ion-icon {
         position: relative;
-        font-size: 48px;
+        font-size: 45px;
         text-align: center;
         display: block;
         width: 100%;
@@ -53,9 +54,9 @@ page-startseite {
         // padding-top:10px;
         &:before {
           display: inline-block;
-          width: 64px;
+          width: 60px;
           position: relative;
-          top: 50%;
+          top: 40%;
           transform: translateY(-50%);
         }
       }

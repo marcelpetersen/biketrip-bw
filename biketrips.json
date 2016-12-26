@@ -11,7 +11,7 @@
     "laenge": 19.4,
     "schwierigkeitsgrad": 2,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": "https://images.unsplash.com/23/parked-bike.JPG",
+    "tourbild": [{ "src": "assets/img/Tour_Drais.png"}],
     "checkpoints": [{
       "checkpointId": 1001,
       "lat": 49.4829556,
@@ -23,7 +23,7 @@
         "src": "https://sketchfab.com/models/8db598fd7e2c40678c5144a2756f9f63/embed",
         "beschreibung": "Lorem Ipsum 3D"
       }
-    }, {
+    },
       "checkpointId": 1002,
       "lat": 49.4852568,
       "lng": 8.464745,
@@ -195,6 +195,6 @@
     "laenge": 28.2,
     "schwierigkeitsgrad": 3,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": "https://images.unsplash.com/8/berries.jpg"
+    "tourbild": [{ "src": "assets/img/Tour_Drais.png"}]
   }]
 }
