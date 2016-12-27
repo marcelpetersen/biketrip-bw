@@ -1,9 +1,9 @@
 page-erlebnisradwege {
 
-.phone {
+// .phone {
   ion-card {
     position: relative;
-    text-align: center;
+    text-align: left;
     height: 150px;
 
     .card-background {
@@ -11,27 +11,24 @@ page-erlebnisradwege {
       background-size: cover;
       background-position: center;
     }
-
-    .card-title {
+    .description {
       position: absolute;
-      top: 29%;
-      font-size: 2.0em;
+      bottom: 0;
       width: 100%;
+      padding: 5px;
+      color: color($colors, white);
+      background-color: rgba(color($colors, secondary),0.85);
+    }
+    .card-title {
+      font-size: 2.0em;
       font-weight: bold;
-      color: #fff;
-      background-color: rgba(0,0,0,0.5);
     }
 
     .card-subtitle {
       font-size: 1.0em;
-      position: absolute;
-      top: 52%;
-      width: 100%;
-      color: #000;
-      background-color: #fff;
     }
   }
-}
+// }
 
 @media screen and (orientation: landscape) {
   .tablet {

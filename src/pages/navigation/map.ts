@@ -57,9 +57,15 @@ export class Navigation {
 
   ionViewDidLoad() {
     this.map = L.map('map');
-    this.layer = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?{apikey}', {
-      apikey: 'bb5cfe7826394f618732d66f50ca567e',
-      attribution: 'Maps by <a href="https://thunderforest.com/">Thunderforest</a>',
+    // this.layer = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?{apikey}', {
+    //   apikey: 'bb5cfe7826394f618732d66f50ca567e',
+    //   attribution: 'Maps by <a href="https://thunderforest.com/">Thunderforest</a>',
+    //   minZoom: 5,
+    //   maxZoom: 17
+    // });
+    this.layer = L.tileLayer('https://api.mapbox.com/styles/v1/biketrip-bw/ciu8drfz1002l2inxsnyde0xj/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
+      accessToken: 'pk.eyJ1IjoiYmlrZXRyaXAtYnciLCJhIjoiY2l1OGRvY2dyMDAwZDJ0bWt2c3V1NTg3ZCJ9.wS5IN1Ke_I3_jmOfuX7u8A',
+      attribution: '<a href="http://openstreetmap.org">OSM</a> | <a href="http://mapbox.com">Mapbox</a>',
       minZoom: 5,
       maxZoom: 17
     });
@@ -130,9 +136,8 @@ export class Navigation {
      position:'bottomright'
     }).addTo(this.map);
 
-
-        // this.locate = L.marker([this.latLng.lat, this.latLng.lng], {rotationAngle: 90, rotationOrigin: 'center center'}, {icon: this.navigationService.userLocationIcon});
-this.locate = L.marker({lat:this.latLng.lat, lng: this.latLng.lng}, {icon: this.navigationService.userLocationIcon});
+    // this.locate = L.marker([this.latLng.lat, this.latLng.lng], {rotationAngle: 90, rotationOrigin: 'center center'}, {icon: this.navigationService.userLocationIcon});
+    this.locate = L.marker({lat:this.latLng.lat, lng: this.latLng.lng}, {icon: this.navigationService.userLocationIcon});
 
     this.locate.addTo(this.map);
 

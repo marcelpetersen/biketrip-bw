@@ -11,7 +11,7 @@
     "laenge": 19.4,
     "schwierigkeitsgrad": 2,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": [{ "src": "assets/img/Tour_Drais.png"}],
+    "tourbild": "assets/img/bilder_touren/Tour_Drais.png",
     "checkpoints": [{
       "checkpointId": 1001,
       "lat": 49.4829556,
@@ -23,21 +23,20 @@
         "src": "https://sketchfab.com/models/8db598fd7e2c40678c5144a2756f9f63/embed",
         "beschreibung": "Lorem Ipsum 3D"
       }
-    },
+    }, {
       "checkpointId": 1002,
       "lat": 49.4852568,
       "lng": 8.464745,
       "waypoints": [{
-          "lat": 49.3567,
-          "lng": 8.246564
-        }, {
-          "lat": 49.45847,
-          "lng": 8.34577
-        }, {
-          "lat": 49.476867,
-          "lng": 8.2457567
-        }
-      ],
+        "lat": 49.3567,
+        "lng": 8.246564
+      }, {
+        "lat": 49.45847,
+        "lng": 8.34577
+      }, {
+        "lat": 49.476867,
+        "lng": 8.2457567
+      }],
       "name": "Wohnhaus M1, 8",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
@@ -113,18 +112,17 @@
 
   }, {
     "id": 2,
-    "title": "Karlsruhe erleben",
+    "title": "Baden erleben",
     "subtitle": "die Geschichte Badens kennenlernen.",
     "startpunkt": {
       "lat": 49.0134942,
       "lng": 8.4021663,
       "stadt": "Karlsruhe"
-
     },
     "laenge": 9.0,
     "schwierigkeitsgrad": 1,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": "https://images.unsplash.com/photo-1446770145316-10a05382c470",
+    "tourbild": "assets/img/bilder_touren/Tour_Baden.jpg",
     "checkpoints": [{
       "checkpointId": 2001,
       "lat": 49.0134942,
@@ -187,14 +185,56 @@
     "title": "Weinschmeckertour",
     "subtitle": "Tour durch die Weinberge der Ortenau",
     "startpunkt": {
-      "lat": 48.49256,
-      "lng": 8.0213413,
+      "lat": 49.49256,
+      "lng": 8.5613413,
       "stadt": "Durbach"
 
     },
     "laenge": 28.2,
     "schwierigkeitsgrad": 3,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": [{ "src": "assets/img/Tour_Drais.png"}]
+    "tourbild": "assets/img/bilder_touren/Tour_Weinschmecker.jpg"
+  }, {
+    "id": 4,
+    "title": "Elsassroute",
+    "subtitle": "Tour durch die Weinberge der Ortenau",
+    "startpunkt": {
+      "lat": 48.39256,
+      "lng": 8.9213413,
+      "stadt": "Strasbourg"
+
+    },
+    "laenge": 19.8,
+    "schwierigkeitsgrad": 2,
+    "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    "tourbild": "assets/img/bilder_touren/Tour_Baden.jpg"
+  }, {
+    "id": 5,
+    "title": "Fahrradstadt",
+    "subtitle": "Tour durch die Weinberge der Ortenau",
+    "startpunkt": {
+      "lat": 49.49256,
+      "lng": 9.0213413,
+      "stadt": "Freiburg"
+
+    },
+    "laenge": 15.2,
+    "schwierigkeitsgrad": 1,
+    "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    "tourbild": "assets/img/bilder_touren/Tour_Fahrradstadt.jpg"
+  }, {
+    "id": 6,
+    "title": "Radgourmet",
+    "subtitle": "Tour durch die Weinberge der Ortenau",
+    "startpunkt": {
+      "lat": 48.79256,
+      "lng": 8.8213413,
+      "stadt": "Freiburg"
+
+    },
+    "laenge": 20.1,
+    "schwierigkeitsgrad": 2,
+    "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    "tourbild": "assets/img/bilder_touren/Tour_Gourmet.jpg"
   }]
 }

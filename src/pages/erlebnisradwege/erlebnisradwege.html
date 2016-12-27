@@ -7,28 +7,29 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="phone" hideWhen="tablet">
+<!-- <ion-content class="phone" hideWhen="tablet"> -->
+<ion-content>
   <ion-card *ngFor="let t of touren" (click)="showTourInfoModal(t.id)">
-    <!-- <img src="{{t.tourbild}}"/> -->
     <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
-      <div class="card-title">{{t.title}}</div>
-      <div class="card-subtitle">{{t.subtitle}}</div>
+      <div class="description">
+        <h3 class="card-title">{{t.title}}</h3>
+        <h6 class="card-subtitle">{{t.subtitle}}</h6>
+      </div>
     </div>
   </ion-card>
 </ion-content>
 
 <!-- Hier beginnt der Tablet Content -->
 
-<ion-content class="tablet" showWhen="tablet">
+<!-- <ion-content class="tablet" showWhen="tablet">
   <ion-grid>
     <ion-row>
-  <ion-card *ngFor="let t of touren" (click)="showTourInfoModal(t.id)">
-    <!-- <img src="{{t.tourbild}}"/> -->
-    <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
-      <div class="card-title">{{t.title}}</div>
-      <div class="card-subtitle">{{t.subtitle}}</div>
-    </div>
-  </ion-card>
-</ion-row>
-</ion-grid>
-</ion-content>
+      <ion-card *ngFor="let t of touren" (click)="showTourInfoModal(t.id)">
+        <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
+          <div class="card-title">{{t.title}}</div>
+          <div class="card-subtitle">{{t.subtitle}}</div>
+        </div>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content> -->
