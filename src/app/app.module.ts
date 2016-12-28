@@ -24,6 +24,7 @@ import { Impressum } from '../pages/impressum/about';
 //Modals
 import { TourenInfoModal } from '../pages/touren-info-modal/touren-info-modal';
 import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-info-modal';
+import { CheckpointInfoModalLocked } from '../pages/checkpoint-info-modal-locked/checkpoint-info-modal-locked';
 
 //Custom Libraries
 // import * as L from 'leaflet';
@@ -38,6 +39,7 @@ import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-i
     TourenInfoModal,
     GespeicherteTouren,
     CheckpointInfoModal,
+    CheckpointInfoModalLocked,
     Erlebnisradwege,
     Navigation,
     Map,
@@ -62,6 +64,7 @@ import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-i
     TourenInfoModal,
     GespeicherteTouren,
     CheckpointInfoModal,
+    CheckpointInfoModalLocked,
     Erlebnisradwege,
     Navigation,
     Map,

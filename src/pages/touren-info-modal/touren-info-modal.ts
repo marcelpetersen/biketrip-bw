@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ViewController, NavController, NavParams } from 'ionic-angular';
+import { ViewController, NavController, NavParams, App } from 'ionic-angular';
 import { Navigation } from '../navigation/navigation';
 import { BiketripsService } from '../../providers/biketrips-service';
 import { Storage } from '@ionic/storage';
@@ -19,6 +19,7 @@ export class TourenInfoModal {
   constructor(
     private storage: Storage,
     private navCtrl: NavController,
+    private appCtrl: App,
     private viewCtrl: ViewController,
     private params: NavParams,
     private tourenService: BiketripsService
@@ -54,7 +55,7 @@ export class TourenInfoModal {
     this.viewCtrl.dismiss();
 
     // this.navViewCtrl.dismiss();
-    this.navCtrl.push(Navigation, {
+    this.appCtrl.getRootNav().setRoot(Navigation, {
       tourID: this.tourID
     });
   }
