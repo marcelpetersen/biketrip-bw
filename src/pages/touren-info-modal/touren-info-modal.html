@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span showWhen="ios">Schließen</span>
+        <span hideWhen="android, windows">Schließen</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
@@ -52,11 +52,13 @@
     Tour starten
   </button>
 
-  <button ion-button clear block icon-left color="dark">
-    <ion-icon name="star"></ion-icon>
+  <button *ngIf="this.gespeicherteTouren.indexOf(tour?.id) === -1" ion-button clear block icon-left color="dark" (click)="tourSpeichern(tour?.id)">
+    <ion-icon name="star-outline"></ion-icon>
     Tour speichern
   </button>
-
-
+  <button *ngIf="this.gespeicherteTouren.indexOf(tour?.id) !== -1" ion-button clear block icon-left color="dark" [disabled]="true">
+    <ion-icon name="star"></ion-icon>
+    Tour gespeichert
+  </button>
 
 </ion-content>

@@ -1,13 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { App, Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { Storage } from '@ionic/storage';
 
 //Seiten importieren, um für die Navigation zu verwenden
 import { Startseite } from '../pages/startseite/startseite';
 import { TourenSuche } from '../pages/touren-suche/touren-suche';
 import { Erlebnisradwege } from '../pages/erlebnisradwege/erlebnisradwege';
 import { GespeicherteTouren } from '../pages/gespeicherte-touren/gespeicherte-touren';
-import { Navigation } from '../pages/navigation/map';
+import { Map } from '../pages/map/map';
 import { Routenplaner } from '../pages/routenplaner/routenplaner';
 import { Pannentipps } from '../pages/pannentipps/pannentipps';
 import { Impressum } from '../pages/impressum/about';
@@ -35,7 +36,8 @@ export class Main {
     public platform: Platform,
     public appCtrl: App,
     public navigationService: NavigationService,
-    public tourenService: BiketripsService) {
+    public tourenService: BiketripsService,
+    public storage: Storage) {
 
     this.initializeApp();
 
@@ -44,7 +46,7 @@ export class Main {
       { title: 'Startseite', component: Startseite },
       { title: 'Suche nach Touren', component: TourenSuche },
       { title: 'Erlebnisradwege', component: Erlebnisradwege },
-      { title: 'Navigation', component: Navigation },
+      { title: 'Karte', component: Map },
       { title: 'Gespeicherte Touren', component: GespeicherteTouren },
       { title: 'Routenplaner', component: Routenplaner },
       { title: 'Pannentipps', component: Pannentipps },
@@ -62,6 +64,17 @@ export class Main {
       L.Icon.Default.imagePath = "../assets/img/map/";
       this.navigationService.initialize();
       this.tourenService.initialize();
+      //Favoriten (Storage) initialisieren
+      console.log(this.storage.keys.length);
+      if(this.storage.keys.length === 0) {
+        this.storage.set("gespeichert", "-");
+      } else {
+        this.storage.get("gespeichert").then((val) => {
+          if(val === null || val === undefined) {
+            this.storage.set("gespeichert", "-");
+          }
+        });
+      }
     });
   }
 

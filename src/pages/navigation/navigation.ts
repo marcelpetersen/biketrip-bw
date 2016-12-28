@@ -1,12 +1,14 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams, Platform, LoadingController, ModalController } from 'ionic-angular';
+
+import { NavController, NavParams, App,  Nav, LoadingController, ModalController } from 'ionic-angular';
 import { Geolocation, Geoposition, PositionError } from 'ionic-native';
+import { Storage } from '@ionic/storage';
 
 import { ConnectivityService } from '../../providers/connectivity-service';
 import { BiketripsService } from '../../providers/biketrips-service';
 import { NavigationService } from '../../providers/navigation-service';
 
-import { TourenInfoModal } from '../touren-info-modal/touren-info-modal';
+import { Startseite } from '../startseite/startseite';
 import { CheckpointInfoModal } from '../checkpoint-info-modal/checkpoint-info-modal';
 
 import * as L from 'leaflet';
@@ -14,23 +16,32 @@ import * as Routing from 'leaflet-routing-machine';
 import 'leaflet-rotatedmarker';
 
 @Component({
-  selector: 'page-map',
-  templateUrl: 'map.html'
+  selector: 'page-navigation',
+  templateUrl: 'navigation.html'
 })
 
 export class Navigation {
   //#map aus map.html ermitteln
+  @ViewChild(Nav) nav: Nav;
   @ViewChild('map') mapElement: HTMLElement;
-  private map: any;
+  public map: any;
+  //Aktuelle Position
   private latLng: any;
+  //Mapbox oder Thunderforest
   private layer: any;
-  private waypts: any[] = [];
+  //UserPosition
   private locate: any;
+  //Ladeanimation
   private loading: any;
+  //Touren (Array mit Objekten)
   private biketrips: any;
-  private gestarteteTour: any = "none";
+  public gestarteteTour: any = "none";
   private subscription: any;
   private route: any;
+  //Checkpoints
+  private checkpointCount: Number = 0;
+  private nextCheckpoint: any = 0;
+  private waypts: any[] = [];
 
   public navigationGestartet: string = "none";
 
@@ -45,30 +56,45 @@ export class Navigation {
   constructor(
     public navCtrl: NavController,
     public params: NavParams,
+    public appCtrl: App,
     public modalCtrl: ModalController,
     private connectivityService: ConnectivityService,
     public loadingCtrl: LoadingController,
     private tourenService: BiketripsService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private storage: Storage
   ) {
-    this.showLoadingSpinner();
-    this.gestarteteTour = params.get('tourID');
+
   }
 
   ionViewDidLoad() {
-    this.map = L.map('map');
-    // this.layer = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?{apikey}', {
-    //   apikey: 'bb5cfe7826394f618732d66f50ca567e',
-    //   attribution: 'Maps by <a href="https://thunderforest.com/">Thunderforest</a>',
-    //   minZoom: 5,
-    //   maxZoom: 17
-    // });
-    this.layer = L.tileLayer('https://api.mapbox.com/styles/v1/biketrip-bw/ciu8drfz1002l2inxsnyde0xj/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
-      accessToken: 'pk.eyJ1IjoiYmlrZXRyaXAtYnciLCJhIjoiY2l1OGRvY2dyMDAwZDJ0bWt2c3V1NTg3ZCJ9.wS5IN1Ke_I3_jmOfuX7u8A',
-      attribution: '<a href="http://openstreetmap.org">OSM</a> | <a href="http://mapbox.com">Mapbox</a>',
+    console.log("didLoad");
+    if(this.map === undefined) {
+      console.log("map neu laden");
+      this.map = L.map('map');
+    } else {
+      console.log("map already initialized");
+    }
+    console.log(this.map);
+
+    this.showLoadingSpinner();
+    this.gestarteteTour = this.params.get('tourID');
+
+    //Thunderforest
+    this.layer = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?{apikey}', {
+      apikey: 'bb5cfe7826394f618732d66f50ca567e',
+      attribution: 'Maps by <a href="https://thunderforest.com/">Thunderforest</a>',
       minZoom: 5,
       maxZoom: 17
     });
+
+    //Mapbox
+    // this.layer = L.tileLayer('https://api.mapbox.com/styles/v1/biketrip-bw/ciu8drfz1002l2inxsnyde0xj/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
+    //   accessToken: 'pk.eyJ1IjoiYmlrZXRyaXAtYnciLCJhIjoiY2l1OGRvY2dyMDAwZDJ0bWt2c3V1NTg3ZCJ9.wS5IN1Ke_I3_jmOfuX7u8A',
+    //   attribution: '<a href="http://openstreetmap.org">OSM</a> | <a href="http://mapbox.com">Mapbox</a>',
+    //   minZoom: 5,
+    //   maxZoom: 17
+    // });
     this.loadBiketrips();
     this.loadMaps();
   }
@@ -76,16 +102,24 @@ export class Navigation {
   //Beim verlassen des Views wird watchPosition beendet.
   ionViewWillLeave() {
     console.log("unload");
-    this.map.off();
-    this.map.remove();
+    // this.map.off();
+    // this.map.remove();
     //Aktivieren, damit die Navigation gestoppt wird, wenn der Nutzer die Map verlässt.
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   dismiss() {
     console.log("dismiss");
-    this.map.off();
-    this.map.remove();
+    // if(this.map) {
+      // this.map.off();
+      // this.map.remove();
+    // }
+  }
+
+  exitNavigation() {
+    this.navCtrl.popToRoot();
+
+    // this.navCtrl.setRoot(Startseite);
   }
 
   //Loading Spinner: Wird während dem Laden der Karte angezeigt.
@@ -98,19 +132,10 @@ export class Navigation {
 
   //Marker mit Überischt der einzlenen Touren laden (Daten werden von biketrips-service Provider bereitgestellt)
   loadBiketrips() {
-    if (this.gestarteteTour == 'none' || this.gestarteteTour == undefined) {
-      this.tourenService.load()
-        .then(data => {
-          this.biketrips = data;
-        });
-    }
-    else {
-      this.navigationGestartet = "starten";
-      this.tourenService.load()
-        .then(data => {
-          this.biketrips = data.find(item => item.id === this.gestarteteTour).checkpoints;
-        });
-    }
+    this.navigationGestartet = "starten";
+    this.tourenService.load().then(data => {
+      this.biketrips = data.find(item => item.id === this.gestarteteTour).checkpoints;
+    });
   }
 
   //Maps laden.
@@ -129,7 +154,7 @@ export class Navigation {
   }
 
   initMap() {
-
+    console.log("init");
     this.map.setView(this.latLng, 13);
 
     L.control.zoom({
@@ -137,8 +162,16 @@ export class Navigation {
     }).addTo(this.map);
 
     // this.locate = L.marker([this.latLng.lat, this.latLng.lng], {rotationAngle: 90, rotationOrigin: 'center center'}, {icon: this.navigationService.userLocationIcon});
+    // this.locate = L.marker({lat:this.latLng.lat, lng: this.latLng.lng}, {icon: this.navigationService.userLocationIcon});
     this.locate = L.marker({lat:this.latLng.lat, lng: this.latLng.lng}, {icon: this.navigationService.userLocationIcon});
-
+    L.circleMarker({lat:this.latLng.lat, lng: this.latLng.lng}, {
+        radius: 10,
+        fillColor: "#984ea3",
+        color: "#FFFFFF",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    }).addTo(this.map);
     this.locate.addTo(this.map);
 
     if (!this.map.hasLayer(this.layer)) {
@@ -183,26 +216,27 @@ export class Navigation {
   }
 
   initCheckpoints() {
-    if (this.gestarteteTour !== 'none' && this.gestarteteTour !== undefined) {
+    //Wenn eine Tour gestartet wurde, dann werden die Checkpoints hinzugefügt.
+
       this.addCheckpoints();
+      //Aktuelle Position zum Array Waypoints hinzufügen
       this.waypts.push(this.latLng);
 
-      if (this.biketrips[1].waypoints) {
-        for (let i of this.biketrips[1].waypoints) {
+      //Wenn der nächste Checkpoint zusätzliche Wegpunkte hat, dann werden diese hinzugefügt.
+      if (this.biketrips[this.nextCheckpoint].waypoints) {
+        for (let i of this.biketrips[this.nextCheckpoint].waypoints) {
           this.waypts.push(
             L.latLng(i.lat, i.lng)
           );
         }
       }
+      //Zuletzt wird die Position des nächsten Markers zum Array hinzugefügt.
       this.waypts.push(
-        L.latLng(this.biketrips[1].lat, this.biketrips[1].lng)
+        L.latLng(this.biketrips[this.nextCheckpoint].lat, this.biketrips[this.nextCheckpoint].lng)
       );
 
       this.navigation();
-    }
-    else {
-      this.addCheckpoints();
-    }
+
   }
 
   navigation() {
@@ -212,44 +246,36 @@ export class Navigation {
       router: Routing.mapbox(this.accessToken, this.options),
       draggableWaypoints: false,
       createMarker: function() { return null; },
+      showAlternatives: false,
       zoomControl: false,
       position: 'topleft',
     });
     this.route.addTo(this.map);
   }
 
-  //Erueugt die Checkpoints der Touren
+  //Erzeugt die Checkpoints der Touren
   addCheckpoints() {
     console.log("add Markers - start");
-    for (let entry of this.biketrips) {
-      let marker;
-      if (this.gestarteteTour !== 'none' && this.gestarteteTour !== undefined) {
-        marker = L.marker({ lat: entry.lat, lng: entry.lng });
-      } else {
-        marker = L.marker({ lat: entry.startpunkt.lat, lng: entry.startpunkt.lng });
-      }
-      marker.addTo(this.map);
-      this.addInfoWindow(marker, entry);
+    let marker : any[] = [];
+
+    for (let i in this.biketrips) {
+      marker.push(L.marker({ lat: this.biketrips[i].lat, lng: this.biketrips[i].lng }));
+      marker[i].addTo(this.map);
+      this.addInfoWindow(marker[i], this.biketrips[i]);
     }
+    console.log(L.layerGroup(marker).toGeoJSON());
   }
   //Fuegt Marker zur Karte hinzu.
-  addInfoWindow(marker, checkpoint) {
+  addInfoWindow(marker, obj) {
     marker.on('click', (event) => {
       if (this.gestarteteTour !== 'none' && this.gestarteteTour !== undefined) {
-        this.showCheckpointInfoModal(checkpoint);
-      } else {
-        this.showTourInfoModal(checkpoint);
+        this.showCheckpointInfoModal(obj);
       }
     });
   }
   //Oeffnet die Uebersichtsseite (Modal) einer Tour.
   showCheckpointInfoModal(cData) {
     let infoModal = this.modalCtrl.create(CheckpointInfoModal, { c: cData });
-    infoModal.present();
-  }
-  //Oeffnet die Uebersichtsseite (Modal) einer Tour.
-  showTourInfoModal(tData) {
-    let infoModal = this.modalCtrl.create(TourenInfoModal, { tour: tData.id });
     infoModal.present();
   }
 }

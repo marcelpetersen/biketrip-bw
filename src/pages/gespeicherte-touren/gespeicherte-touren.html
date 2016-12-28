@@ -10,6 +10,28 @@
 
 <ion-content>
 
-  <div id="map"></div>
+  <ion-list>
+  <ion-item-sliding *ngFor="let t of gespeicherteTouren">
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="{{t.tourbild}}">
+      </ion-thumbnail>
+      <h2>{{t.title}}</h2>
+      <p>{{t.startpunkt.stadt}} • {{t.laenge}} km</p>
+      <button ion-button clear item-right (click)="showTourInfoModal(t.id)">Details</button>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger" (click)="deleteFavourite(t.id)">
+        <ion-icon name="trash"></ion-icon>
+        Löschen
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+<button ion-button clear block icon-left color="dark" (click)="deleteAll()">
+  <ion-icon name="trash"></ion-icon>
+  Alle Favoriten löschen
+</button>
 
 </ion-content>

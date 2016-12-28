@@ -16,7 +16,8 @@ import { TourenSuche } from '../pages/touren-suche/touren-suche';
 import { TourenSucheErgebnis } from '../pages/touren-suche-ergebnis/touren-suche-ergebnis';
 import { GespeicherteTouren } from '../pages/gespeicherte-touren/gespeicherte-touren';
 import { Erlebnisradwege } from '../pages/erlebnisradwege/erlebnisradwege';
-import { Navigation } from '../pages/navigation/map';
+import { Navigation } from '../pages/navigation/navigation';
+import { Map } from '../pages/map/map';
 import { Routenplaner } from '../pages/routenplaner/routenplaner';
 import { Pannentipps } from '../pages/pannentipps/pannentipps';
 import { Impressum } from '../pages/impressum/about';
@@ -39,6 +40,7 @@ import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-i
     CheckpointInfoModal,
     Erlebnisradwege,
     Navigation,
+    Map,
     Routenplaner,
     Pannentipps,
     Impressum
@@ -62,6 +64,7 @@ import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-i
     CheckpointInfoModal,
     Erlebnisradwege,
     Navigation,
+    Map,
     Routenplaner,
     Pannentipps,
     Impressum

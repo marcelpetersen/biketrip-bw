@@ -19,9 +19,8 @@
       "name": "Barockschloss Mannheim",
       "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
       "content": {
-        "type": "3d",
-        "src": "https://sketchfab.com/models/8db598fd7e2c40678c5144a2756f9f63/embed",
-        "beschreibung": "Lorem Ipsum 3D"
+        "type": "video",
+        "src": "assets/video/tour_drais_barockschloss.mp4"
       }
     }, {
       "checkpointId": 1002,
@@ -40,17 +39,7 @@
       "name": "Wohnhaus M1, 8",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
-        "type": "video",
-        "src": "https://youtu.be/3HJ0mTLGCAg",
-        "placeholder": "https://images.unsplash.com/23/parked-bike.JPG"
-      }
-    }, {
-      "checkpointId": 1003,
-      "lat": 49.482215,
-      "lng": 8.4640637,
-      "name": "Schlossgarten",
-      "content": {
-        "type": "gallery",
+        "type": "slideshow",
         "images": [{
           "src": "https://images.unsplash.com/23/parked-bike.JPG",
           "beschreibung": "Lorem Ipsum #1"
@@ -69,47 +58,116 @@
         }]
       }
     }, {
+      "checkpointId": 1003,
+      "lat": 49.482215,
+      "lng": 8.4640637,
+      "name": "Schlossgarten",
+      "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      "content": {
+        "type": "video",
+        "src": "assets/video/tour_drais_schlossgarten.mp4"
+      }
+    }, {
       "checkpointId": 1004,
       "lat": 49.4713253,
       "lng": 8.4819766,
       "name": "Neckarauer Übergang",
+      "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
-        "type": "audio",
-        "src": "https://youtu.be/3HJ0mTLGCAg",
-        "placeholder": "https://images.unsplash.com/23/parked-bike.JPG"
+        "type": "3d",
+        "src": "https://sketchfab.com/models/8e619cbd82d6414f8b702f2894746603/embed?annotation=3"
       }
     }, {
       "checkpointId": 1005,
       "lat": 49.4447154,
       "lng": 8.5102447,
-      "name": "Casterfeldstrasse"
+      "name": "Casterfeldstrasse",
+      "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      "content": {
+        "type": "slideshow",
+        "images": [{
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #1"
+        }, {
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #2"
+        }, {
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #3"
+        }, {
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #4"
+        }, {
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #5"
+        }]
+      }
     }, {
       "checkpointId": 1006,
       "lat": 49.439063,
       "lng": 8.5229175,
-      "name": "Karl Drais Denkmal"
+      "name": "Karl Drais Denkmal",
+      "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      "content": {
+        "type": "video",
+        "src": "assets/video/tour_drais_denkmal_karlsplatz.mp4"
+      }
     }, {
       "checkpointId": 1007,
       "lat": 49.463337,
       "lng": 8.516767,
-      "name": "SAP Arena"
+      "name": "SAP Arena",
+      "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      "content": {
+        "type": "audio",
+        "src": "assets/audio/tour_drais_sap_arena.mp3"
+      }
     }, {
       "checkpointId": 1008,
       "lat": 49.476813,
       "lng": 8.494371,
-      "name": "Technoseum"
+      "name": "Technoseum",
+      "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      "content": {
+        "type": "3d",
+        "src": "https://sketchfab.com/models/8e619cbd82d6414f8b702f2894746603/embed"
+      }
     }, {
       "checkpointId": 1009,
       "lat": 49.4840577,
       "lng": 8.4733625,
-      "name": "Wasserturm"
+      "name": "Wasserturm",
+      "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      "content": {
+        "type": "audio",
+        "src": "assets/audio/tour_drais_wasserturm.mp3"
+      }
     }, {
       "checkpointId": 1010,
       "lat": 49.482981,
       "lng": 8.4777895,
-      "name": "Karl Benz Denkmal"
+      "name": "Karl Benz Denkmal",
+      "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      "content": {
+        "type": "slideshow",
+        "images": [{
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #1"
+        }, {
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #2"
+        }, {
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #3"
+        }, {
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #4"
+        }, {
+          "src": "https://images.unsplash.com/23/parked-bike.JPG",
+          "beschreibung": "Lorem Ipsum #5"
+        }]
+      }
     }]
-
   }, {
     "id": 2,
     "title": "Baden erleben",

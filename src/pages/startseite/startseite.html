@@ -20,7 +20,7 @@
       <ion-col width-50 class="tile" (click)="goToMap()">
           <div class="tile-inner">
             <i class="custom-icon icon-navigation"></i>
-            <div class="title">Navigation</div>
+            <div class="title">Karte</div>
           </div>
       </ion-col>
       <ion-col width-50 class="tile" (click)="goToSuche()">
@@ -37,15 +37,15 @@
             <div class="title">Erlebnisradwege</div>
           </div>
       </ion-col>
-      <ion-col width-50 class="tile" (click)="goToAbout()">
+      <ion-col width-50 class="tile" (click)="goToRoutenplaner()">
           <div class="tile-inner">
             <i class="custom-icon icon-routenplaner"></i>
-            <div class="title">Impressum</div>
+            <div class="title">Routenplaner</div>
           </div>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col width-50 class="tile">
+      <ion-col width-50 class="tile" (click)="goToFavoriten()">
           <div class="tile-inner">
             <i class="custom-icon icon-favoriten"></i>
             <div class="title">Gespeicherte Touren</div>
@@ -75,7 +75,7 @@
             <div class="title">Suche</div>
           </div>
       </ion-col>
-      <ion-col width-25 class="tile" (click)="goToAbout()">
+      <ion-col width-25 class="tile" (click)="goToRoutenplaner()">
           <div class="tile-inner">
             <i class="custom-icon icon-routenplaner"></i>
             <div class="title">Routenplaner</div>
@@ -87,7 +87,7 @@
             <div class="title">Erlebnisradwege</div>
           </div>
       </ion-col>
-      <ion-col width-25 class="tile">
+      <ion-col width-25 class="tile" (click)="goToFavoriten()">
           <div class="tile-inner">
             <i class="custom-icon icon-favoriten"></i>
             <div class="title">Gespeicherte Touren</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ViewController, NavController, NavParams } from 'ionic-angular';
+import { Slides, ViewController, NavController, NavParams } from 'ionic-angular';
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 
 @Component({
   selector: 'page-checkpoint-info-modal',
@@ -7,12 +8,19 @@ import { ViewController, NavController, NavParams } from 'ionic-angular';
 })
 export class CheckpointInfoModal {
 
+  //Slideshow
+  mySlideOptions = {
+    initialSlide: 0,
+    loop: true
+  };
+  sketchfab;
   checkpointData: any;
 
   constructor(
     public navCtrl: NavController,
     private params: NavParams,
-    private viewCtrl: ViewController
+    private viewCtrl: ViewController,
+    public sanitizer: DomSanitizer
   ) {
     this.checkpointData = params.get("c");
   }

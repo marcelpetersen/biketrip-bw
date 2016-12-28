@@ -12,6 +12,65 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+  <ion-card>
+
+    <div [ngSwitch]="checkpointData.content.type">
+
+      <!-- VIDEO -->
+      <div *ngSwitchCase="'video'">
+        <video width="100%" height="240" controls>
+          <source [src]="checkpointData.content.src" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- AUDIO Guide -->
+      <div *ngSwitchCase="'audio'">
+        <audio controls>
+          <source src="{{checkpointData.content.src}}" type="audio/mpeg">
+          Your browser does not support the audio tag.
+        </audio>
+      </div>
+
+      <!-- Bildergalerie -->
+      <div *ngSwitchCase="'slideshow'">
+        <ion-slides [options]="mySlideOptions">
+          <ion-slide *ngFor="let i of checkpointData.content.images">
+            <img [src]="i.src" class="slide-image"/>
+            <h1>{{i.beschreibung}}</h1>
+          </ion-slide>
+        </ion-slides>
+      </div>
+
+      <!-- 3D Modell -->
+      <div *ngSwitchCase="'3d'">
+        <div class="sketchfab-embed-wrapper">
+          <iframe width="100%" height="360"
+            [src]="this.sanitizer.bypassSecurityTrustResourceUrl(checkpointData.content.src)"
+            frameborder="0"
+            allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+            onmousewheel="">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- DEFAULT -->
+      <div *ngSwitchDefault>
+        ---
+      </div>
+
+    </div>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{checkpointData.name}}
+      </ion-card-title>
+
+      <p>{{checkpointData.beschreibung}}</p>
+
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

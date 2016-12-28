@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Erlebnisradwege } from '../erlebnisradwege/erlebnisradwege';
-import { Navigation } from '../navigation/map';
+import { Map } from '../map/map';
 import { Pannentipps } from '../pannentipps/pannentipps';
 import { Impressum } from '../impressum/about';
+import { Routenplaner } from '../routenplaner/routenplaner';
 import { TourenSuche } from '../touren-suche/touren-suche';
+import { GespeicherteTouren } from '../gespeicherte-touren/gespeicherte-touren';
 
 //Startseite
 
@@ -31,9 +33,15 @@ export class Startseite {
     this.navCtrl.push(Impressum);
   }
   goToMap() {
-    this.navCtrl.push(Navigation);
+    this.navCtrl.push(Map);
   }
   goToPannentipps() {
     this.navCtrl.push(Pannentipps);
+  }
+  goToRoutenplaner() {
+    this.navCtrl.push(Routenplaner);
+  }
+  goToFavoriten() {
+    this.navCtrl.push(GespeicherteTouren);
   }
 }
