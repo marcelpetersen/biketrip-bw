@@ -7,29 +7,86 @@
   </ion-navbar>
 </ion-header>
 
-<!-- <ion-content class="phone" hideWhen="tablet"> -->
 <ion-content>
-  <ion-card *ngFor="let t of touren" (click)="showTourInfoModal(t.id)">
-    <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
-      <div class="description">
-        <h3 class="card-title">{{t.title}}</h3>
-        <h6 class="card-subtitle">{{t.subtitle}}</h6>
-      </div>
-    </div>
-  </ion-card>
-</ion-content>
-
-<!-- Hier beginnt der Tablet Content -->
-
-<!-- <ion-content class="tablet" showWhen="tablet">
-  <ion-grid>
-    <ion-row>
-      <ion-card *ngFor="let t of touren" (click)="showTourInfoModal(t.id)">
-        <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
-          <div class="card-title">{{t.title}}</div>
-          <div class="card-subtitle">{{t.subtitle}}</div>
+  <!-- Hier beginnt der Phone Content -->
+  <div class="phone" hideWhen="tablet">
+    <ion-card *ngFor="let t of touren" (click)="showTourInfoModal(t.id)">
+      <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
+        <div class="description">
+          <h3 class="card-title">{{t.title}}</h3>
+          <h6 class="card-subtitle">{{t.subtitle}}</h6>
         </div>
-      </ion-card>
-    </ion-row>
-  </ion-grid>
-</ion-content> -->
+      </div>
+    </ion-card>
+  </div>
+
+  <!-- ############################### -->
+
+  <!-- Hier beginnt der Tablet Content -->
+  <div class="tablet" showWhen="tablet">
+    <ion-grid hideWhen="portrait">
+      <div *ngFor="let t of touren; let i=index">
+        <ion-row *ngIf="i%3 == 0">
+          <ion-col *ngIf="i<touren.length" width-33 (click)="showTourInfoModal(t.id)">
+            <ion-card>
+              <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
+                <div class="description">
+                  <h3 class="card-title">{{t.title}}</h3>
+                  <h6 class="card-subtitle">{{t.subtitle}}</h6>
+                </div>
+              </div>
+            </ion-card>
+          </ion-col>
+          <ion-col *ngIf="(i+1)<touren.length" width-33 (click)="showTourInfoModal(touren[i+1].id)">
+            <ion-card>
+              <div class="card-background" [ngStyle]="{'background-image': 'url(' + touren[i+1].tourbild + ')'}">
+                <div class="description">
+                  <h3 class="card-title">{{touren[i+1].title}}</h3>
+                  <h6 class="card-subtitle">{{touren[i+1].subtitle}}</h6>
+                </div>
+              </div>
+            </ion-card>
+          </ion-col>
+          <ion-col *ngIf="(i+2)<touren.length" width-33 (click)="showTourInfoModal(touren[i+2].id)">
+            <ion-card>
+              <div class="card-background" [ngStyle]="{'background-image': 'url(' + touren[i+2].tourbild + ')'}">
+                <div class="description">
+                  <h3 class="card-title">{{touren[i+2].title}}</h3>
+                  <h6 class="card-subtitle">{{touren[i+2].subtitle}}</h6>
+                </div>
+              </div>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+
+    <ion-grid hideWhen="landscape">
+      <div *ngFor="let t of touren; let i=index">
+        <ion-row *ngIf="i%2 == 0">
+          <ion-col *ngIf="i<touren.length" width-50 (click)="showTourInfoModal(t.id)">
+            <ion-card>
+              <div class="card-background" [ngStyle]="{'background-image': 'url(' + t.tourbild + ')'}">
+                <div class="description">
+                  <h3 class="card-title">{{t.title}}</h3>
+                  <h6 class="card-subtitle">{{t.subtitle}}</h6>
+                </div>
+              </div>
+            </ion-card>
+          </ion-col>
+          <ion-col *ngIf="(i+1)<touren.length" width-50 (click)="showTourInfoModal(touren[i+1].id)">
+            <ion-card>
+              <div class="card-background" [ngStyle]="{'background-image': 'url(' + touren[i+1].tourbild + ')'}">
+                <div class="description">
+                  <h3 class="card-title">{{touren[i+1].title}}</h3>
+                  <h6 class="card-subtitle">{{touren[i+1].subtitle}}</h6>
+                </div>
+              </div>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+  </div>
+
+</ion-content>

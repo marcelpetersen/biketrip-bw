@@ -26,9 +26,6 @@ import { TourenInfoModal } from '../pages/touren-info-modal/touren-info-modal';
 import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-info-modal';
 import { CheckpointInfoModalLocked } from '../pages/checkpoint-info-modal-locked/checkpoint-info-modal-locked';
 
-//Custom Libraries
-// import * as L from 'leaflet';
-
 @NgModule({
   //Pages hinzufügen
   declarations: [

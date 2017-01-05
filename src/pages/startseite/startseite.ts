@@ -8,6 +8,8 @@ import { Routenplaner } from '../routenplaner/routenplaner';
 import { TourenSuche } from '../touren-suche/touren-suche';
 import { GespeicherteTouren } from '../gespeicherte-touren/gespeicherte-touren';
 
+import * as Swiper from "swiper";
+
 //Startseite
 
 @Component({
@@ -17,9 +19,17 @@ import { GespeicherteTouren } from '../gespeicherte-touren/gespeicherte-touren';
 
 export class Startseite {
 
+  mainSwiper: any;
+
   constructor(public navCtrl: NavController) {}
 
-  ionViewDidLoad() {}
+  ionViewDidLoad() {
+    this.mainSwiper = new Swiper('.image-wrapper', {
+    loop: true,
+    autoplay: 3000,
+    pagination: '.swiper-pagination'
+    });
+  }
 
   goToSuche() {
     this.navCtrl.push(TourenSuche);

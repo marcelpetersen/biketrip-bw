@@ -15,6 +15,9 @@ import { Impressum } from '../pages/impressum/about';
 
 //Custom Libraries
 import * as L from 'leaflet';
+import * as Control from 'leaflet-control-geocoder';
+import * as Routing from 'leaflet-routing-machine';
+
 
 //Service providers
 import { BiketripsService } from '../providers/biketrips-service';
@@ -59,9 +62,9 @@ export class Main {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
+      StatusBar.styleLightContent();
       Splashscreen.hide();
-      L.Icon.Default.imagePath = "../assets/img/map/";
+      L.Icon.Default.imagePath = "./assets/img/map/";
       this.navigationService.initialize();
       this.tourenService.initialize();
       //Favoriten (Storage) initialisieren

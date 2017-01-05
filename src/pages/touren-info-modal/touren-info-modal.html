@@ -17,7 +17,12 @@
 
   <ion-card>
     <!-- Fragezeichen wird benoetigt, da nicht gesichert ist, dass der Wert vorhanden ist. -->
-    <img src="{{tour?.tourbild}}">
+    <!-- Wenn kein Teaser Video vorhanden ist, dann wird das Tourbild angezeigt. -->
+    <img *ngIf="!tour?.teaser" src="{{tour?.tourbild}}">
+    <video *ngIf="tour?.teaser" width="100%" height="auto" controls poster="{{tour?.tourbild}}">
+      <source [src]="tour?.teaser" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
     <ion-card-content>
       <ion-card-title>
         {{tour?.title}}

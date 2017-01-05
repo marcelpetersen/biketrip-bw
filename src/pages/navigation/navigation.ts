@@ -1,7 +1,7 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { NavController, NavParams, App,  Nav, LoadingController, ModalController } from 'ionic-angular';
-import { Geolocation, Geoposition, PositionError } from 'ionic-native';
+import { Geolocation, Geoposition, PositionError, Vibration, NativeAudio } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 
 import { ConnectivityService } from '../../providers/connectivity-service';
@@ -14,7 +14,6 @@ import { CheckpointInfoModalLocked } from '../checkpoint-info-modal-locked/check
 
 import * as L from 'leaflet';
 import * as Routing from 'leaflet-routing-machine';
-import 'leaflet-rotatedmarker';
 
 @Component({
   selector: 'page-navigation',
@@ -22,8 +21,6 @@ import 'leaflet-rotatedmarker';
 })
 
 export class Navigation {
-  //#map aus map.html ermitteln
-  @ViewChild('map') mapElement: HTMLElement;
   public map: any;
   //Aktuelle Position
   private latLng: any;
@@ -42,8 +39,9 @@ export class Navigation {
   private nextCheckpoint: any = 0;
   private waypts: any[] = [];
   //Entfernung zum nächsten Checkpoint
-  private distance: any = 999;
-  private distanceToCheckpoint: Number = 10;
+  private distanceToWaypoint: any = -1;
+  private distanceToCheckpoint: any = -1;
+  private distanceToSecondWaypoint: any = -1;
 
   public navigationGestartet: string = "none";
 
@@ -56,6 +54,7 @@ export class Navigation {
     alternatives: false
   };
 
+
   constructor(
     public navCtrl: NavController,
     public params: NavParams,
@@ -66,9 +65,7 @@ export class Navigation {
     private tourenService: BiketripsService,
     private navigationService: NavigationService,
     private storage: Storage
-  ) {
-
-  }
+  ) {}
 
   ionViewDidLoad() {
     console.log("didLoad");
@@ -81,7 +78,11 @@ export class Navigation {
       console.log("map already initialized");
     }
     console.log(this.map);
-
+    NativeAudio.preloadSimple('notification', './assets/audio/notification/bw_notification.mp3').then(onSucces => {
+      console.log("Success");
+    }, onError => {
+      console.log("Error")
+    });
     this.showLoadingSpinner();
     this.gestarteteTour = this.params.get('tourID');
 
@@ -92,27 +93,19 @@ export class Navigation {
       minZoom: 5,
       maxZoom: 17
     });
-
-    //Mapbox
-    // this.layer = L.tileLayer('https://api.mapbox.com/styles/v1/biketrip-bw/ciu8drfz1002l2inxsnyde0xj/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
-    //   accessToken: 'pk.eyJ1IjoiYmlrZXRyaXAtYnciLCJhIjoiY2l1OGRvY2dyMDAwZDJ0bWt2c3V1NTg3ZCJ9.wS5IN1Ke_I3_jmOfuX7u8A',
-    //   attribution: '<a href="http://openstreetmap.org">OSM</a> | <a href="http://mapbox.com">Mapbox</a>',
-    //   minZoom: 5,
-    //   maxZoom: 17
-    // });
     this.loadBiketrips();
-    this.loadMaps();
+    this.retriveGeoPosition();
   }
-
   //Beim verlassen des Views wird watchPosition beendet.
   ionViewWillLeave() {
-    console.log("unload");
-    // this.map.off();
-    // this.map.remove();
+    console.log("exit navigation");
+    if(this.map !== undefined) {
+      this.map.off();
+      this.map.remove();
+    }
     //Aktivieren, damit die Navigation gestoppt wird, wenn der Nutzer die Map verlässt.
-    // this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
-
   dismiss() {
     console.log("dismiss");
     // if(this.map) {
@@ -120,13 +113,6 @@ export class Navigation {
       // this.map.remove();
     // }
   }
-
-  exitNavigation() {
-    this.appCtrl.getRootNav().setRoot(Startseite);
-
-    // this.navCtrl.setRoot(Startseite);
-  }
-
   //Loading Spinner: Wird während dem Laden der Karte angezeigt.
   showLoadingSpinner() {
     this.loading = this.loadingCtrl.create({
@@ -134,7 +120,6 @@ export class Navigation {
     });
     this.loading.present();
   }
-
   //Marker mit Überischt der einzlenen Touren laden (Daten werden von biketrips-service Provider bereitgestellt)
   loadBiketrips() {
     this.navigationGestartet = "starten";
@@ -142,23 +127,22 @@ export class Navigation {
       this.biketrips = data.find(item => item.id === this.gestarteteTour).checkpoints;
     });
   }
-
-  //Maps laden.
-  loadMaps() {
+  //Auf GPS Signal warten
+  retriveGeoPosition() {
     console.log("showing map");
     if(this.navigationService.initialized){
       this.navigationService.getPosition().then(latLng => {
         this.latLng = latLng;
-        this.initMap();
+        this.createMap();
         this.initNavigation();
         this.loading.dismiss();
       });
     } else {
-      setTimeout(() => {this.loadMaps();},500);
+      setTimeout(() => {this.retriveGeoPosition();},500);
     }
   }
-
-  initMap() {
+  //Map erstellen
+  createMap() {
     console.log("init");
     this.map.setView(this.latLng, 13);
 
@@ -167,16 +151,8 @@ export class Navigation {
     }).addTo(this.map);
 
     // this.locate = L.marker([this.latLng.lat, this.latLng.lng], {rotationAngle: 90, rotationOrigin: 'center center'}, {icon: this.navigationService.userLocationIcon});
-    // this.locate = L.marker({lat:this.latLng.lat, lng: this.latLng.lng}, {icon: this.navigationService.userLocationIcon});
     this.locate = L.marker({lat:this.latLng.lat, lng: this.latLng.lng}, {icon: this.navigationService.userLocationIcon});
-    // L.circleMarker({lat:this.latLng.lat, lng: this.latLng.lng}, {
-    //     radius: 10,
-    //     fillColor: "#984ea3",
-    //     color: "#FFFFFF",
-    //     weight: 1,
-    //     opacity: 1,
-    //     fillOpacity: 0.8
-    // }).addTo(this.map);
+
     this.locate.addTo(this.map);
 
     if (!this.map.hasLayer(this.layer)) {
@@ -201,8 +177,8 @@ export class Navigation {
       }
     });
   }
-
-  startNavigation() {
+  //Zum aktuellen Checkpoint navigieren
+  navigateTo() {
     console.log('start');
     this.navigationGestartet = "stoppen";
     //Wenn der Nutzer auf Start klickt, dann wird die Position aktualisiert.
@@ -215,44 +191,52 @@ export class Navigation {
 
       this.map.setView(L.latLng(position.coords.latitude, position.coords.longitude), 18);
       //Wenn der erste Eintrag in Waypts (Current Position) dem nächsten gleicht, dann wird dieser gelöscht.
-      this.distance = this.waypts[0].distanceTo(this.waypts[this.waypts.length-1]);
+      this.distanceToCheckpoint = this.waypts[0].distanceTo(this.waypts[this.waypts.length-1]);
+      this.distanceToWaypoint = this.waypts[0].distanceTo(this.waypts[1]);
 
-      console.log("Distanz zum nächsten waypts: " + this.waypts[0].distanceTo(this.waypts[1]));
-      console.log("Distanz zum letzten wpts: " + this.distance);
+      if(this.waypts.length > 2) {
+        this.distanceToSecondWaypoint = this.waypts[0].distanceTo(this.waypts[2]);
+      } else {
+        this.distanceToSecondWaypoint = -1;
+      }
+
+      console.log("Distanz zum nächsten waypts: " + this.distanceToWaypoint);
+      console.log("Distanz zum letzten wpts: " + this.distanceToCheckpoint);
       console.log("Anzahl der wpts (waypoint.length):  " + this.waypts.length);
       console.log("NextCheckpoint: " + this.nextCheckpoint);
       console.log("Alle Waypoints: " + this.waypts);
 
-      if(this.distance <= 10) {
+      if(this.distanceToCheckpoint <= 10) {
 
-        if(this.waypts.length <= 2) {
-          // this.subscription.unsubscribe();
           this.nextCheckpoint ++;
-          if(this.route !== undefined){
-            this.map.removeControl(this.route);
-          }
+
           console.log("Checkpoint erreicht!");
-          this.initNavigation();
-        } else {
-          this.waypts = this.waypts.slice(1, 1);
-          console.log("remove Waypoint");
-          //Routing aktualisieren
-          this.route.setWaypoints(this.waypts);
-        }
-      } else if(this.distance < this.waypts[0].distanceTo(this.waypts[1])) {
-        console.log("Waypoint entfernen, da Ziel näher als nächster WPT")
-        this.waypts = this.waypts.slice(1, 1);
+          //Sound Abspielen
+          NativeAudio.play('notification', () => console.log('Notification is done playing'));
+          Vibration.vibrate(1000);
+          //Modal öffnen
+          this.showCheckpointInfoModal(this.biketrips[this.nextCheckpoint-1]);
+          if(this.nextCheckpoint < this.biketrips.length) {
+            this.updateNavigation();
+          } else {
+            this.finishNavigation();
+          }
+
+      }
+      else if(this.distanceToSecondWaypoint < this.distanceToWaypoint && this.distanceToSecondWaypoint !== -1) {
+        console.log("Waypoint entfernen, da übernächster Waypoint näher als nächster WPT");
+        console.log("secondWaypoint: " + this.distanceToSecondWaypoint + " Waypoint: " + this.distanceToWaypoint);
+        this.waypts.shift();
         this.route.setWaypoints(this.waypts);
+      }
+
+      else {
+        console.log("Positionsupdate ohne Änderung.");
       }
 
     });
   }
-
-  cancelNavigation() {
-    this.navigationGestartet = "starten";
-    this.subscription.unsubscribe();
-  }
-
+  //Waypoints (Array) erstellen und mit dem ersten Checkpoint befüllen
   initNavigation() {
     //Wenn eine Tour gestartet wurde, dann werden die Checkpoints hinzugefügt.
     console.log("initNavigation");
@@ -275,26 +259,85 @@ export class Navigation {
       );
 
       //Init Distance
-      this.distance = this.waypts[0].distanceTo(this.waypts[1]);
-      this.startRoutingMachine();
+      this.distanceToWaypoint = this.waypts[0].distanceTo(this.waypts[1]);
+      this.distanceToCheckpoint = this.waypts[0].distanceTo(this.waypts[this.waypts.length-1]);
+      if(this.waypts.length > 2) {
+        this.distanceToSecondWaypoint = this.waypts[0].distanceTo(this.waypts[2]);
+      } else {
+        this.distanceToSecondWaypoint = -1;
+      }
+      this.addRoutingMachine();
   }
+  //Waypoints aktualisieren: naechsten Checkpoint laden.
+  updateNavigation() {
+    //Wenn eine Tour gestartet wurde, dann werden die Checkpoints hinzugefügt.
+    console.log("updateNavigation");
+    this.waypts = [];
+      this.addCheckpoints();
+      //Aktuelle Position zum Array Waypoints hinzufügen
+      this.waypts.push(this.latLng);
 
-  startRoutingMachine() {
+      //Wenn der nächste Checkpoint zusätzliche Wegpunkte hat, dann werden diese hinzugefügt.
+      if (this.biketrips[this.nextCheckpoint].waypoints) {
+        for (let i of this.biketrips[this.nextCheckpoint].waypoints) {
+          this.waypts.push(
+            L.latLng(i.lat, i.lng)
+          );
+        }
+      }
+      //Zuletzt wird die Position des nächsten Markers zum Array hinzugefügt.
+      this.waypts.push(
+        L.latLng(this.biketrips[this.nextCheckpoint].lat, this.biketrips[this.nextCheckpoint].lng)
+      );
+
+      //Reset Distances
+      this.distanceToWaypoint = this.waypts[0].distanceTo(this.waypts[1]);
+      this.distanceToCheckpoint = this.waypts[0].distanceTo(this.waypts[this.waypts.length-1]);
+      if(this.waypts.length > 2) {
+        this.distanceToSecondWaypoint = this.waypts[0].distanceTo(this.waypts[2]);
+      } else {
+        this.distanceToSecondWaypoint = -1;
+      }
+
+      this.route.setWaypoints(this.waypts);
+  }
+  finishNavigation() {
+    this.navigationGestartet = "starten";
+    this.subscription.unsubscribe();
+    //Ton abspielen?
+  }
+  //Schließt die View und kehrt zur Startseite zurueck
+  exitNavigation() {
+    //Kehrt zur Startseite zurück.
+    this.appCtrl.getRootNav().setRoot(Startseite);
+  }
+  //Beendet die Navigation
+  cancelNavigation() {
+    this.navigationGestartet = "starten";
+    this.subscription.unsubscribe();
+  }
+  //Fuegt LRM zur Map hinzu
+  addRoutingMachine() {
+
     this.route = Routing.control({
       waypoints: this.waypts,
       language: 'de',
       router: Routing.mapbox(this.accessToken, this.options),
       draggableWaypoints: false,
       createMarker: function() { return null; },
+      pointMarkerStyle: {radius: 5,color: '#145648',fillColor: 'white',opacity: 1,fillOpacity: 0.7},
+      summaryTemplate: "",
+      containerClassName: 'checkpoint-navigation',
+      alternativeClassName: 'checkpoint-navigation',
+      minimizedClassName: 'checkpoint-navigation',
+      itineraryClassName: 'checkpoint-navigation',
       showAlternatives: false,
-      zoomControl: false,
-      position: 'topleft',
+      position: 'topleft'
     });
     this.route.addTo(this.map);
-    this.startNavigation();
+    this.navigateTo();
   }
-
-  //Erzeugt die Checkpoints der Touren
+  //Erzeugt die Checkpoints der Tour
   addCheckpoints() {
     console.log("add Markers - start");
     let marker : any[] = [];
@@ -315,7 +358,6 @@ export class Navigation {
         this.showCheckpointInfoModal(obj);
       } else {
         this.showLockedInfoModal(obj.name);
-
       }
     });
   }
@@ -326,7 +368,7 @@ export class Navigation {
   }
   //Oeffnet die gesperrte Checkpoint Ansicht
   showLockedInfoModal(name) {
-    let infoModal = this.modalCtrl.create(CheckpointInfoModalLocked, { n: name, d:this.distance });
+    let infoModal = this.modalCtrl.create(CheckpointInfoModalLocked, { n: name, d:this.distanceToCheckpoint });
     infoModal.present();
   }
 }

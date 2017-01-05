@@ -11,7 +11,7 @@ export class NavigationService {
   public userPosition: any;
   public initialized: boolean = false;
   public userLocationIcon: any = L.icon({
-    iconUrl: '../assets/img/map/user-location-marker.png',
+    iconUrl: './assets/img/map/user-location-marker.png',
     iconSize:     [40, 40], // size of the icon
     iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, -50] // point from which the popup should open relative to the iconAnchor

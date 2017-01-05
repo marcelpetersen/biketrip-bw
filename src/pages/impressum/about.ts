@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { NavController, Platform } from 'ionic-angular';
 
-import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -8,7 +8,9 @@ import { NavController } from 'ionic-angular';
 })
 export class Impressum {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public platform: Platform) {
 
   }
 

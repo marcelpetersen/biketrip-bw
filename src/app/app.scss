@@ -17,8 +17,10 @@
 //Import Custom Libraries (CSS)
 @import "leaflet";
 @import "leaflet-routing-machine";
+@import "Control.Geocoder";
 @import "mapbox-gl";
 @import "mapbox-gl-directions";
+@import "swiper";
 
 .b-primary {
   background: color($colors, primary);
@@ -46,6 +48,13 @@ ion-col {
   }
 }
 
+//Swiper Styles
+// --------------------------------------------------
+
+.swiper-pagination-bullet-active {
+  background: color($colors, primary);
+  opacity: 1;
+}
 // Custom Icons
 // --------------------------------------------------
 .icon-erlebnisradwege::before {

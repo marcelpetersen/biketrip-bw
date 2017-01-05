@@ -13,4 +13,5 @@
 */
 declare module '*';
 declare module 'leaflet-routing-machine';
+declare module 'leaflet-control-geocoder';
 declare module 'mapbox-gl-directions';

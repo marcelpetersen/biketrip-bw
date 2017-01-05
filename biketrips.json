@@ -4,37 +4,35 @@
     "title": "Karl Drais Route",
     "subtitle": "Auf den Spuren von Karl Drais durch Mannheim.",
     "startpunkt": {
-      "lat": 49.4829556,
-      "lng": 8.4604577,
+      "lat": 49.48338418453496,
+      "lng": 8.462154865264893,
       "stadt": "Mannheim"
     },
     "laenge": 19.4,
     "schwierigkeitsgrad": 2,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": "assets/img/bilder_touren/Tour_Drais.png",
+    "tourbild": "assets/img/biketrips/1/Tour_Drais.jpg",
+    "teaser": "assets/video/1/teaser.mp4",
     "checkpoints": [{
       "checkpointId": 1001,
-      "lat": 49.4829556,
-      "lng": 8.4604577,
+      "lat": 49.48338418453496,
+      "lng": 8.462154865264893,
       "name": "Barockschloss Mannheim",
       "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
       "content": {
         "type": "video",
-        "src": "assets/video/tour_drais_barockschloss.mp4"
+        "src": "assets/video/1/barockschloss.mp4"
       }
     }, {
       "checkpointId": 1002,
-      "lat": 49.4852568,
-      "lng": 8.464745,
+      "lat": 49.48490714676373,
+      "lng": 8.46472442150116,
       "waypoints": [{
-        "lat": 49.3567,
-        "lng": 8.246564
+        "lat": 49.48518245982242,
+        "lng": 8.461500406265259
       }, {
-        "lat": 49.45847,
-        "lng": 8.34577
-      }, {
-        "lat": 49.476867,
-        "lng": 8.2457567
+        "lat": 49.48588641781855,
+        "lng": 8.462176322937012
       }],
       "name": "Wohnhaus M1, 8",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
@@ -59,18 +57,38 @@
       }
     }, {
       "checkpointId": 1003,
-      "lat": 49.482215,
-      "lng": 8.4640637,
+      "lat": 49.4826,
+      "lng": 8.4618,
+      "waypoints": [{
+        "lat": 49.4857,
+        "lng": 8.4655
+      }, {
+        "lat": 49.4877,
+        "lng": 8.4604
+      }, {
+        "lat": 49.4842,
+        "lng": 8.4580
+      }],
       "name": "Schlossgarten",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
         "type": "video",
-        "src": "assets/video/tour_drais_schlossgarten.mp4"
+        "src": "assets/video/1/schlossgarten.mp4"
       }
     }, {
       "checkpointId": 1004,
-      "lat": 49.4713253,
-      "lng": 8.4819766,
+      "lat": 49.4714,
+      "lng": 8.4841,
+      "waypoints": [{
+        "lat": 49.4818,
+        "lng": 8.4656
+      }, {
+        "lat": 49.4796,
+        "lng": 8.4713
+      }, {
+        "lat": 49.4805,
+        "lng": 8.4724
+      }],
       "name": "Neckarauer Übergang",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
@@ -79,8 +97,36 @@
       }
     }, {
       "checkpointId": 1005,
-      "lat": 49.4447154,
-      "lng": 8.5102447,
+      "lat": 49.4480,
+      "lng": 8.5052,
+      "waypoints": [{
+        "lat": 49.4674,
+        "lng": 8.4836
+      },{
+        "lat": 49.4654,
+        "lng": 8.4852
+      },{
+        "lat": 49.4620,
+        "lng": 8.4880
+      },{
+        "lat": 49.4605,
+        "lng": 8.4893
+      }, {
+        "lat": 49.4592,
+        "lng": 8.4907
+      }, {
+        "lat": 49.4565,
+        "lng": 8.4893
+      }, {
+        "lat": 49.4559,
+        "lng": 8.4939
+      }, {
+        "lat": 49.4531,
+        "lng": 8.4952
+      }, {
+        "lat": 49.4531,
+        "lng": 8.4964
+      }],
       "name": "Casterfeldstrasse",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
@@ -104,28 +150,52 @@
       }
     }, {
       "checkpointId": 1006,
-      "lat": 49.439063,
-      "lng": 8.5229175,
+      "lat": 49.4391,
+      "lng": 8.5235,
+      "waypoints": [{
+        "lat": 49.4383,
+        "lng": 8.5227
+      }],
       "name": "Karl Drais Denkmal",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
         "type": "video",
-        "src": "assets/video/tour_drais_denkmal_karlsplatz.mp4"
+        "src": "assets/video/1/denkmal_karlsplatz.mp4"
       }
     }, {
       "checkpointId": 1007,
-      "lat": 49.463337,
-      "lng": 8.516767,
+      "lat": 49.4632,
+      "lng": 8.5193,
+      "waypoints": [{
+        "lat": 49.4566,
+        "lng": 8.5443
+      }, {
+        "lat": 49.4647,
+        "lng": 8.5206
+      }],
       "name": "SAP Arena",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
         "type": "audio",
-        "src": "assets/audio/tour_drais_sap_arena.mp3"
+        "src": "assets/audio/1/sap_arena.mp3"
       }
     }, {
       "checkpointId": 1008,
-      "lat": 49.476813,
-      "lng": 8.494371,
+      "lat": 49.4771,
+      "lng": 8.4960,
+      "waypoints": [{
+        "lat": 49.4636,
+        "lng": 8.5143
+      }, {
+        "lat": 49.4654,
+        "lng": 8.5161
+      }, {
+        "lat": 49.4670,
+        "lng": 8.5118
+      }, {
+        "lat": 49.4675,
+        "lng": 8.5085
+      }],
       "name": "Technoseum",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
@@ -134,18 +204,31 @@
       }
     }, {
       "checkpointId": 1009,
-      "lat": 49.4840577,
-      "lng": 8.4733625,
+      "lat": 49.4841,
+      "lng": 8.4754,
+      "waypoints": [{
+        "lat": 49.4782,
+        "lng": 8.4970
+      }, {
+        "lat": 49.4838,
+        "lng": 8.4828
+      }, {
+        "lat": 49.4835,
+        "lng": 8.4824
+      }, {
+        "lat": 49.4844,
+        "lng": 8.4798
+      }],
       "name": "Wasserturm",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
         "type": "audio",
-        "src": "assets/audio/tour_drais_wasserturm.mp3"
+        "src": "assets/audio/1/wasserturm.mp3"
       }
     }, {
       "checkpointId": 1010,
-      "lat": 49.482981,
-      "lng": 8.4777895,
+      "lat": 49.4830,
+      "lng": 8.4783,
       "name": "Karl Benz Denkmal",
       "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "content": {
@@ -180,7 +263,7 @@
     "laenge": 9.0,
     "schwierigkeitsgrad": 1,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": "assets/img/bilder_touren/Tour_Baden.jpg",
+    "tourbild": "assets/img/biketrips/Tour_Baden.jpg",
     "checkpoints": [{
       "checkpointId": 2001,
       "lat": 49.0134942,
@@ -251,7 +334,7 @@
     "laenge": 28.2,
     "schwierigkeitsgrad": 3,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": "assets/img/bilder_touren/Tour_Weinschmecker.jpg"
+    "tourbild": "assets/img/biketrips/Tour_Weinschmecker.jpg"
   }, {
     "id": 4,
     "title": "Elsassroute",
@@ -265,7 +348,7 @@
     "laenge": 19.8,
     "schwierigkeitsgrad": 2,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": "assets/img/bilder_touren/Tour_Baden.jpg"
+    "tourbild": "assets/img/biketrips/Tour_Baden.jpg"
   }, {
     "id": 5,
     "title": "Fahrradstadt",
@@ -279,7 +362,7 @@
     "laenge": 15.2,
     "schwierigkeitsgrad": 1,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": "assets/img/bilder_touren/Tour_Fahrradstadt.jpg"
+    "tourbild": "assets/img/biketrips/Tour_Fahrradstadt.jpg"
   }, {
     "id": 6,
     "title": "Radgourmet",
@@ -293,6 +376,6 @@
     "laenge": 20.1,
     "schwierigkeitsgrad": 2,
     "beschreibung": "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    "tourbild": "assets/img/bilder_touren/Tour_Gourmet.jpg"
+    "tourbild": "assets/img/biketrips/Tour_Gourmet.jpg"
   }]
 }
