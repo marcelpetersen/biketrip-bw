@@ -73,7 +73,7 @@ export class Navigation {
     console.log("didLoad");
     if(this.map === undefined) {
       console.log("map neu laden");
-      this.map = L.map('map', {
+      this.map = L.map('navigation', {
         zoomControl: false
       });
     } else {
@@ -101,19 +101,16 @@ export class Navigation {
   //Beim verlassen des Views wird watchPosition beendet.
   ionViewWillLeave() {
     console.log("exit navigation");
-    if(this.map !== undefined) {
-      this.map.off();
-      this.map.remove();
-    }
+    this.map.off();
+    this.map.remove();
+
     //Aktivieren, damit die Navigation gestoppt wird, wenn der Nutzer die Map verlässt.
     this.subscription.unsubscribe();
   }
   dismiss() {
     console.log("dismiss");
-    // if(this.map) {
-      // this.map.off();
-      // this.map.remove();
-    // }
+    this.map.off();
+    this.map.remove();
   }
   //Loading Spinner: Wird während dem Laden der Karte angezeigt.
   showLoadingSpinner() {

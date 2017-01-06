@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+
 import * as L from 'leaflet';
 import * as Routing from 'leaflet-routing-machine';
 import * as Geocoder from 'leaflet-control-geocoder';
