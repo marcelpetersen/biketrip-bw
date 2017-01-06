@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{data.name}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span hideWhen="android">Schließen</span>
+        <ion-icon showWhen="android" name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div *ngIf="type == 'checkliste'">
+    <ion-card>
+      <ion-card-header>
+        Checkliste
+      </ion-card-header>
+      <ion-card-content>
+        {{data.description}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngFor="let c of data.liste">
+      <ion-card-header>
+        <ion-item>
+          <ion-checkbox color="primary"></ion-checkbox>
+          <ion-label>{{c.name}}</ion-label>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        {{c.description}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-slides *ngIf="type == 'pannentipp'" [options]="pannentippsSlideOptions" ion-fixed>
+
+    <ion-slide class="first-slide">
+      <i class="custom-icon" [ngClass]="data.icon"></i>
+      <h2>{{data.name}}</h2>
+      <p>{{data.description}}</p>
+    </ion-slide>
+
+    <ion-slide *ngFor="let p of data.content.steps">
+      <img [src]="p.src" />
+      <h2>{{p.title}}</h2>
+      <p>{{p.description}}</p>
+    </ion-slide>
+
+    <ion-slide class="last-slide">
+      <ion-icon name="checkmark-circle"></ion-icon>
+      <h2>Herzlichen Glückwunsch!</h2>
+      <p>Sie haben diese Lektion erfolgreich abgeschlossen.</p>
+    </ion-slide>
+
+  </ion-slides>
+
+
+
+
+</ion-content>

@@ -54,6 +54,8 @@ export class Navigation {
     alternatives: false
   };
 
+  //BUG: Routing Machine nicht vollständig übersetzt!
+
 
   constructor(
     public navCtrl: NavController,

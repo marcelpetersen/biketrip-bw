@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { App, Nav, Platform } from 'ionic-angular';
+import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 
@@ -15,8 +15,6 @@ import { Impressum } from '../pages/impressum/about';
 
 //Custom Libraries
 import * as L from 'leaflet';
-import * as Control from 'leaflet-control-geocoder';
-import * as Routing from 'leaflet-routing-machine';
 
 
 //Service providers
@@ -37,25 +35,36 @@ export class Main {
 
   constructor(
     public platform: Platform,
-    public appCtrl: App,
     public navigationService: NavigationService,
     public tourenService: BiketripsService,
+    public pannentippsService: PannentippsService,
     public storage: Storage) {
 
     this.initializeApp();
 
     // Seiten zum Menü hinzuzufügen
-    this.pages = [
-      { title: 'Startseite', component: Startseite },
-      { title: 'Suche nach Touren', component: TourenSuche },
-      { title: 'Erlebnisradwege', component: Erlebnisradwege },
-      { title: 'Karte', component: Map },
-      { title: 'Gespeicherte Touren', component: GespeicherteTouren },
-      { title: 'Routenplaner', component: Routenplaner },
-      { title: 'Pannentipps', component: Pannentipps },
-      { title: 'Impressum', component: Impressum }
-    ];
-
+    if (this.platform.is('tablet')) {
+      this.pages = [
+        { title: 'Startseite', component: Startseite },
+        { title: 'Suche nach Touren', component: TourenSuche },
+        { title: 'Erlebnisradwege', component: Erlebnisradwege },
+        { title: 'Karte', component: Map },
+        { title: 'Gespeicherte Touren', component: GespeicherteTouren },
+        { title: 'Routenplaner', component: Routenplaner },
+        { title: 'Impressum', component: Impressum }
+      ];
+    } else {
+      this.pages = [
+        { title: 'Startseite', component: Startseite },
+        { title: 'Suche nach Touren', component: TourenSuche },
+        { title: 'Erlebnisradwege', component: Erlebnisradwege },
+        { title: 'Karte', component: Map },
+        { title: 'Gespeicherte Touren', component: GespeicherteTouren },
+        { title: 'Routenplaner', component: Routenplaner },
+        { title: 'Pannentipps', component: Pannentipps },
+        { title: 'Impressum', component: Impressum }
+      ];
+    }
   }
 
   initializeApp() {
@@ -67,8 +76,9 @@ export class Main {
       L.Icon.Default.imagePath = "./assets/img/map/";
       this.navigationService.initialize();
       this.tourenService.initialize();
+      this.pannentippsService.initialize();
       //Favoriten (Storage) initialisieren
-      console.log(this.storage.keys.length);
+      // console.log(this.storage.keys.length);
       if(this.storage.keys.length === 0) {
         this.storage.set("gespeichert", "-");
       } else {
@@ -82,13 +92,6 @@ export class Main {
   }
 
   openPage(page) {
-    //BUG: Funktioniert auf Devices nicht!
-
-
-    // Um zu verhindern, dass Views zweimal aufgerufen werden, kann nicht auf das bereits aktive Menü Element geklickt werden.
-    // console.log("Active: " + this.appCtrl.getRootNav().getActive().name + ", Klick auf: "+ page.component.name);
-    // if(page.component.name !== this.appCtrl.getRootNav().getActive().name) {
       this.nav.setRoot(page.component);
-    // }
   }
 }

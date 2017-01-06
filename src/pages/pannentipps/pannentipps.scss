@@ -1,3 +1,74 @@
 page-pannentipps {
 
+  .tile {
+    background-color: color($colors, secondary);
+    color: color($colors, light);
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    &.b-primary {
+      background-color: color($colors, primary);
+    }
+
+    .tile-inner {
+      font-weight: 300;
+      font-size: 1.8rem;
+      position: relative;
+    }
+
+    ion-icon {
+      position: relative;
+      font-size: 45px;
+      text-align: center;
+      display: block;
+      width: 100%;
+      // padding-top:10px;
+    }
+
+    .custom-icon {
+      position: relative;
+      max-height: 67px;
+      height: auto;
+      text-align: center;
+      display: block;
+      width: 100%;
+      // padding-top:10px;
+      &:before {
+        display: inline-block;
+        width: 48px;
+        position: relative;
+        // top: 40%;
+        // transform: translateY(-50%);
+      }
+    }
+    .title {
+      text-align: center;
+    }
+  }
+
+  .image-wrapper{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 33.334%;
+  }
+  ion-grid {
+    @media screen and (orientation: portrait) {
+      min-height: 66.666%;
+      // margin-top: -3px;
+    }
+    @media screen and (orientation: landscape) {
+      min-height: 100%;
+    }
+    padding: 0px;
+    position: absolute;
+    z-index: 10;
+
+    ion-row {
+      flex: 1;
+    }
+  }
 }

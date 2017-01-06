@@ -15,9 +15,9 @@
   <!-- Hier beginnt der Phone Content -->
   <div class="phone" hideWhen="tablet">
 
-  <!-- Slider main container -->
-  <div class="image-wrapper" hideWhen="landscape">
-    <div class="swiper-wrapper">
+    <!-- Slider main container -->
+    <div class="image-wrapper" hideWhen="landscape">
+      <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_1.jpg" /></div>
         <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_2.jpg" /></div>
@@ -25,139 +25,129 @@
         <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_4.jpg" /></div>
         <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_5.jpg" /></div>
         <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_6.jpg" /></div>
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
-    <div class="swiper-pagination"></div>
-  </div>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col width-50 class="tile" (click)="goToMap()">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-50 class="tile" (click)="goToMap()">
           <div class="tile-inner">
             <i class="custom-icon icon-navigation"></i>
             <div class="title">Karte</div>
           </div>
-      </ion-col>
-      <ion-col width-50 class="tile" (click)="goToSuche()">
+        </ion-col>
+        <ion-col width-50 class="tile" (click)="goToSuche()">
           <div class="tile-inner">
             <i class="custom-icon icon-suche"></i>
             <div class="title">Suche</div>
           </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col width-50 class="tile" (click)="goToTouren()">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50 class="tile" (click)="goToTouren()">
           <div class="tile-inner">
             <i class="custom-icon icon-erlebnisradwege"></i>
             <div class="title">Erlebnisradwege</div>
           </div>
-      </ion-col>
-      <ion-col width-50 class="tile" (click)="goToRoutenplaner()">
+        </ion-col>
+        <ion-col width-50 class="tile" (click)="goToRoutenplaner()">
           <div class="tile-inner">
             <i class="custom-icon icon-routenplaner"></i>
             <div class="title">Routenplaner</div>
           </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col width-50 class="tile" (click)="goToFavoriten()">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50 class="tile" (click)="goToFavoriten()">
           <div class="tile-inner">
             <i class="custom-icon icon-favoriten"></i>
             <div class="title">Gespeicherte Touren</div>
           </div>
-      </ion-col>
-      <ion-col width-50 class="tile" (click)="goToPannentipps()">
+        </ion-col>
+        <ion-col width-50 class="tile" (click)="goToPannentipps()">
           <div class="tile-inner">
             <i class="custom-icon icon-pannentipps"></i>
             <div class="title">Pannentipps</div>
           </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
-
-<!-- ############################### -->
-
-<!-- Hier beginnt der Tablet Content -->
-<div class="tablet" showWhen="tablet">
-
-  <!-- Slider main container -->
-  <div class="image-wrapper">
-    <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_1.jpg" /></div>
-        <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_2.jpg" /></div>
-        <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_3.jpg" /></div>
-        <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_4.jpg" /></div>
-        <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_5.jpg" /></div>
-        <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_6.jpg" /></div>
-    </div>
-    <div class="swiper-pagination"></div>
-
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 
-  <!-- #### Portrait #### -->
-  <ion-grid hideWhen="portrait">
-    <ion-row>
-      <ion-col width-25 class="tile" (click)="goToSuche()">
+  <!-- ############################### -->
+
+  <!-- Hier beginnt der Tablet Content -->
+  <div class="tablet" showWhen="tablet" ion-fixed>
+
+    <!-- Slider main container -->
+    <div class="tablet-image-overlay">
+      <img class="image-overlay" src="./assets/img/imprint_bw.png" />
+    </div>
+    <div class="tablet-image-wrapper">
+      <img src="./assets/img/slideshow/slideshow_3.jpg" />
+    </div>
+
+    <!-- #### Portrait #### -->
+    <ion-grid hideWhen="portrait">
+      <ion-row>
+        <ion-col width-25 class="tile" (click)="goToSuche()">
           <div class="tile-inner">
             <i class="custom-icon icon-suche"></i>
             <div class="title">Suche</div>
           </div>
-      </ion-col>
-      <ion-col width-25 class="tile" (click)="goToRoutenplaner()">
+        </ion-col>
+        <ion-col width-25 class="tile" (click)="goToRoutenplaner()">
           <div class="tile-inner">
             <i class="custom-icon icon-routenplaner"></i>
             <div class="title">Routenplaner</div>
           </div>
-      </ion-col>
-      <ion-col width-25 class="tile" (click)="goToTouren()">
+        </ion-col>
+        <ion-col width-25 class="tile" (click)="goToTouren()">
           <div class="tile-inner">
             <i class="custom-icon icon-erlebnisradwege"></i>
             <div class="title">Erlebnisradwege</div>
           </div>
-      </ion-col>
-      <ion-col width-25 class="tile" (click)="goToFavoriten()">
+        </ion-col>
+        <ion-col width-25 class="tile" (click)="goToFavoriten()">
           <div class="tile-inner">
             <i class="custom-icon icon-favoriten"></i>
             <div class="title">Gespeicherte Touren</div>
           </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <!-- #### Landscape #### -->
-  <ion-grid hideWhen="landscape">
-    <ion-row>
-      <ion-col width-50 class="tile" (click)="goToSuche()">
+    <!-- #### Landscape #### -->
+    <ion-grid hideWhen="landscape">
+      <ion-row>
+        <ion-col width-50 class="tile" (click)="goToSuche()">
           <div class="tile-inner">
             <i class="custom-icon icon-suche"></i>
             <div class="title">Suche</div>
           </div>
-      </ion-col>
-      <ion-col width-50 class="tile" (click)="goToRoutenplaner()">
+        </ion-col>
+        <ion-col width-50 class="tile" (click)="goToRoutenplaner()">
           <div class="tile-inner">
             <i class="custom-icon icon-routenplaner"></i>
             <div class="title">Routenplaner</div>
           </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col width-50 class="tile" (click)="goToTouren()">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50 class="tile" (click)="goToTouren()">
           <div class="tile-inner">
             <i class="custom-icon icon-erlebnisradwege"></i>
             <div class="title">Erlebnisradwege</div>
           </div>
-      </ion-col>
-      <ion-col width-50 class="tile" (click)="goToFavoriten()">
+        </ion-col>
+        <ion-col width-50 class="tile" (click)="goToFavoriten()">
           <div class="tile-inner">
             <i class="custom-icon icon-favoriten"></i>
             <div class="title">Gespeicherte Touren</div>
           </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
-
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

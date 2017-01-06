@@ -25,7 +25,7 @@
   <!-- Hier beginnt der Tablet Content -->
   <div class="tablet" showWhen="tablet">
     <ion-grid hideWhen="portrait">
-      <div *ngFor="let t of touren; let i=index">
+      <template ngFor let-t [ngForOf]="touren" let-i="index">
         <ion-row *ngIf="i%3 == 0">
           <ion-col *ngIf="i<touren.length" width-33 (click)="showTourInfoModal(t.id)">
             <ion-card>
@@ -58,11 +58,11 @@
             </ion-card>
           </ion-col>
         </ion-row>
-      </div>
+      </template>
     </ion-grid>
 
     <ion-grid hideWhen="landscape">
-      <div *ngFor="let t of touren; let i=index">
+      <template ngFor let-t [ngForOf]="touren" let-i="index">
         <ion-row *ngIf="i%2 == 0">
           <ion-col *ngIf="i<touren.length" width-50 (click)="showTourInfoModal(t.id)">
             <ion-card>
@@ -85,7 +85,7 @@
             </ion-card>
           </ion-col>
         </ion-row>
-      </div>
+      </template>
     </ion-grid>
   </div>
 

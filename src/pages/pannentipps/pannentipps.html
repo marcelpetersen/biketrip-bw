@@ -14,34 +14,50 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-  <button ion-button secondary (click)="presentToast()">Toggle Toast</button>
-
-  <ion-card *ngFor="let p of pannentipps">
-    <!-- <img src="{{t.tourbild}}"/> -->
-    <div class="card-background" [ngStyle]="{'background-image': 'url(' + p.tourbild + ')'}">
-      <div class="card-title">{{p.titel}}</div>
-      <div class="card-subtitle">{{p.text}}</div>
+  <!-- Slider main container -->
+  <div>
+  <div class="image-wrapper" hideWhen="landscape">
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_1.jpg" /></div>
+      <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_2.jpg" /></div>
+      <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_3.jpg" /></div>
+      <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_4.jpg" /></div>
+      <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_5.jpg" /></div>
+      <div class="swiper-slide"><img src="./assets/img/slideshow/slideshow_6.jpg" /></div>
     </div>
-  </ion-card>
+    <div class="swiper-pagination"></div>
+  </div>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col width-100 class="tile" (click)="showCheckliste()">
+        <div class="tile-inner">
+          <i class="custom-icon icon-checkliste"></i>
+          <div class="title">Checkliste</div>
+        </div>
+      </ion-col>
+    </ion-row>
 
-    <ion-list>
-        <div class="card">
-            <ion-item>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/wyVM1evRxNw" frameborder="0" width="100%" height="auto"></iframe>
-                </div>
-            </ion-item>
-        </div>
-        <div class="card">
-            <ion-item>
-              <div class="sketchfab-embed-wrapper">
-                <iframe width="100%" height="auto" src="https://sketchfab.com/models/8db598fd7e2c40678c5144a2756f9f63/embed" frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
-              </div>
-            </ion-item>
-        </div>
-    </ion-list>
+    <template ngFor let-p [ngForOf]="pannentipps" let-i="index">
+      <ion-row *ngIf="i%2 == 0">
+        <ion-col *ngIf="i<pannentipps.length" width-50 class="tile" (click)="showPannentipp(pannentipps[i].id)">
+          <div class="tile-inner">
+            <i class="custom-icon" [ngClass]="pannentipps[i].icon"></i>
+            <div class="title">{{pannentipps[i].name}}</div>
+          </div>
+        </ion-col>
+        <ion-col *ngIf="(i+1)<pannentipps.length" width-50 class="tile" (click)="showPannentipp(pannentipps[i+1].id)">
+          <div class="tile-inner">
+            <i class="custom-icon" [ngClass]="pannentipps[i+1].icon"></i>
+            <div class="title">{{pannentipps[i+1].name}}</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </template>
+  </ion-grid>
+</div>
 
 </ion-content>

@@ -1,0 +1,42 @@
+page-pannentipps-info-modal {
+
+  .first-slide {
+    background-color: rgba(color($colors, primary), 0.4);
+  .custom-icon {
+    position: relative;
+    max-height: 144px;
+    height: auto;
+    text-align: center;
+    display: block;
+    width: 100%;
+    // padding-top:10px;
+    &:before {
+      display: inline-block;
+      width: 72px;
+      position: relative;
+      // top: 40%;
+      // transform: translateY(-50%);
+    }
+  }
+}
+.last-slide {
+  ion-icon {
+    font-size: 10em;
+    color: color($colors, primary);
+  }
+}
+.swiper-wrapper {
+  height: calc(100% - 60px);
+}
+ion-slide {
+  border-bottom: 1px solid color($colors, primary);
+  overflow-x: hidden;
+  overflow-y: auto;
+  h2, p {
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
+  }
+}
+
+
+}

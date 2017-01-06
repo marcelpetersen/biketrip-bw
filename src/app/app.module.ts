@@ -25,6 +25,7 @@ import { Impressum } from '../pages/impressum/about';
 import { TourenInfoModal } from '../pages/touren-info-modal/touren-info-modal';
 import { CheckpointInfoModal } from '../pages/checkpoint-info-modal/checkpoint-info-modal';
 import { CheckpointInfoModalLocked } from '../pages/checkpoint-info-modal-locked/checkpoint-info-modal-locked';
+import { PannentippsInfoModal } from '../pages/pannentipps-info-modal/pannentipps-info-modal';
 
 @NgModule({
   //Pages hinzufügen
@@ -42,11 +43,13 @@ import { CheckpointInfoModalLocked } from '../pages/checkpoint-info-modal-locked
     Map,
     Routenplaner,
     Pannentipps,
+    PannentippsInfoModal,
     Impressum
   ],
   imports: [
     IonicModule.forRoot(Main, {
       backButtonText: 'Zurück',
+      menuType: 'reveal'
     }, {}
   )],
   bootstrap: [
@@ -67,6 +70,7 @@ import { CheckpointInfoModalLocked } from '../pages/checkpoint-info-modal-locked
     Map,
     Routenplaner,
     Pannentipps,
+    PannentippsInfoModal,
     Impressum
   ],
   //Providers (Service Handler) hinzufügen

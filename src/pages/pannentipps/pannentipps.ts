@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 
 import { PannentippsService } from '../../providers/pannentipps-service';
+import { PannentippsInfoModal } from '../pannentipps-info-modal/pannentipps-info-modal';
 
+import * as Swiper from "swiper";
 
 /*
   Generated class for the Pannentipps page.
@@ -18,37 +20,42 @@ import { PannentippsService } from '../../providers/pannentipps-service';
 export class Pannentipps {
 
   public pannentipps: any;
+  public pSwiper: any;
 
   constructor(
     public navCtrl: NavController,
-    public toastCtrl: ToastController,
+    public modalCtrl: ModalController,
     public pannentippsData: PannentippsService
   ) {}
 
   ionViewDidLoad() {
+    this.pSwiper = new Swiper('.image-wrapper', {
+    loop: true,
+    autoplay: 3000,
+    pagination: '.swiper-pagination'
+    });
     this.loadPannentipps();
-    console.log('Hello Pannentipps Page');
   }
 
   loadPannentipps() {
     this.pannentippsData.load().then(data => {
       this.pannentipps = data;
-      console.log(this.pannentipps);
     });
   }
+  showPannentipp(id) {
+    let data = this.pannentipps.find(x => x.id === id);
+    let infoModal = this.modalCtrl.create(PannentippsInfoModal, { data: data, type: "pannentipp" });
+    infoModal.present();
+  }
 
-  presentToast() {
-  let toast = this.toastCtrl.create({
-    message: 'User was added successfully',
-    duration: 3000,
-    position: 'top'
-  });
-
-  toast.onDidDismiss(() => {
-    console.log('Dismissed toast');
-  });
-
-  toast.present();
-}
+  showCheckliste() {
+    let data;
+    let infoModal;
+    this.pannentippsData.loadCheckliste().then(checkliste => {
+      data = checkliste;
+      infoModal = this.modalCtrl.create(PannentippsInfoModal, { data: data, type: "checkliste" });
+      infoModal.present();
+    });
+  }
 
 }
