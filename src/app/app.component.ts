@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-import { Storage } from '@ionic/storage';
 
 //Seiten importieren, um für die Navigation zu verwenden
 import { Startseite } from '../pages/startseite/startseite';
@@ -37,8 +36,8 @@ export class Main {
     public platform: Platform,
     public navigationService: NavigationService,
     public tourenService: BiketripsService,
-    public pannentippsService: PannentippsService,
-    public storage: Storage) {
+    public pannentippsService: PannentippsService
+  ) {
 
     this.initializeApp();
 
@@ -77,17 +76,6 @@ export class Main {
       this.navigationService.initialize();
       this.tourenService.initialize();
       this.pannentippsService.initialize();
-      //Favoriten (Storage) initialisieren
-      // console.log(this.storage.keys.length);
-      if(this.storage.keys.length === 0) {
-        this.storage.set("gespeichert", "-");
-      } else {
-        this.storage.get("gespeichert").then((val) => {
-          if(val === null || val === undefined) {
-            this.storage.set("gespeichert", "-");
-          }
-        });
-      }
     });
   }
 

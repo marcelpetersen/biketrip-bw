@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { BiketripsService } from '../../providers/biketrips-service';
-import { Storage } from '@ionic/storage';
+import { NativeStorage } from 'ionic-native';
 import { TourenInfoModal } from '../touren-info-modal/touren-info-modal';
 
 
@@ -18,28 +18,34 @@ export class GespeicherteTouren {
 
   constructor(
     public navCtrl: NavController,
-    public storage: Storage,
     public tourenService: BiketripsService,
     public modalCtrl: ModalController
   ) {}
 
   ionViewDidLoad() {
 
-    this.storage.get('gespeichert').then((val) => {
-
-      if(val !== "-" || val !== null || val !== undefined) {
-      //Aus zurückgeliefertem String ein Array machen und dieses String-Array in Number-Array umwandeln
-      this.gespeicherteIds = val.split(",").map(Number);
-      //Biketrips laden und nach gespeicherten IDs filtern
-      this.tourenService.load()
-        .then(data => {
-          this.gespeicherteTouren = data.filter((item) => {
-            return (this.gespeicherteIds.indexOf(item.id) !== -1);
+    NativeStorage.getItem('gespeichert').then(
+      data => {
+        if(data !== "-" || data !== null || data !== undefined) {
+        //Aus zurückgeliefertem String ein Array machen und dieses String-Array in Number-Array umwandeln
+        this.gespeicherteIds = data.split(",").map(Number);
+        //Biketrips laden und nach gespeicherten IDs filtern
+        this.tourenService.load()
+          .then(data => {
+            this.gespeicherteTouren = data.filter((item) => {
+              return (this.gespeicherteIds.indexOf(item.id) !== -1);
+            });
           });
-        });
-      }
+        } else {
+          this.gespeicherteTouren = null;
+        }
+      },
+      error => {
+        console.log("Nothing Found!");
+        this.gespeicherteTouren = null;
 
-    });
+      }
+    );
   }
 
   //Oeffnet die Uebersichtsseite (Model) einer Tour.
@@ -50,7 +56,7 @@ export class GespeicherteTouren {
 
   deleteAll() {
     // this.storage.remove("gespeichert");
-    this.storage.set("gespeichert", "-");
+    NativeStorage.setItem("gespeichert", "-");
     this.gespeicherteTouren = null;
 
   }
@@ -66,7 +72,7 @@ export class GespeicherteTouren {
       this.gespeicherteTouren = this.gespeicherteTouren.filter((item) => {
         return (this.gespeicherteIds.indexOf(item.id) !== -1);
       });
-      this.storage.set("gespeichert", this.gespeicherteIds.toString());
+      NativeStorage.setItem("gespeichert", this.gespeicherteIds.toString());
     }
   }
 }

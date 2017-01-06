@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ViewController, NavController, NavParams, App } from 'ionic-angular';
 import { Navigation } from '../navigation/navigation';
 import { BiketripsService } from '../../providers/biketrips-service';
-import { Storage } from '@ionic/storage';
+import { NativeStorage } from 'ionic-native';
 
 
 @Component({
@@ -17,7 +17,6 @@ export class TourenInfoModal {
   public gespeicherteTouren: any = "0";
 
   constructor(
-    private storage: Storage,
     private navCtrl: NavController,
     private appCtrl: App,
     private viewCtrl: ViewController,
@@ -29,13 +28,16 @@ export class TourenInfoModal {
     this.tourID = this.params.get('tour');
     this.loadBiketrips();
 
-    this.storage.get('gespeichert').then((val) => {
-      if( val === "-" || val === null || val === undefined ){
-        this.gespeicherteTouren = "0";
-      } else {
-        this.gespeicherteTouren = val;
-      }
-    });
+    NativeStorage.getItem('gespeichert').then(
+      data => {
+        if(data !== "-" || data !== null || data !== undefined) {
+          this.gespeicherteTouren = data;
+        } else {
+          this.gespeicherteTouren = "0";
+        }
+      },
+      error => this.gespeicherteTouren = "0"
+    );
   }
 
   //Marker mit Überischt der einzlenen Touren laden (Daten werden von biketrips-service Provider bereitgestellt)
@@ -61,27 +63,30 @@ export class TourenInfoModal {
   }
 
   tourSpeichern(id) {
-    // console.log("click");
-
-    // console.log("Gespeichert: " + this.storage.get("gespeichert"));
-
-    this.storage.get('gespeichert').then((val) => {
-      if( val === "-" || val === null || val === undefined ){
-        // console.log("init = null");
+    NativeStorage.getItem('gespeichert').then(
+      data => {
+        if(data !== "-" || data !== null || data !== undefined) {
+          this.gespeicherteTouren = data + "," + String(id);
+          NativeStorage.setItem("gespeichert", this.gespeicherteTouren).then(
+            () => console.log('Stored item!'),
+            error => console.error('Error storing item', error)
+          );
+        } else {
+          this.gespeicherteTouren = String(id);
+          NativeStorage.setItem("gespeichert", this.gespeicherteTouren).then(
+            () => console.log('Stored item!'),
+            error => console.error('Error storing item', error)
+          );
+        }
+      },
+      error => {
         this.gespeicherteTouren = String(id);
-      } else {
-        // console.log("else");
-        this.gespeicherteTouren = val + "," + String(id);
+        NativeStorage.setItem("gespeichert", this.gespeicherteTouren).then(
+          () => console.log('Stored item!'),
+          error => console.error('Error storing item', error)
+        );
       }
-      // console.log("Gespeicherte Tour: " + this.gespeicherteTouren);
-
-      this.storage.set("gespeichert", this.gespeicherteTouren);
-    });
-
-    //Kontrolle
-    this.storage.get('gespeichert').then((val) => {
-      // console.log('Gespeicherte Touren: ', val);
-    });
+    );
   }
 
   dismiss() {
