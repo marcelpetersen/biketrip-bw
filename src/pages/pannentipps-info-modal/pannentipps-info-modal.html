@@ -47,7 +47,7 @@
     </ion-slide>
 
     <ion-slide *ngFor="let p of data.content.steps">
-      <img [src]="p.src" />
+      <img *ngIf="p.src" [src]="p.src" />
       <h2>{{p.title}}</h2>
       <p>{{p.description}}</p>
     </ion-slide>

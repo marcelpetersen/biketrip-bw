@@ -1,0 +1,145 @@
+{
+  "results": [{
+      "id": 1,
+      "name": "Fahrradkette reparieren",
+      "icon": "icon-kette",
+      "description": "In dieser Reparaturanleitung erfahren Sie, wie eine defekte Fahrradkette während einer Radtour repariert werden kann. Achten Sie vor Fahrtbeginn, dass Sie einen Nietendrücker einpacken.",
+      "content": {
+        "type": "slideshow",
+        "steps": [{
+          "title": "Vorbereitung:",
+          "description": "Schalten Sie den Gang, in dem die Kette über das kleinste Ritzel hinten und das kleinste Kettenblatt vorne läuft."
+        }, {
+          "title": "Nietendrücker vorbereiten",
+          "description": "Drehen Sie die Kurbel des Nietendrückers so, dass der Dorn des Werkzeuges ganz zurück gezogen ist. Platzieren Sie dann das Werkzeug zwischen zwei Kettenglieder und drücken Sie den Dorn des Werkzeugs fest gegen den Kettenniet."
+        }, {
+          "title": "Kettenniet herausziehen",
+          "description": "Drehen Sie die Kurbel fest und drücken Sie so den Kettenniet heraus, jedoch nicht vollständig."
+        }, {
+          "title": "Werkzeug von der Kette nehmen",
+          "description": "Drehen Sie die Kurbel zurück, bis Sie das Werkzeug von der Kette nehmen können."
+        }, {
+          "title": "Kettenglieder trennen",
+          "description": "Nehmen Sie die Kettenglieder an der Stelle mit dem zurückgeschobenen Kettenniet auseinander."
+        }, {
+          "title": "Neue Kette einbauen",
+          "description": "Bauen Sie die neue Kette analog zum Ausbauprozess ein."
+        }]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Fahrradreifen flicken",
+      "icon": "icon-flicken",
+      "description": "Sollten Sie keinen Ersatzschlauch dabei haben, können sie den kaputten Schlauch auch einfach flicken. Im Wesentlichen orientieren Sie sich hierbei an Tipp 1, da Sie das Laufrad ebenfalls ausbauen und den Mantel abziehen müssen. Um den Schlauch Flicken zu können, muss er im ausgebauten Zustand vor Ihnen liegen.",
+      "content": {
+        "type": "slideshow",
+        "steps": [{
+          "title": "Schlauch prüfen",
+          "description": "Prüfen sie zunächst die gesamte Oberfläche des Schlauches und finden Sie die Stelle, die den Plattfuß verursacht. Wenn Sie den Schlauch an Ihr Ohr halten, können Sie in der Regel die Luft entweichen hören und die Stelle so schneller finden."
+        }, {
+          "title": "Defekt markieren",
+          "description": "Markieren Sie die Stelle mit einem Kreuz."
+        }, {
+          "title": "Schlauch anrauen",
+          "description": "In Ihrem Reifenflick-Set finden Sie Schmirgelpapier, rauen sie damit den Bereich, indem die Beschädigung ist ein wenig an und wischen Sie ihn sauber."
+        }, {
+          "title": "Gummilösung auftragen",
+          "description": "Tragen Sie nun eine dünne, gleichmäßige Schicht Gummilösung auf den zu flickenden Bereich auf. Er sollte größer sein, als der Flicken, welchen sie verwenden werden. Nach ein bis zwei Minuten ist die Lösung angetrocknet."
+        }, {
+          "title": "Flicken anbringen",
+          "description": "Ziehen Sie nun die Schutzfolie des Flickens ab, ohne die klebende Seite zu berühren und kleben Sie ihn auf die vorbehandelte Stelle."
+        }, {
+          "title": "Flicken festdrücken",
+          "description": "Üben Sie nun für ungefähr eine Minute starken Druck auf den Flicken aus."
+        }, {
+          "title": "Überprüfen",
+          "description": "Überprüfen Sie noch vor dem Einbau, ob der flicken richtig sitzt und streuen sie etwas Talkumpuder auf die geflickte Stelle. So verhindern sie, dass er innen am Mantel festklebt."
+        }, {
+          "title": "Reifen aufpumpen",
+          "description": "Pumpen sie den Schlauch nun testweise leicht auf und setzen sie ihn anschließend, wie in Tipp 1 beschrieben wieder in die Felge ein."
+        }]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Fahrradschlauch ersetzen",
+      "icon": "icon-reifen",
+      "description": "Falls Sie sich an einer Bordsteinkante oder an einer Scherbe einen platten Reifen zugezogen haben, so sollten Sie zunächst weg von der Straße einen sicheren Ort aufsuchen. Um den kaputten Schlauch durch einen neuen zu ersetzen, müssen Sie zunächst das Laufrad ausbauen.",
+      "content": {
+        "type": "slideshow",
+        "steps": [{
+          "title": "Kaputtes Rad abmontieren #1",
+          "description": "Lösen Sie zunächst den Schnellspanner oder die Muttern des Rades. Da der Reifen platt ist, sollten er ohne Probleme durch die Bremsklötze durchpassen, andernfalls können sie die Bremse auch am Seilzug aushängen. Sollte ihr Hinterreifen platt sein, so müssen sie eventuell das Schaltwerk nach hinten ziehen."
+        }, {
+          "title": "Kaputtes Rad abmontieren #2",
+          "description": "Anschließend können sie das Laufrad einfach aus den Ausfallenden ziehen."
+        }, {
+          "title": "Ventil lösen",
+          "description": "Schrauben Sie jetzt die Ventilkappe und die Mutter vom Ventil des kaputten Schlauches ab."
+        }, {
+          "title": "Mantel entfernen #1",
+          "description": "Nehmen Sie nun einen Reifenheber und stecken sie abgerundete Ende unter den Reifenwulst und über den Felgenrand."
+        }, {
+          "title": "Mantel entfernen #2",
+          "description": "Hebeln Sie anschließend den Reifen von der Felge und befestigen den Reifenheber an seinem Hacken an einer Speiche. Verfahren sie mit einem zweiten Reifenheber ungefähr vier Speichen weiter."
+        }]
+      }
+    },
+    {
+      "id": 4,
+      "name": "Bremsen reparieren",
+      "icon": "icon-bremsen",
+      "description": "Mit der Zeit addieren sich die Abnutzungen der Bremsgummis, das Ausleiern der Bremszüge und der Verschleiß der Führungen in den verschiedenen Komponenten und verschieben den Punkt, an dem der Bremshebel die Bremse aktiviert, immer näher zum Lenker, so dass man den Hebel irgendwann nicht mehr kräftig genug ziehen kann. Der Hebel muss neu justiert werden, wenn er bei einem Abstand von 2 Zentimetern vom Lenker nicht mehr ausreichend Bremskraft bringt",
+      "content": {
+        "type": "slideshow",
+        "steps": [{
+          "title": "Die Einstellvorrichtung",
+          "description": "Finden Sie die Einstellvorrichtung. Bei Rennrädern mit Seitenzugbremsen findet sie sich in der Regel auf dem Bremsarm, an dem die Außenhülle des Bremszugs verankert ist. Bei Mountainbike-Bremsen ist sie meist am Bremshebel, und zwar an der Stelle, wo die Bremszughülle aus dem Hebel kommt."
+        }, {
+          "title": "Bremsen überprüfen",
+          "description": "Finden Sie auch die Bremszug-Schnellspannung, die sich bei den meisten Rennradbremsen auf dem Bremsarm an der Klemmstelle des Bremszugs befindet. Bei V-Brakes ist es der Metallring, der die Hülle des Zuges zwischen den Bremsarmen führt – drücken Sie die Bremsarme oben zusammen und ruckeln Sie dieses Röhrchen aus der Klammer heraus, die es unten hält. Entfernen Sie sonst noch nichts."
+        }, {
+          "title": "Kontermutter lösen",
+          "description": "Lösen Sie die Kontermutter mit mehreren Umdrehungen. Das können Sie meist von Hand, ohne Werkzeug."
+        }, {
+          "title": "Einstellschrauben eindrehen",
+          "description": "Drehen Sie die Einstellschraube in Bremshebelkörper hinein (zum Verringern der Bremszugspannung) oder heraus (zum Erhöhen der Bremszugspannung). Verringern der Kabelspannung öffnet die Bremse, Erhöhen der Spannung bewirkt das Gegenteil."
+        }]
+      }
+    }
+  ],
+  "checkliste": {
+    "name": "Checkliste",
+    "description": "Vor jeder größeren Radtour sollte man sicherstellen, dass das Fahrrad in Schuss ist. Wer sein Fahrrad regelmäßig wartet oder warten lässt, kann einer Panne unterwegs meist vorbeugen. Die folgenden Punkte sollte man vor jeder Radtour durchgehen, um so einen guten Zustand des Rades und eine sichere Fahrt zu garantieren:",
+    "liste": [{
+      "id": "l1",
+      "name": "Radaufhängung prüfen",
+      "description": "Stellen Sie sicher, dass die Schnellspanner der Laufräder geschlossen sind und überprüfen sie den Sitz dieser."
+    }, {
+      "id": "l2",
+      "name": "Bremsen prüfen",
+      "description": "Testen Sie in jedem Fall ihre Bremsen vor Fahrtantritt. Die Bremse sollte die Rotation des Rades vollständig stoppen, wenn die Bremshebel noch in etwa zwei Zentimeter vom Lenker entfernt sind."
+    }, {
+      "id": "l3",
+      "name": "Lenker pfüfen",
+      "description": "Vergewissern sie sich, dass der Lenker gerade zum Vorderrad steht und dieser auch fest ist."
+    }, {
+      "id": "l4",
+      "name": "Sattel korrekt einstellen",
+      "description": "Stellen Sie sicher, dass der Sattel auf eine für Sie angenehme Höhe eingestellt ist."
+    }, {
+      "id": "l5",
+      "name": "Reifendruck prüfen",
+      "description": "Prüfen Sie den Reifendruck."
+    }, {
+      "id": "l6",
+      "name": "Schaltung prüfen",
+      "description": "Testen Sie ob die Gangschaltung fehlerlos funktioniert und jeder Gang eingelegt werden kann."
+    }, {
+      "id": "l7",
+      "name": "Räder prüfen",
+      "description": "Zuletzt sollten Sie noch überprüfen, ob die Laufräder gerade laufen und nicht seitlich an der Bremse oder am Rahmen schleifen."
+    }]
+  }
+}

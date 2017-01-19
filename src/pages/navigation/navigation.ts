@@ -232,6 +232,7 @@ export class Navigation {
       else {
         console.log("Positionsupdate ohne Änderung.");
       }
+      this.route.showAlternatives = false;
 
     });
   }
@@ -352,12 +353,12 @@ export class Navigation {
   addInfoWindow(marker, index,  obj) {
     marker.on('click', (event) => {
       console.log("NextChkpt: " + this.nextCheckpoint + " Index: " + index);
-      if (index < this.nextCheckpoint) {
+      // if (index < this.nextCheckpoint) {
         //Wenn die Distanz zum Marker kleiner als 10m ist, dann wird dieser geöffnet
         this.showCheckpointInfoModal(obj);
-      } else {
-        this.showLockedInfoModal(obj.name);
-      }
+      // } else {
+        // this.showLockedInfoModal(obj.name);
+      // }
     });
   }
   //Oeffnet den Checkpoint

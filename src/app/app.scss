@@ -39,21 +39,33 @@ ion-col {
     background-color: transparent;
   }
   .footer-menu {
-    position: absolute;
+    @media screen and (orientation: portrait) {
+      position: absolute;
+      bottom: 0;
+    }
     width: 100%;
-    bottom: 0;
     margin-bottom: 16px;
     color: color($colors, primary);
     text-align: center;
+
+
   }
 }
 
 //Swiper Styles
 // --------------------------------------------------
 
-.swiper-pagination-bullet-active {
-  background: color($colors, primary);
-  opacity: 1;
+
+.swiper-pagination {
+  z-index: 110;
+  .swiper-pagination-bullet {
+    background: color($colors, secondary);
+    opacity: 0.8;
+  }
+  .swiper-pagination-bullet-active {
+    background: color($colors, primary);
+    opacity: 1;
+  }
 }
 // Custom Icons
 // --------------------------------------------------

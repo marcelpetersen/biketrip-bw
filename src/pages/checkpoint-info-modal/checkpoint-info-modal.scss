@@ -1,3 +1,12 @@
 page-checkpoint-info-modal {
-
+  audio {
+    width: 100%;
+  }
+  .audio-icon {
+    width: 100%;
+    text-align: center;
+    background: white;
+    font-size: 10em;
+    color: color($colors, primary);
+  }
 }

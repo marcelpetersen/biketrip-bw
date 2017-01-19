@@ -1,0 +1,311 @@
+{
+  "results": [{
+    "id": 1,
+    "title": "Karl Drais Route",
+    "subtitle": "Auf den Spuren von Karl Drais durch Mannheim.",
+    "startpunkt": {
+      "lat": 49.483384,
+      "lng": 8.462155,
+      "stadt": "Mannheim"
+    },
+    "laenge": 19.4,
+    "schwierigkeitsgrad": 2,
+    "beschreibung": "Das Fahrrad zählt vor allem im Sommer zu den beliebtesten Verkehrsmitteln. Auf Kurzstrecken ist man schnell unterwegs, kann uneingeschränkt die Aussicht genießen und hält sich dabei auch noch  fit. Doch kennen Sie eigentlich die Entstehungsgeschichte des Fahrrades? Wem haben wir diese Erfindung zu verdanken? Wer sich auf die Karl-Drais-Tour begibt, bekommt Antworten auf diese Fragen. Erleben Sie an insgesamt zehn Stationen Hörspiele, Animationen und Videos rund um die Entstehungsgeschichte des Fahrrads und die damit verbundenen Lebensabschnitte von Karl Drais und seiner Familie.",
+    "tourbild": "assets/img/biketrips/1/Tour_Drais.jpg",
+    "teaser": "assets/video/1/teaser.mp4",
+    "checkpoints": [{
+      "checkpointId": 1001,
+      "lat": 49.483384,
+      "lng": 8.462155,
+      "name": "Barockschloss Mannheim",
+      "beschreibung": "Unsere Route beginnt in der historischen Innenstadt Mannheims – am Mannheimer Schloss. Mit seinen 440 Metern Länge zählt dieses zu den größten Schlössern Europas und ist das größte Barockschloss Deutschlands. Zu der Zeit, als Familie Drais nach Mannheim zog, befand sich in dessen Westflügel das Oberhofgericht. Dort war Wilhelm Freiherr Drais von Sauerbronn, der Vater von Karl Drais, seit 1810 als Präsident tätig. Als 1819 der Schriftsteller und Freiheitskritiker August von Kotzebue vom Radikalen Karl Ludwig Sand ermordet wurde, bestätigte Freiherr von Drais dessen Todesurteil. Ein Jahr nach dem Attentat wurde Sand hingerichtet. Die Ermordung diente auch als Rechtfertigung für die Karlsbader Beschlüsse im Jahr 1819.",
+      "content": {
+        "type": "video",
+        "src": "assets/video/1/1001/1.mp4"
+      }
+    }, {
+      "checkpointId": 1002,
+      "lat": 49.484907,
+      "lng": 8.464724,
+      "waypoints": [{
+        "lat": 49.48518,
+        "lng": 8.46150
+      }, {
+        "lat": 49.48589,
+        "lng": 8.46218
+      }],
+      "name": "Wohnhaus M1, 8",
+      "beschreibung": "Nur wenige Straßen vom Mannheimer Schloss entfernt, findet man im Quadrat M1 das Haus mit der Nummer 8. Dieses wurde im Jahr 2008 erbaut und ist jetzt zum größten Teil im kirchlichen Besitz. Lediglich eine Informationstafel an der modernen Fassade erinnert an das ehemalige Wohnhaus der Familie Drais. Dieses wurde im zweiten Weltkrieg vollständig zerstört. 1810 wurde der Vater von Karl Drais Präsident des Oberhofgerichtes und zog mit der Familie nach Mannheim. Karl Drais selbst folgte ein Jahr später. In dem Haus baute er in den Jahren 1813 und 1814 zwei vierrädrige, muskelkraftbetriebene Fahrmaschinen. Eine davon wurde beim Wiener Kongress vorgestellt. Drei Jahre später erfand er schließlich die zweirädrige Laufmaschine.",
+      "content": {
+        "type": "slideshow",
+        "images": [{
+          "src": "assets/img/biketrips/1/1002/1.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1002/2.jpg"
+        }],
+        "audio": "assets/audio/1/checkpoint_2.m4a"
+      }
+    }, {
+      "checkpointId": 1003,
+      "lat": 49.4826,
+      "lng": 8.4618,
+      "waypoints": [{
+        "lat": 49.4857,
+        "lng": 8.4655
+      }, {
+        "lat": 49.4877,
+        "lng": 8.4604
+      }, {
+        "lat": 49.4842,
+        "lng": 8.4580
+      }],
+      "name": "Schlossgarten",
+      "beschreibung": "Direkt am Rheinufer, in unmittelbarer Nähe zum Schloss, findet man das Überbleibsel einer ehemaligen Gartenanlage. Genau hier konnte man Anfang des 19. Jahrhunderts Draisinen-Reiter auf ihren Laufmaschinen antreffen. Aufgrund der damals schlechten Fahrbahnen mussten sie auf die Gehwege ausweichen. Allerdings nicht für lange, denn bereits im Jahr 1817 wurde das Fahren auf den Bürgersteigen untersagt. Der Grund – die Laufmaschinen waren zu schnell und so verlagerten sich die Wege in den Schlossgarten. 1820 machte sogar der erste Verleih auf. Sehr lange dauerte die Freude der Draisinen-Reiter allerdings auch dieses Mal nicht, denn schon 1822 wurde das Fahren im Park ebenfalls verboten.",
+      "content": {
+        "type": "audio",
+        "src": "assets/audio/1/checkpoint_3.m4a"
+      }
+    }, {
+      "checkpointId": 1004,
+      "lat": 49.4714,
+      "lng": 8.4841,
+      "waypoints": [{
+        "lat": 49.4818,
+        "lng": 8.4656
+      }, {
+        "lat": 49.4796,
+        "lng": 8.4713
+      }, {
+        "lat": 49.4805,
+        "lng": 8.4724
+      }],
+      "name": "Neckarauer Übergang",
+      "beschreibung": "Wer mit dem Zug nach Mannheim reist, dem fällt bestimmt die knallgelbe Brücke in der Nähe der Hochschule Mannheim ins Auge. Diese wird auch von Straßenbahnen befahren und ist daher mit Rillenschienen ausgestattet. Auf Schienen testete Karl Drais in Karlsruhe kleine, vierrädrige Eisenbahnfahrzeuge. Seine Versuche prägten den Begriff „Draisine“, der heute noch von Eisenbahnern benutzt wird. Trotz damals nur weniger Strecken mit Gefälle erfand Drais ein Bremssystem für seine Laufmaschine. Dieses erlaubte es dem Fahrer die Maschine beim Bergabfahren zu kontrollieren. Allerdings war die Bremse auf seiner Zeichnung vom Bein des Draisinen-Reiters verdeckt. So kam es dazu, dass vor allem in England Drais’ Laufmaschinen anhand der Zeichnung schlicht ohne Bremsen nachgebaut wurden.",
+      "content": {
+        "type": "3d",
+        "src": "https://sketchfab.com/models/8e619cbd82d6414f8b702f2894746603/embed?annotation=3",
+        "audio": "assets/audio/1/checkpoint_4.m4a"
+      }
+    }, {
+      "checkpointId": 1005,
+      "lat": 49.4480,
+      "lng": 8.5052,
+      "waypoints": [{
+        "lat": 49.4674,
+        "lng": 8.4836
+      },{
+        "lat": 49.4654,
+        "lng": 8.4852
+      },{
+        "lat": 49.4620,
+        "lng": 8.4880
+      },{
+        "lat": 49.4605,
+        "lng": 8.4893
+      }, {
+        "lat": 49.4592,
+        "lng": 8.4907
+      }, {
+        "lat": 49.4565,
+        "lng": 8.4893
+      }, {
+        "lat": 49.4559,
+        "lng": 8.4939
+      }, {
+        "lat": 49.4531,
+        "lng": 8.4952
+      }, {
+        "lat": 49.4531,
+        "lng": 8.4964
+      }],
+      "name": "Casterfeldstrasse",
+      "beschreibung": "Im Jahr 1817 trug die heutige Casterfeldstraße, inoffiziell, den Titel der besten Straße ganz Badens. An ihrem Routenverlauf hat sich seit dem nicht viel verändert. Sie führt von Rheinau nach Schwetzingen und zurück. Folgt man der Bundesstraße Richtung Innenstadt und, so kommt man in den Stadtteil Waldhof. Dort wurde 1896, nach Karl Drais‘ Tod, die „Drais Fahrradwerke GmbH“ gegründet. 2004 ging das Unternehmen bankrott. Heute existieren nur noch zwei identischen Wohnhäusern der Arbeitersiedlung. Drais selbst hatte den Wunsch gehabt, eine Aktiengesellschaft zur Verwertung seiner Erfindungen zu gründen. Diesen konnte er aber nicht mehr verwirklichen. Da seine politischen Gegner, sein Vorhaben mit anonymen Zeitungsanzeigen sabotierten. ",
+      "content": {
+        "type": "slideshow",
+        "images": [{
+          "src": "assets/img/biketrips/1/1005/1.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1005/2.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1005/3.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1005/4.jpg"
+        }],
+        "audio": "assets/audio/1/checkpoint_5.m4a"
+      }
+    }, {
+      "checkpointId": 1006,
+      "lat": 49.4391,
+      "lng": 8.5235,
+      "waypoints": [{
+        "lat": 49.4383,
+        "lng": 8.5227
+      }],
+      "name": "Karl Drais Denkmal",
+      "beschreibung": "Auf einem grünen Flecken zwischen drei Straßen steht ein minimalistisches Stahldenkmal, das den Rahmen der Drais‘schen Laufmaschine darstellt. Die Konstruktion wurde 2003 zusammen mit einer Informationstafel im Auftrag des gemeinnützigen Vereins Mannheim-Rheinau angebracht. Es steht am Wendepunkt, an dem sich Drais bei seiner legendären Fahrt mit der Laufmaschine von Mannheim zum Schwetzinger Relais-Haus zurück auf den Weg in die Stadt machte. Die Fahrt erfolgte am 12. Juni 1817.",
+      "content": {
+        "type": "video",
+        "src": "assets/video/1/1006/1.mp4",
+        "audio": "assets/audio/1/checkpoint_6.m4a"
+      }
+    }, {
+      "checkpointId": 1007,
+      "lat": 49.4632,
+      "lng": 8.5193,
+      "waypoints": [{
+        "lat": 49.4566,
+        "lng": 8.5443
+      }, {
+        "lat": 49.4647,
+        "lng": 8.5206
+      }],
+      "name": "SAP Arena",
+      "beschreibung": "Um optimale Erfolge zu erzielen, muss ein Eishockey-Spieler über ein hohes Maß an Gleichgewichtssinn und Körperbeherrschung verfügen. Auch beim Radfahren gehört die Fähigkeit, die Balance zu halten, zu den Grundfähigkeiten eines jeden Fahrradfahrers. Zu Lebzeiten von Karl Drais war das noch ganz anders. Erst rund zehn Jahre nach seinem Tod, als das Laufen auf Rollschuhen populär wurde, wurde die Fähigkeit des Balancierens selbstverständlich. Das ist wahrscheinlich der Grund, weshalb Drais‘ Laufmaschine keinen Tretmechanismus besaß. Erst im Jahr 1862 stattete der Franzose Pierre Michaux das Zweirad dann mit einer Kurbel aus.",
+      "content": {
+        "type": "audio",
+        "src": "assets/audio/1/checkpoint_7.m4a"
+      }
+    }, {
+      "checkpointId": 1008,
+      "lat": 49.4771,
+      "lng": 8.4960,
+      "waypoints": [{
+        "lat": 49.4636,
+        "lng": 8.5143
+      }, {
+        "lat": 49.4654,
+        "lng": 8.5161
+      }, {
+        "lat": 49.4670,
+        "lng": 8.5118
+      }, {
+        "lat": 49.4675,
+        "lng": 8.5085
+      }],
+      "name": "Technoseum",
+      "beschreibung": "Das TECHNOSEUM zählt mit seinen rund 8.000 Quadratmetern Ausstellungsfläche zu den größten Technikmuseen Deutschlands. Durch Ausprobieren und Experimentieren können Besucher hier komplexe technische und naturwissenschaftliche Prozesse erleben und verstehen. Neben Dauerausstellungen bietet das Erlebnismuseum regelmäßig auch Sonderausstellungen zu aktuellen Themen aus Naturwissenschaften, Technik und Gesellschaft. Im museumseigenen Fahrzeugpark findet man unter historischen Fahrrädern auch einen originalgetreuen Nachbau der Drais‘schen Laufmaschine. Bei Führungen haben Kinder die Möglichkeit, auf einer der nachgebauten Maschinen Probe zu sitzen und sogar damit zu fahren.",
+      "content": {
+        "type": "3d",
+        "src": "https://sketchfab.com/models/8e619cbd82d6414f8b702f2894746603/embed",
+        "audio": "assets/audio/1/checkpoint_8.m4a"
+      }
+    }, {
+      "checkpointId": 1009,
+      "lat": 49.4841,
+      "lng": 8.4754,
+      "waypoints": [{
+        "lat": 49.4782,
+        "lng": 8.4970
+      }, {
+        "lat": 49.4838,
+        "lng": 8.4828
+      }, {
+        "lat": 49.4835,
+        "lng": 8.4824
+      }, {
+        "lat": 49.4844,
+        "lng": 8.4798
+      }],
+      "name": "Wasserturm",
+      "beschreibung": "Hier, wo heute der Wasserturm steht, befand sich zu Lebzeiten von Karl Drais der Richtplatz. An diesem Platz fand 1820 die Hinrichtung des radikalen Studenten Karl Ludwig Sand statt. Drais‘ Vater übernahm damals den Prozess. Nach der Hinrichtung musste Drais diverse Belästigungen über sich ergehen lassen. Sand hatte nämlich viele Anhänger und Sympathisanten, vor allem unter anderen Studenten. Um dem Mobbing zu entfliehen, beschloss Karl Drais schließlich, nach Brasilien zu ziehen. Dort arbeitete er fünf Jahre lang als Feldvermesser, bis er im Jahr 1827 nach Mannheim zurückkehrte.",
+      "content": {
+        "type": "audio",
+        "src": "assets/audio/1/checkpoint_9.m4a"
+      }
+    }, {
+      "checkpointId": 1010,
+      "lat": 49.4830,
+      "lng": 8.4783,
+      "name": "Karl Benz Denkmal",
+      "beschreibung": "Nicht weit vom Wasserturm entfernt, steht die Bronzenachbildung des ersten fahrbereiten Automobils von Carl Benz. Der Motorwagen wurde im Jahr 1886 erfunden. Noch im gleichen Jahr wurde auch das Patent erteilt. Der Erfinder des Kraftwagens beschloss, sein altes „Kurbelveloziped“ mit einem Motor auszustatten. Beim Design des ersten Automobils hat sich Benz dabei an den damals üblichen Pedal-Dreirädern orientiert. Dadurch kamen viele Teile seines Wagens aus der Fahrradfertigung. Somit hat das erste Auto der Welt verschiedene bewährte Elemente aus der Fahrradtechnik beerbt.",
+      "content": {
+        "type": "slideshow",
+        "images": [{
+          "src": "assets/img/biketrips/1/1010/1.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1010/2.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1010/3.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1010/4.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1010/5.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1010/6.jpg"
+        }, {
+          "src": "assets/img/biketrips/1/1010/7.jpg"
+        }],
+        "audio": "assets/audio/1/checkpoint_10.m4a"
+
+      }
+    }]
+  }, {
+    "id": 2,
+    "title": "Baden erleben",
+    "subtitle": "...die Geschichte Badens kennenlernen.",
+    "startpunkt": {
+      "lat": 49.0134942,
+      "lng": 8.4021663,
+      "stadt": "Karlsruhe"
+    },
+    "laenge": 9.0,
+    "schwierigkeitsgrad": 1,
+    "beschreibung": "Erleben Sie die Geschichte Badens rund um Karlsruhe.",
+    "tourbild": "assets/img/biketrips/Tour_Baden.jpg"
+  }, {
+    "id": 3,
+    "title": "Weinschmeckertour",
+    "subtitle": "Tour durch die Weinberge der Ortenau",
+    "startpunkt": {
+      "lat": 48.4906348,
+      "lng": 8.0063307,
+      "stadt": "Durbach"
+    },
+    "laenge": 28.2,
+    "schwierigkeitsgrad": 3,
+    "beschreibung": "Malerische Weinberge der Ortenau bieten eine ideale Landschaft für eine ausgiebige Radtour.",
+    "tourbild": "assets/img/biketrips/Tour_Weinschmecker.jpg"
+  }, {
+    "id": 4,
+    "title": "Elsassroute",
+    "subtitle": "Tour durch das malerische Strassbourg.",
+    "startpunkt": {
+      "lat": 48.5731573,
+      "lng": 7.7186634,
+      "stadt": "Strasbourg"
+
+    },
+    "laenge": 19.8,
+    "schwierigkeitsgrad": 2,
+    "beschreibung": "Tour durch das malerische Strassbourg.",
+    "tourbild": "assets/img/biketrips/Tour_Strassbourg.jpg"
+  }, {
+    "id": 5,
+    "title": "Fahrradstadt",
+    "subtitle": "Deutschlands Fahrradhauptstadt hautnah kennenlernen.",
+    "startpunkt": {
+      "lat": 47.9959033,
+      "lng": 7.8326057,
+      "stadt": "Freiburg"
+
+    },
+    "laenge": 15.2,
+    "schwierigkeitsgrad": 1,
+    "beschreibung": "Freiburg im Breisgau gilt als eine der fahrradfreundlichsten Städte Deutschlands. Überzeugen Sie sich selbst auf dieser Tour.",
+    "tourbild": "assets/img/biketrips/Tour_Fahrradstadt.jpg"
+  }, {
+    "id": 6,
+    "title": "Radgourmet",
+    "subtitle": "Radeln und genießen.",
+    "startpunkt": {
+      "lat": 47.9899124,
+      "lng": 7.7907895,
+      "stadt": "Freiburg"
+
+    },
+    "laenge": 20.1,
+    "schwierigkeitsgrad": 2,
+    "beschreibung": "Lernen Sie Freiburgs schönste Restaurants und Cafés kennen.",
+    "tourbild": "assets/img/biketrips/Tour_Gourmet.jpg"
+  }]
+}

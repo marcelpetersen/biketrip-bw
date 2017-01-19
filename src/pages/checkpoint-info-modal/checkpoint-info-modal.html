@@ -24,10 +24,15 @@
           <source [src]="checkpointData.content.src" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        <audio *ngIf="checkpointData.content.audio" controls>
+          <source src="{{checkpointData.content.audio}}" type="audio/mpeg">
+          Your browser does not support the audio tag.
+        </audio>
       </div>
 
       <!-- AUDIO Guide -->
       <div *ngSwitchCase="'audio'">
+        <ion-icon class="audio-icon" name="musical-notes"></ion-icon>
         <audio controls>
           <source src="{{checkpointData.content.src}}" type="audio/mpeg">
           Your browser does not support the audio tag.
@@ -39,9 +44,13 @@
         <ion-slides [options]="mySlideOptions">
           <ion-slide *ngFor="let i of checkpointData.content.images">
             <img [src]="i.src" class="slide-image"/>
-            <h1>{{i.beschreibung}}</h1>
+            <h1 *ngIf="i.beschreibung">{{i.beschreibung}}</h1>
           </ion-slide>
         </ion-slides>
+        <audio *ngIf="checkpointData.content.audio" controls>
+          <source src="{{checkpointData.content.audio}}" type="audio/mpeg">
+          Your browser does not support the audio tag.
+        </audio>
       </div>
 
       <!-- 3D Modell -->
@@ -54,6 +63,10 @@
             onmousewheel="">
           </iframe>
         </div>
+        <audio *ngIf="checkpointData.content.audio" controls>
+          <source src="{{checkpointData.content.audio}}" type="audio/mpeg">
+          Your browser does not support the audio tag.
+        </audio>
       </div>
 
       <!-- DEFAULT -->

@@ -11,7 +11,9 @@ export class CheckpointInfoModal {
   //Slideshow
   mySlideOptions = {
     initialSlide: 0,
-    loop: true
+    loop: true,
+    autoplay: 3000,
+    pager: true
   };
   sketchfab;
   checkpointData: any;
