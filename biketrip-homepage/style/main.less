@@ -250,16 +250,60 @@ section.playground {
         font-size: 50px;
     }
 
-    .device-container,
-    .feature-item {
-        max-width: 414px;
-        margin: 0 auto;
+    .swiper-container {
+        width: 100%;
+        height: 800px;
+        .swiper-pagination {
+          .swiper-pagination-bullet {
+            background: @theme-secondary;
+          }
+          .swiper-pagination-bullet-active {
+            background: @theme-primary;
+          }
+        }
+
+        .swiper-button-next {
+          background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 27 44'%3E%3Cpath d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z' fill%3D'%23145648'%2F%3E%3C%2Fsvg%3E");
+          @media(max-width: 767px) {
+              display: none;
+          }
+        }
+        .swiper-button-prev {
+          background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 27 44'%3E%3Cpath d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z' fill%3D'%23145648'%2F%3E%3C%2Fsvg%3E");
+          @media(max-width: 767px) {
+              display: none;
+          }
+        }
     }
-    .device-container {
+
+    .iphone-container {
+        max-width: 360px;
+        margin: 0 auto;
         margin-bottom: 100px;
         @media(min-width: 992px) {
             margin-bottom: 0;
         }
+    }
+
+    .ipad-container {
+        max-width: 1024px;
+        margin: 0 auto;
+        margin-bottom: 100px;
+        @media(min-width: 992px) {
+            margin-bottom: 0;
+        }
+
+        @media(max-width: 1199px) {
+            display: none;
+        }
+    }
+    .ipad-error {
+      top: 50%;
+      position: relative;
+      transform: translateY(-50%);
+      @media(min-width: 1200px) {
+          display: none;
+      }
     }
 
     @media(min-width: 768px) {

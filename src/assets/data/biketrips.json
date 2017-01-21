@@ -10,7 +10,7 @@
     },
     "laenge": 19.4,
     "schwierigkeitsgrad": 2,
-    "beschreibung": "Das Fahrrad zählt vor allem im Sommer zu den beliebtesten Verkehrsmitteln. Auf Kurzstrecken ist man schnell unterwegs, kann uneingeschränkt die Aussicht genießen und hält sich dabei auch noch  fit. Doch kennen Sie eigentlich die Entstehungsgeschichte des Fahrrades? Wem haben wir diese Erfindung zu verdanken? Wer sich auf die Karl-Drais-Tour begibt, bekommt Antworten auf diese Fragen. Erleben Sie an insgesamt zehn Stationen Hörspiele, Animationen und Videos rund um die Entstehungsgeschichte des Fahrrads und die damit verbundenen Lebensabschnitte von Karl Drais und seiner Familie.",
+    "beschreibung": "Das Fahrrad zählt vor allem im Sommer zu den beliebtesten Verkehrsmitteln. Auf Kurzstrecken ist man schnell unterwegs, kann uneingeschränkt die Aussicht genießen und hält sich dabei auch noch fit. Doch kennen Sie eigentlich die Entstehungsgeschichte des Fahrrades? Wem haben wir diese Erfindung zu verdanken? Wer sich auf die Karl-Drais-Tour begibt, bekommt Antworten auf diese Fragen. Erleben Sie an insgesamt zehn Stationen Hörspiele, Animationen und Videos rund um die Entstehungsgeschichte des Fahrrads und die damit verbundenen Lebensabschnitte von Karl Drais und seiner Familie.",
     "tourbild": "assets/img/biketrips/1/Tour_Drais.jpg",
     "teaser": "assets/video/1/teaser.mp4",
     "checkpoints": [{
@@ -60,7 +60,7 @@
         "lng": 8.4580
       }],
       "name": "Schlossgarten",
-      "beschreibung": "Direkt am Rheinufer, in unmittelbarer Nähe zum Schloss, findet man das Überbleibsel einer ehemaligen Gartenanlage. Genau hier konnte man Anfang des 19. Jahrhunderts Draisinen-Reiter auf ihren Laufmaschinen antreffen. Aufgrund der damals schlechten Fahrbahnen mussten sie auf die Gehwege ausweichen. Allerdings nicht für lange, denn bereits im Jahr 1817 wurde das Fahren auf den Bürgersteigen untersagt. Der Grund – die Laufmaschinen waren zu schnell und so verlagerten sich die Wege in den Schlossgarten. 1820 machte sogar der erste Verleih auf. Sehr lange dauerte die Freude der Draisinen-Reiter allerdings auch dieses Mal nicht, denn schon 1822 wurde das Fahren im Park ebenfalls verboten.",
+      "beschreibung": "Direkt am Rheinufer, in unmittelbarer Nähe zum Schloss, findet man das überbleibsel einer ehemaligen Gartenanlage. Genau hier konnte man Anfang des 19. Jahrhunderts Draisinen-Reiter auf ihren Laufmaschinen antreffen. Aufgrund der damals schlechten Fahrbahnen mussten sie auf die Gehwege ausweichen. Allerdings nicht für lange, denn bereits im Jahr 1817 wurde das Fahren auf den Bürgersteigen untersagt. Der Grund – die Laufmaschinen waren zu schnell und so verlagerten sich die Wege in den Schlossgarten. 1820 machte sogar der erste Verleih auf. Sehr lange dauerte die Freude der Draisinen-Reiter allerdings auch dieses Mal nicht, denn schon 1822 wurde das Fahren im Park ebenfalls verboten.",
       "content": {
         "type": "audio",
         "src": "assets/audio/1/checkpoint_3.m4a"
@@ -79,7 +79,7 @@
         "lat": 49.4805,
         "lng": 8.4724
       }],
-      "name": "Neckarauer Übergang",
+      "name": "Neckarauer übergang",
       "beschreibung": "Wer mit dem Zug nach Mannheim reist, dem fällt bestimmt die knallgelbe Brücke in der Nähe der Hochschule Mannheim ins Auge. Diese wird auch von Straßenbahnen befahren und ist daher mit Rillenschienen ausgestattet. Auf Schienen testete Karl Drais in Karlsruhe kleine, vierrädrige Eisenbahnfahrzeuge. Seine Versuche prägten den Begriff „Draisine“, der heute noch von Eisenbahnern benutzt wird. Trotz damals nur weniger Strecken mit Gefälle erfand Drais ein Bremssystem für seine Laufmaschine. Dieses erlaubte es dem Fahrer die Maschine beim Bergabfahren zu kontrollieren. Allerdings war die Bremse auf seiner Zeichnung vom Bein des Draisinen-Reiters verdeckt. So kam es dazu, dass vor allem in England Drais’ Laufmaschinen anhand der Zeichnung schlicht ohne Bremsen nachgebaut wurden.",
       "content": {
         "type": "3d",
@@ -126,10 +126,6 @@
           "src": "assets/img/biketrips/1/1005/1.jpg"
         }, {
           "src": "assets/img/biketrips/1/1005/2.jpg"
-        }, {
-          "src": "assets/img/biketrips/1/1005/3.jpg"
-        }, {
-          "src": "assets/img/biketrips/1/1005/4.jpg"
         }],
         "audio": "assets/audio/1/checkpoint_5.m4a"
       }
@@ -145,8 +141,7 @@
       "beschreibung": "Auf einem grünen Flecken zwischen drei Straßen steht ein minimalistisches Stahldenkmal, das den Rahmen der Drais‘schen Laufmaschine darstellt. Die Konstruktion wurde 2003 zusammen mit einer Informationstafel im Auftrag des gemeinnützigen Vereins Mannheim-Rheinau angebracht. Es steht am Wendepunkt, an dem sich Drais bei seiner legendären Fahrt mit der Laufmaschine von Mannheim zum Schwetzinger Relais-Haus zurück auf den Weg in die Stadt machte. Die Fahrt erfolgte am 12. Juni 1817.",
       "content": {
         "type": "video",
-        "src": "assets/video/1/1006/1.mp4",
-        "audio": "assets/audio/1/checkpoint_6.m4a"
+        "src": "assets/video/1/1006/1.mp4"
       }
     }, {
       "checkpointId": 1007,
@@ -291,7 +286,7 @@
     },
     "laenge": 15.2,
     "schwierigkeitsgrad": 1,
-    "beschreibung": "Freiburg im Breisgau gilt als eine der fahrradfreundlichsten Städte Deutschlands. Überzeugen Sie sich selbst auf dieser Tour.",
+    "beschreibung": "Freiburg im Breisgau gilt als eine der fahrradfreundlichsten Städte Deutschlands. überzeugen Sie sich selbst auf dieser Tour.",
     "tourbild": "assets/img/biketrips/Tour_Fahrradstadt.jpg"
   }, {
     "id": 6,
